@@ -1,0 +1,70 @@
+======================================================================
+Nil3 x S1 EC False Vacuum EFT
+======================================================================
+
+----------------------------------------------------------------------
+Step 1: EC false vacuum identification
+----------------------------------------------------------------------
+
+  Nil3 AX/VT dropout => EC-Weyl does not change the eta=V=0 slice
+  => false vacuum determined from the homogeneous eta=V=0 slice
+
+  V_eff(eta=V=0) = (12*pi**4*L*R**2 - 64*pi**4*L*alpha*kappa**2)/(3*R*kappa**2)
+  dV/dR = (12*pi**4*L*R**2 + 64*pi**4*L*alpha*kappa**2)/(3*R**2*kappa**2)
+  dV/dR = 0 solutions: [4*sqrt(3)*kappa*sqrt(-alpha)/3]
+  EC false vacuum: r0 = 4*sqrt(3)*kappa*sqrt(-alpha)/3
+
+  Vacuum energy V0 = V_eff(r0) = 32*sqrt(3)*pi**4*L*sqrt(-alpha)/(3*kappa)
+
+  alpha = -a^2: r0 = 4*sqrt(3)*a*kappa/3
+  alpha = -a^2: V0 = 32*sqrt(3)*pi**4*L*a/(3*kappa)
+
+----------------------------------------------------------------------
+Step 2: Mass spectrum at r0 (second-order fluctuations)
+----------------------------------------------------------------------
+
+  spin-0 r:   d2V/dR2 |_r0 = 2*sqrt(3)*pi**4*L/(kappa**3*sqrt(-alpha))
+  spin-0 eta: d2V/deta2 |_(r0,eta=0) = 128*sqrt(3)*pi**4*L*sqrt(-alpha)/kappa
+  cross term: d2V/dR deta |_(r0,eta=0) = 0
+
+  spin-2 squash: d2V/deps2 |_(eps=0,eta=0,r0) = 6272*sqrt(3)*pi**4*L*sqrt(-alpha)/(27*kappa)
+  spin-1 omega2: d2V/dom3^2 |_(eta=0,om3=0,r0) = 6*sqrt(3)*pi**4*L**3/(kappa**3*sqrt(-alpha))
+
+----------------------------------------------------------------------
+Step 3: EFT coefficients (alpha = -a^2, kappa=L=1)
+----------------------------------------------------------------------
+
+  r0 = 4*sqrt(3)*a/3
+  V0 = 32*sqrt(3)*pi**4*a/3
+
+  Mass spectrum at r0 (alpha=-a^2, kappa=L=1):
+  Mode                              m^2 (analytic)               m^2 @ a=1     sign  
+  -------------------------------------------------------------------------------------
+  spin-0 r                        2*sqrt(3)*pi**4/a                 337.4350  > 0 (stable)
+  spin-0 eta                     128*sqrt(3)*pi**4*a              21595.8393  > 0 (stable)
+  spin-2 squash                6272*sqrt(3)*pi**4*a/27            39192.4492  > 0 (stable)
+  spin-1 omega2                   6*sqrt(3)*pi**4/a                1012.3050  > 0 (stable)
+
+  Mass hierarchy:
+    Group 1 (~ 1/a, light):  spin-0 r, spin-1 omega2
+    Group 2 (~ a, heavy):    spin-0 eta, spin-2 squash
+
+  Physical interpretation:
+    spin-0 r is the lightest mode in the homogeneous EFT (m^2=337.4350 @ a=1)
+    eta (AX torsion) is heavy => torsion stabilized at false vacuum
+    spin-1 omega_0,1 remain massless; only omega_2 acquires a mass (1-axis mass splitting)
+
+----------------------------------------------------------------------
+Stability check: all masses > 0 at r0?
+----------------------------------------------------------------------
+
+  spin-0 r: m^2 = 337.4350  => stable
+  spin-0 eta: m^2 = 21595.8393  => stable
+  spin-2 squash: m^2 = 39192.4492  => stable
+  spin-1 omega2: m^2 = 1012.3050  => stable
+
+  EC false vacuum stability: STABLE (all m^2 > 0)
+
+Computation time: 1.0s
+
+*Script: scripts/paper03ec/nil3_false_vacuum_eft.py

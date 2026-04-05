@@ -1,0 +1,155 @@
+%==============================================================================
+% Section 1: Introduction
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Background}
+\label{sec:intro:background}
+
+In paper~I \cite{paper1} we compared $\Sthree\times\Sone$, $\Tthree\times\Sone$,
+and $\Nilthree\times\Sone$ within the Einstein--Cartan + Nieh--Yan (EC+NY)
+minisuperspace using a unified effective-potential framework, establishing a
+topology-dependent phase classification and demonstrating the energetic
+dominance of the isotropic $\Sthree\times\Sone$ vacuum.
+
+In paper~II \cite{paper2} we focused on the isotropic $\Sthree\times\Sone$
+vacuum and analysed in detail the effect of the Weyl-squared coupling $\alpha
+C^2$ \cite{Woodard2015}.  The Pontryagin density $P=\innerprod{R}{\star R}$
+\cite{Chandia1997} was shown to vanish identically under the homogeneous ansatz
+(``chiral equilibrium''), and conformal protection for $\alpha\le 0$ together
+with asymptotic instability for $\alpha>0$ were established, providing the
+physical basis for the geometric robustness of the $\Sthree$ vacuum.
+
+In paper~III (LC version) \cite{paper3} we organised the complete set of
+homogeneous geometric degrees of freedom of $\Sthree\times\Sone$---spin-0
+(radial $r$, torsion scalars $\eta, V$), spin-2 (traceless symmetric quintet
+$q_A$), and spin-1 (physical triplet $X_k$ and auxiliary triplet $Y_k$)---into
+a unified geometric Landau-EFT.  The Pontryagin protection, the spin-2 phase
+diagram, and the physical/auxiliary decomposition of the spin-1 sector were all
+integrated into a single framework.  That paper establishes the baseline
+homogeneous mode dictionary for $\Sthree\times\Sone$ and the low-order EFT.
+
+The role of paper~III (LC) in the present work is precisely this: it provides
+the confirmed baseline mode dictionary and EFT for $\Sthree\times\Sone$, which
+the present paper retains while making the EC--Weyl corrections explicit and
+extending the comparison to all three topologies.
+
+The objectives of the present paper are to extend this framework from the
+Levi--Civita (LC) connection to the Einstein--Cartan (EC) connection, and to
+carry out a systematic three-topology comparison.  Specifically, we address:
+
+\begin{enumerate}
+  \item What structure does the EC--Weyl coupling $\alpha C^2_\EC$ have with
+        respect to the torsion modes (AX/VT/MX)?
+  \item Is the Palatini protection (non-propagation of torsion) established in
+        LC also preserved in EC?
+  \item How does the mode dictionary of the three topologies change in EC?  In
+        particular, does $\Nilthree$ exhibit physics unique to EC?
+  \item How do the cross-term structures of squash/shear deformations and the
+        EC--Weyl coupling reflect the geometric properties of each topology?
+\end{enumerate}
+
+Answers to these four questions are given by the combination of exact symbolic
+computation with SymPy and analytic proofs, and are summarised as nine theorems.
+
+\subsection{Summary of Main Results}
+\label{sec:intro:results}
+
+The main results of this paper are collected in nine theorems (Theorems~1--9).
+Here we describe the significance of each and their interrelations.
+
+\textbf{EC--Weyl coupling structure} (\S\ref{sec:ecweyl}): Theorem~1 provides
+the fundamental selection rule that the physical effect of the EC extension
+appears only in the MX background ($V\eta\neq 0$).  This ``AX/VT dropout''
+holds universally across all three topologies and clarifies the geometric
+mechanism of EC--Weyl interaction ($V\times\eta$ cross-terms activate the Weyl
+component).  Theorem~3 complements this by establishing that no new cubic
+channel appears in the formal auxiliary MIXING sector, so the novel cubic
+structure of EC is localised in the physical $\eta$-$V$ channel.
+
+\textbf{Protection structure of $\Sthree\times\Sone$} (\S\ref{sec:ecweyl},
+\S\ref{sec:s3}): Theorems~2 and~4 show that the mode dictionary of
+$\Sthree\times\Sone$ is essentially protected under the transition from LC to
+EC.  Palatini protection (Theorem~2) preserves torsion non-propagation, and
+Palatini universality (Theorem~4) ensures that the spin-2/spin-1 mode spectrum
+is independent of the type of torsion background.
+
+\textbf{Triple triviality of $\Tthree\times\Sone$} (\S\ref{sec:t3}): The
+flatness of $\Tthree$ ($C^a_{bc}=0$) makes all spin-2/spin-1 masses zero
+(\S\ref{sec:t3:flat}), and algebraic constraints from AX/VT dropout and MX
+corrections coexist.  Theorem~5 clarifies that the squash--shear cross-term
+seen in $\Tthree$ is a kinematic consequence of the topology-specific
+non-volume-preservation, distinct from the Weyl mass.
+
+\textbf{EC-specific physics of $\Nilthree\times\Sone$} (\S\ref{sec:nil3}):
+$\Nilthree$ is the only ``non-conformally flat'' manifold among the three
+topologies (non-zero background Weyl tensor), and this generates a false vacuum
+for $\alpha<0$ via the EC--Weyl coupling (Theorem~6).  The low-energy EFT
+around this vacuum is organised through Theorem~7 (quintet splitting) and
+Theorem~8 (uniaxial mass splitting).
+
+\textbf{Three-topology comparison} (\S\ref{sec:compare}): Theorem~9 classifies
+the geometric differences among the three topologies using the squash--shear
+cross-term as an indicator.  The $\gamma=1/2$ scaling theorem (\S\ref{sec:compare:gamma})
+and the conformal-flatness theorem (\S\ref{sec:compare:conformal}) clarify the
+common geometric principle underlying the EC-specific physics of $\Nilthree$.
+
+\subsection{LC$\to$EC Update Summary}
+\label{sec:intro:update}
+
+Table~\ref{tab:update} summarises the changes from paper~III (LC) to the present
+paper.  ``Preserved'' indicates a structure established in LC that carries over to
+EC unchanged; ``New'' indicates a result first made explicit in the EC version.
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llll}
+\toprule
+Quantity / Structure & Paper~III (LC) & This paper (EC) & Change \\
+\midrule
+Palatini protection ($G_{\eta\eta}=G_{VV}=0$) & \checkmark & \checkmark\ (Thm.~2) & \textbf{Preserved} \\
+AX/VT dropout & --- & \checkmark\ all 3 topol.\ (Thm.~1) & \textbf{New} \\
+Auxiliary $C_\delta$ & --- & $0$ (all 3 topol., Thm.~3) & \textbf{New} (null result) \\
+$\Sthree$ spin-2 mass (isotropic pt.) & $48\pi^2$ (conv.\ dep.) & $128\pi^2 Lr/(3\kappa^2)-16384\pi^2 L\alpha/(3r)$ (Thm.~4) & \textbf{Preserved} (conv.\ unified) \\
+$\Sthree$ spin-1 mass & Paper~III \S5 & $16\pi^2 L^3/(\kappa^2 r)$ (Thm.~4) & \textbf{Preserved} \\
+$\Sthree$ Pontryagin protection (AX, VT) & \checkmark & \checkmark\ ($\alpha$-independent) & \textbf{Preserved} \\
+$\Tthree$ all masses & $=0$ (flatness) & $=0$ (Thm.~5 related) & \textbf{Preserved} \\
+$\Tthree$ squash--shear cross-term & --- & kinematic origin established (Thm.~5) & \textbf{New} \\
+$\Nilthree$ LC vacuum & absent (monotone) & absent (AX/VT: EC-LC diff.\ zero) & \textbf{Preserved} \\
+$\Nilthree$ EC vacuum & --- & $r_0=(4\kappa/\!\sqrt{3})\sqrt{|\alpha|}$ (Thm.~6) & \textbf{New} \\
+$\Nilthree$ spin-2 splitting & --- & $5\to 0+2+1+1$ (Thm.~7) & \textbf{New} \\
+$\Nilthree$ spin-1 mass splitting & --- & $m^2(\omega_2)\neq 0$ (Thm.~8) & \textbf{New} \\
+$\varepsilon$-$s$ cross-term classification & --- & full 3-topology classification (Thm.~9) & \textbf{New} \\
+\bottomrule
+\end{tabular}%
+}
+\caption{LC$\to$EC update summary.  ``Preserved'' means the LC structure carries
+  over to EC; ``New'' means first established in the EC version.}
+\label{tab:update}
+\end{table}
+
+\subsection{Outline}
+\label{sec:intro:outline}
+
+The paper is organised as follows.
+\begin{itemize}
+  \item Section~\ref{sec:ecweyl} introduces the basic structure of the
+        EC--Weyl coupling and establishes Theorems~1--3.
+  \item Section~\ref{sec:s3} gives the mode dictionary for $\Sthree\times\Sone$
+        (Theorem~4).
+  \item Section~\ref{sec:t3} establishes the mode dictionary for
+        $\Tthree\times\Sone$ (Theorem~5).
+  \item Section~\ref{sec:nil3} develops the mode dictionary for
+        $\Nilthree\times\Sone$ (Theorems~6--8).
+  \item Section~\ref{sec:compare} performs the three-topology comparison
+        (Theorem~9, $\gamma=1/2$ scaling).
+  \item Section~\ref{sec:discussion} discusses the physical implications and
+        future prospects.
+  \item Section~\ref{sec:conclusion} is the conclusion.
+  \item Appendix~\ref{app:A} collects notation and conventions; Appendix~\ref{app:B}
+        gives the complete EFT coefficient list; Appendix~\ref{app:C} provides the
+        detailed derivation of the $\varepsilon$-$s$ cross-term; Appendix~\ref{app:D}
+        gives the detailed proof of the auxiliary $\delta$-sector null theorem.
+\end{itemize}

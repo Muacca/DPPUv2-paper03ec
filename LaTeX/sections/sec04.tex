@@ -1,0 +1,154 @@
+%==============================================================================
+% Section 4: Mode Dictionary: T^3 x S^1 under EC-Weyl
+%==============================================================================
+\section{Mode Dictionary: $\Tthree\times\Sone$ under EC--Weyl}
+\label{sec:t3}
+
+This section analyses the effect of the EC--Weyl coupling on the homogeneous
+geometric degrees of freedom of $\Tthree\times\Sone$.  The flatness of $\Tthree$
+($C^a_{bc}=0$) causes a triple triviality, and we establish Theorem~5
+(torsion--volume coupling) as the origin of the squash--shear cross-term.
+
+\subsection{$\Tthree$ Flatness Theorem}
+\label{sec:t3:flat}
+
+$\Tthree = \mathbb{R}^3/\mathbb{Z}^3$ is a flat torus with
+\begin{equation}
+  C^a_{bc}(\Tthree) = 0 \quad \forall\,a,b,c.
+\end{equation}
+This flatness causes the Weyl tensor to vanish, setting all spin-2/spin-1
+masses to zero.
+
+\paragraph{Spin-2 mass (squash direction).}
+By exact SymPy computation,
+\begin{equation}
+  \frac{\partial^2 V}{\partial\varepsilon^2}\bigg|_{\varepsilon=0}
+  = 0 \quad \forall\,\eta, V, \alpha.
+\end{equation}
+With $C^a_{bc}=0$, the Weyl tensor vanishes and no geometric mass term for spin-2
+arises.  Script: \texttt{paper03ec/t3\_mode\_dictionary.py}.
+
+\paragraph{Spin-2 mass (shear direction).}
+Similarly,
+\begin{equation}
+  \frac{\partial^2 V}{\partial s^2}\bigg|_{s=0}
+  = 0 \quad \forall\,\eta, V, \alpha
+\end{equation}
+(SymPy exact zero; script: \texttt{proofs/t3\_flatness\_null\_test.py}).
+
+\paragraph{Spin-1 mass.}
+With $C^a_{bc}=0$, all spin-1 components are massless: $m^2_\omega = 0$.
+
+\subsection{Mode Dictionary Table ($\Tthree\times\Sone$)}
+\label{sec:t3:table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Quantity & AX ($V=0,\,\eta\neq 0$) & VT ($\eta=0,\,V\neq 0$) & MX ($V\neq 0,\,\eta\neq 0$) \\
+\midrule
+$C^2_\EC$ & $=C^2_\LC=0$ & $=C^2_\LC=0$ & $16V^2\eta^2/(3r^2)$ \\
+AX/VT dropout & \checkmark & \checkmark & $\times$ \\
+spin-0: $r$ & propagating & propagating & propagating \\
+spin-0: $\eta,V$ & $\eta$ non-prop., $V=0$ & $\eta=0$, $V$ non-prop. & both non-prop. \\
+spin-2 mass $\mu^2$ & $0$ ($\Tthree$ flatness) & $0$ ($\Tthree$ flatness) & $0$ ($\Tthree$ flatness) \\
+spin-1 mass $m^2_\omega$ & $0$ (massless) & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\caption{$\Tthree\times\Sone$ mode dictionary under EC--Weyl.}
+\label{tab:t3}
+\end{table}
+
+\subsection{Triple Triviality of $\Tthree$}
+\label{sec:t3:triple}
+
+The effect of the EC--Weyl coupling in $\Tthree\times\Sone$ is trivial in three
+senses.
+
+\paragraph{(i) AX dropout.}
+From $C^a_{bc}=0$ we get $C^2_\LC=0$; Theorem~\ref{thm:dropout} (AX dropout)
+then gives $C^2_\EC = C^2_\LC = 0$.  The coupling $\alpha$ does not modify the
+effective potential in the AX background.
+
+\paragraph{(ii) VT dropout.}
+Similarly, $\eta=0$ gives Theorem~\ref{thm:dropout} (VT dropout) and
+$C^2_\EC=0$.  In the VT background too, $\alpha$ is inactive.
+
+\paragraph{(iii) MX correction.}
+In the MX background ($V\eta\neq 0$) where AX/VT dropout does not apply,
+$C^2_\EC = 16V^2\eta^2/(3r^2)\neq 0$.  For $\alpha<0$ this correction gives
+$\Delta\Veff^\EC > 0$, pushing the potential upward.  Whether a finite MX
+critical point exists is examined algebraically in \S\ref{sec:t3:mx}.
+
+The auxiliary EFT coefficient is also
+\begin{equation}
+  C_\delta(\Tthree) = 0,
+  \qquad
+  \frac{\partial C_\delta(\Tthree)}{\partial\alpha} = 0
+\end{equation}
+(Theorem~\ref{thm:delta}, Appendix~\ref{app:D}).  Hence in $\Tthree$, neither
+the physical sector nor the auxiliary sector develops a new homogeneous cubic
+channel from the EC extension.
+
+\subsection{Theorem~5: Torsion--Volume Coupling}
+\label{sec:t3:thm5}
+
+\begin{theorem}[Torsion--volume coupling]\label{thm:tvol}
+  In $\Tthree\times\Sone$, the mixed second derivative of the squash and shear
+  parameters satisfies
+  \begin{equation}
+    \frac{\partial^2\Veff}{\partial\varepsilon\,\partial s}\bigg|_{\varepsilon=s=0}
+    = \frac{48\pi^4 L\eta^2 r}{\kappa^2} \neq 0 \quad (\eta\neq 0).
+  \end{equation}
+  The origin of this cross-term is the kinematic mixing of the volume element
+  $(1+\varepsilon)(1+s)$, independent of the Weyl mass.
+\end{theorem}
+
+\begin{proof}[Proof outline]
+  The effective potential of $\Tthree$ takes the form (AX background, $V=0$):
+  \begin{equation}
+    V_\mathrm{eff}^{T^3}(\varepsilon,s)
+    \supset \frac{16\pi^4 Lr}{\kappa^2}\cdot 9\eta^2\cdot(1+\varepsilon)(1+s)
+    + \cdots
+  \end{equation}
+  (with $C^a_{bc}=0$ the Weyl contribution is absent, and the torsion kinetic
+  term $\propto\eta^2$ is multiplied by the volume factor $(1+\varepsilon)(1+s)$).
+  The mixed derivative yields:
+  \begin{equation}
+    \frac{\partial^2 V_\mathrm{eff}^{T^3}}{\partial\varepsilon\,\partial s}
+    \bigg|_{\varepsilon=s=0}
+    = \frac{16\pi^4 Lr}{\kappa^2}\cdot 9\eta^2\cdot 1
+    = \frac{48\pi^4 L\eta^2 r}{\kappa^2}.
+  \end{equation}
+
+  \textit{Confirmation that this is not a Weyl mass.}  In the AX background
+  ($V=0$), $C^a_{bc}=0$ gives $C^2_\LC=0$, and Theorem~\ref{thm:dropout} (AX
+  dropout) gives $C^2_\EC = 0$, so this cross-term is $\alpha$-independent and
+  carries no Weyl-mass contribution.  Numerical check (AX background): the
+  cross-term value is identical for $\alpha=0$ and $\alpha=-1$ (SymPy exact).
+  In the MX background ($V\neq 0$), $\alpha$-dependent terms join the
+  cross-term via $C^2_\EC=16V^2\eta^2/(3r^2)\neq 0$, but the spin-2 null test
+  ($\partial^2 V/\partial\varepsilon^2=0$, $\partial^2 V/\partial s^2=0$)
+  continues to hold (because $C^2_\EC$ is independent of $\varepsilon,s$).
+  Scripts: \texttt{proofs/t3\_flatness\_null\_test.py},
+  \texttt{paper03ec/squash\_shear\_cross\_term.py}.
+\end{proof}
+
+\subsection{Absence of MX Critical Points}
+\label{sec:t3:mx}
+
+We examine critical points of the $\Tthree$ MX sector for $\alpha<0$.
+Solving $\partial\Veff/\partial\eta = \partial\Veff/\partial V = 0$ symbolically
+by SymPy, the MX solution is
+\begin{equation}
+  V^* = \pm\frac{3}{4}\sqrt{\frac{1}{\alpha}},
+  \qquad
+  \eta^* = \pm\frac{r}{4}\sqrt{\frac{1}{\alpha}},
+\end{equation}
+which is purely imaginary for $\alpha<0$ (no real solution).  Therefore
+\textbf{no finite real MX critical point exists in $\Tthree$ for $\alpha<0$}.
+This is consistent with the analysis in \S\ref{sec:t3:triple} that the MX
+correction pushes the potential upward, giving no new homogeneous local minimum
+in the MX sector of $\Tthree$.  Script: \texttt{paper03ec/t3\_mx\_vacuum\_search.py}.

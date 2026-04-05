@@ -1,0 +1,160 @@
+%==============================================================================
+% Appendix B: Complete EFT Coefficient List
+%==============================================================================
+\section{Complete EFT Coefficient List}
+\label{app:B}
+
+This appendix collects the EFT coefficients (spin-0, spin-2, and spin-1 mass
+spectra and potential coefficients) under EC--Weyl for each of the three
+topologies.
+
+\subsection{$\Sthree\times\Sone$: AX EFT}
+\label{app:B:s3}
+
+\textbf{Setup:} $\Sthree\times\Sone$, AX background ($V=0$, $\eta\neq 0$),
+isotropic point ($\varepsilon=s=0$).
+
+\paragraph{Spin-0 spectrum.}
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+DOF & Mass $m^2$ (analytic) & Numeric ($r=3$, $L=\kappa=1$, $\alpha=0$) \\
+\midrule
+$r$ (radial) & $\partial^2 V/\partial r^2|_\mathrm{on\text{-}shell}$ & See paper~III \S4.3 \\
+$\eta$ (AX torsion) & non-propagating ($G_{\eta\eta}=0$) & --- \\
+\bottomrule
+\end{tabular}
+\caption{Spin-0 spectrum of $\Sthree\times\Sone$ in the AX background.}
+\end{table}
+
+\paragraph{Spin-2 spectrum (five-fold degenerate).}
+\begin{equation}
+  \mu^2_{\mathrm{spin2}}(\Sthree, \mathrm{AX})
+  = \frac{128\pi^2 Lr}{3\kappa^2} - \frac{16384\pi^2 L\alpha}{3r}.
+\end{equation}
+\begin{itemize}
+  \item LC part ($\alpha=0$): $128\pi^2 Lr/(3\kappa^2)$.
+  \item EC correction: $-16384\pi^2 L\alpha/(3r)$ ($\alpha$-dependent, SymPy exact).
+  \item Numeric ($r=3$, $L=\kappa=1$, $\alpha=0$): $128\pi^2\approx 1263.3$ (5-fold degenerate).
+  \item Note: Paper~III uses $r=1$-based notation; the formula then gives
+        $128\pi^2/3\approx 421.2$.  The discrepancy with $48\pi^2$ in paper~III
+        arises from the radius convention combined with differences in spin-2
+        basis/Hessian conventions.
+  \item VT background value is identical to AX (Theorem~\ref{thm:paluniv}).
+\end{itemize}
+
+\paragraph{Spin-1 spectrum (three-fold degenerate).}
+\begin{equation}
+  m^2_{\omega_k}(\Sthree, \mathrm{AX})
+  = \frac{16\pi^2 L^3}{\kappa^2 r},
+  \qquad k=0,1,2.
+\end{equation}
+\begin{itemize}
+  \item Numeric ($r=3$, $L=\kappa=1$): $16\pi^2/3\approx 52.6$ (3-fold degenerate).
+  \item Independent of $\eta, V$ (Palatini universality, Theorem~\ref{thm:paluniv});
+        same value in VT background.
+\end{itemize}
+
+\subsection{$\Nilthree\times\Sone$: EC False-Vacuum EFT}
+\label{app:B:nil3}
+
+\textbf{Setup:} $\Nilthree\times\Sone$, EC false vacuum
+($\alpha=-a^2<0$, $\eta=V=0$, $r_0=4\kappa a/\sqrt{3}$).
+``False vacuum'' refers to a local minimum of the homogeneous effective potential.
+
+\paragraph{False vacuum identification.}
+\begin{equation}
+  r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|} = \frac{4\kappa a}{\sqrt{3}},
+  \qquad
+  V_0 = \Veff(r_0) = \frac{32\sqrt{3}\,\pi^4 La}{3\kappa} > 0.
+\end{equation}
+
+\paragraph{Full mode quadratic coefficient spectrum.}
+(Expansion around $\delta\Phi = \Phi - \Phi^*$)
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+DOF & Expansion var. & Quadratic coeff.\ (analytic) & Numeric ($a=\kappa=L=1$) & $\alpha$-dep. \\
+\midrule
+$r$ & $\delta r$ & $2\sqrt{3}\pi^4 L/(a\kappa^3)$ & 337.4 & $\propto 1/a$ \\
+$\eta$ (non-prop.) & $\delta\eta$ & $128\sqrt{3}\pi^4 La/\kappa$ & 21,596 & $\propto a$ ($\eta$-dir.\ curv.) \\
+spin-2 squash $\varepsilon$ & $\delta\varepsilon$ & $6272\sqrt{3}\pi^4 La/(27\kappa)$ & 39,192 & $\propto a$ \\
+spin-1 $\omega_2$ & $\delta\omega_2$ & $6\sqrt{3}\pi^4 L^3/(a\kappa^3)$ & 1,012 & $\propto 1/a$ \\
+spin-1 $\omega_0,\omega_1$ & $\delta\omega_{0,1}$ & $0$ & 0 & --- \\
+spin-2 zero mode $q_3$ & $\delta q_3$ & $0$ & 0 & --- \\
+spin-2 $q_4,q_5$ & $\delta q_{4,5}$ & $m^2(q_4)=m^2(q_5)$ & 10,798 & --- \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Quadratic coefficient spectrum of the $\Nilthree$ EC false-vacuum EFT.
+  The $\eta$ row gives the potential curvature in the $\eta$ direction under
+  Palatini protection ($G_{\eta\eta}=0$), not a propagating mass.}
+\label{tab:appB_nil3}
+\end{table}
+
+\paragraph{Quadratic effective action (EFT).}
+\begin{equation}
+\begin{aligned}
+  \Veff^{Nil^3}_\mathrm{EFT}(\delta\Phi)
+  &\approx V_0 + \frac{1}{2}\Bigg[
+    \frac{2\sqrt{3}\pi^4 L}{a\kappa^3}(\delta r)^2
+    + \frac{128\sqrt{3}\pi^4 La}{\kappa}(\delta\eta)^2 \\
+  &\quad
+    + \frac{6272\sqrt{3}\pi^4 La}{27\kappa}(\delta\varepsilon)^2
+    + \frac{6\sqrt{3}\pi^4 L^3}{a\kappa^3}(\delta\omega_2)^2
+  \Bigg]
+  + O(\delta^3)
+\end{aligned}
+\end{equation}
+with $\partial^2 V/\partial r\partial\eta|_{r_0,0} = 0$ (cross-term vanishes).
+
+Scripts: \\
+\texttt{paper03ec/nil3\_false\_vacuum\_eft.py},\texttt{paper03ec/nil3\_spin2\_quintet\_splitting.py}.
+
+\subsection{$\Tthree\times\Sone$: Trivial EFT}
+\label{app:B:t3}
+
+\textbf{Setup:} $\Tthree\times\Sone$, $C^a_{bc}=0$.
+
+\paragraph{Effective potential (closed form).}
+AX background ($V=0$):
+\begin{equation}
+  \Veff(\Tthree,\,r,\,\eta;\,\alpha,\,\theta)\big|_{V=0}
+  = \frac{48\pi^4 Lr}{\kappa^2}\eta^2.
+\end{equation}
+
+Full MX background ($V\neq 0$, $\eta\neq 0$):
+\begin{equation}
+  \Veff(\Tthree,\,r,\,\eta,\,V;\,\alpha,\,\theta)
+  = \frac{16\pi^4 Lr}{3}\left[\frac{V^2r^2 + 9\eta^2}{\kappa^2}
+    + 6V\eta r\theta - 16\alpha V^2\eta^2\right].
+\end{equation}
+(Note: terms from $R_\EC/(2\kappa^2)$ carry $1/\kappa^2$; the $\theta\cdot\mathcal{L}_\NY$
+and $\alpha\cdot C^2_\EC$ terms are $\kappa^2$-independent.  Setting $\kappa=L=1$
+recovers the expressions in \S\ref{sec:t3}.)
+
+\paragraph{All mode masses.}
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+DOF & Mass $m^2$ & Remarks \\
+\midrule
+$r$ & on-shell dependent & only LC part contributes \\
+$\eta, V$ & $G_{\eta\eta}=G_{VV}=0$ & non-dynamical (Palatini protection) \\
+spin-2 (squash, shear) & $=0$ & flatness $C^a_{bc}=0$ \\
+spin-1 ($\omega_k$) & $=0$ & massless \\
+$\varepsilon$-$s$ cross-term & $48\pi^4 L\eta^2 r/\kappa^2$ & kinematic origin (Thm.~\ref{thm:tvol}) \\
+\bottomrule
+\end{tabular}
+\caption{All mode masses for $\Tthree\times\Sone$.}
+\label{tab:appB_t3}
+\end{table}
+
+Scripts: \\ 
+\texttt{paper03ec/t3\_mode\_dictionary.py},
+\texttt{paper03ec/t3\_mx\_vacuum\_search.py}.

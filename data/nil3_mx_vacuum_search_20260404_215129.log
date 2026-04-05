@@ -1,0 +1,63 @@
+======================================================================
+Nil3 MX Vacuum Search under EC-Weyl
+======================================================================
+
+Step 0: symbolic input
+----------------------------------------------------------------------
+  V_eff_LC = (16*pi**4*R**4*V**2 + 96*pi**4*R**3*V*eta*theta_NY + 144*pi**4*R**2*eta**2 + 12*pi**4*R**2 - 64*pi**4*alpha)/(3*R)
+  delta_V_eff (EC-LC) = -256*pi**4*R*V**2*alpha*eta**2/3
+
+Step 1: exact stationary equations
+----------------------------------------------------------------------
+  dV/dR = (48*pi**4*R**4*V**2 + 192*pi**4*R**3*V*eta*theta_NY - 256*pi**4*R**2*V**2*alpha*eta**2 + 144*pi**4*R**2*eta**2 + 12*pi**4*R**2 + 64*pi**4*alpha)/(3*R**2)
+  dV/deta = 32*pi**4*R**2*V*theta_NY - 512*pi**4*R*V**2*alpha*eta/3 + 96*pi**4*R*eta
+  dV/dV = 32*pi**4*R**3*V/3 + 32*pi**4*R**2*eta*theta_NY - 512*pi**4*R*V*alpha*eta**2/3
+
+Step 2: theta_NY = 0 analytic MX branch
+----------------------------------------------------------------------
+  On the MX branch (eta*V != 0), dV/deta = dV/dV = 0 gives
+    V*   = +/- 3/(4*sqrt(alpha))
+    eta* = +/- R/(4*sqrt(alpha))
+  Substituting into dV/dR = 0 yields
+    27*R^4 + 12*alpha*R^2 + 64*alpha^2 = 0
+  In x = R^2, the discriminant is
+    Delta = (12*alpha)^2 - 4*27*64*alpha^2 = -6768*alpha^2 < 0
+  Therefore the theta_NY = 0 MX branch has no real stationary point for any alpha != 0.
+
+  For comparison, the alpha < 0 false vacuum sits on the trivial slice eta = V = 0.
+    alpha = -1.0, R0 = 2.309401, Hessian eig = [  337.43498958 12797.53441963 21595.83933312]
+  This is the false vacuum discussed in Theorem 6, not an MX stationary point.
+
+Step 3: numerical root search for nonzero theta_NY
+----------------------------------------------------------------------
+  Sampled box for root search: 0.2 < R < 20, |eta| <= 3, |V| <= 3
+
+  theta_NY = +0.50, alpha = -1.00
+    R=2.309401, eta=-0.000000, V=+0.000000, class=trivial slice (eta=V=0), stable=True, eig=[  337.435  7792.118 26601.256]
+
+  theta_NY = -0.50, alpha = -1.00
+    R=2.309401, eta=+0.000000, V=+0.000000, class=trivial slice (eta=V=0), stable=True, eig=[  337.435  7792.118 26601.256]
+
+  theta_NY = +0.50, alpha = -0.20
+    R=1.032796, eta=-0.000000, V=+0.000000, class=trivial slice (eta=V=0), stable=True, eig=[ 754.528  831.526 9971.073]
+
+  theta_NY = -0.50, alpha = -0.20
+    R=1.032796, eta=+0.000000, V=+0.000000, class=trivial slice (eta=V=0), stable=True, eig=[ 754.528  831.526 9971.073]
+
+  theta_NY = +0.50, alpha = +1.00
+    no finite real root found
+
+  theta_NY = -0.50, alpha = +1.00
+    no finite real root found
+
+======================================================================
+Nil3 MX Vacuum Search Summary
+======================================================================
+  MX roots found in sampled nonzero-theta cases: 0
+  Stable MX roots found in sampled nonzero-theta cases: 0
+  Trivial-slice roots found in sampled nonzero-theta cases: 4
+  Verdict: no stable Nil3 MX stationary point was found; the alpha < 0 minimum remains the eta = V = 0 false vacuum.
+
+Computation time: 12.7s
+
+*Script: scripts/paper03ec/nil3_mx_vacuum_search.py

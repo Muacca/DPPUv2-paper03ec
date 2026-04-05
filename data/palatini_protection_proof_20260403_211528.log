@@ -1,0 +1,59 @@
+======================================================================
+Palatini Protection Proof  -- Theorem 2
+======================================================================
+
+=================================================================
+  Part 1: Algebraic proof of G_eta_eta = G_VV = 0
+=================================================================
+
+  C2_EC (S3 MX) = 16*V**2*eta**2/(3*r**2)
+
+  [eta velocity test]
+  C2_EC(eta + v_eta*z) = 16*V^2*(eta + v_eta*z)^2 / (3*r^2)
+  Integrated: (1/Dz)*int_0^Dz C2_EC dz = 16*V^2/(3*r^2)
+              * [eta^2 + eta*v_eta*Dz + v_eta^2*Dz^2/3]
+  G_eta_eta = d2/d(v_eta)^2 [...] * Dz = (2*Dz^2/3) * 16*V^2/(3*r^2) * Vol
+  => G_eta_eta = lim_{Dz->0} (Dz^2 * ...) = 0  [PASS]
+
+  d2/d(v_eta)^2 [eta^2 + eta*v_eta*Dz + v_eta^2*Dz^2/3] = 2*_Dz**2/3
+  => contains Dz^2 factor -> G_eta_eta vanishes as Dz->0
+
+  [V velocity test]
+  C2_EC = 16*V^2*eta^2/(3*r^2) is symmetric under eta <-> V
+  => the same Dz^2 -> 0 argument applies: G_VV = 0
+
+  [Structure constants check]
+  eta in structure constants: False  (expected: False)
+  V   in structure constants: False   (expected: False)
+  => eta, V are not in structure constants (torsion ansatz parameters only)
+  => domain-wall velocities v_eta, v_V cannot enter C2_EC via connections
+  => G_eta_eta = G_VV = 0  (Palatini protection preserved)
+
+  Theorem 2 (algebraic part): PASS
+
+=================================================================
+  Part 2: C2_EC structure across 3 topologies (MX mode)
+=================================================================
+
+  S3  x S1:
+    C2_LC = 0
+    C2_EC = 16*V**2*eta**2/(3*r**2)
+    C2_EC - C2_LC = 16*V**2*eta**2/(3*r**2)
+    => purely algebraic in eta, V: YES (no velocity terms)
+
+  T3  x S1:
+    C2_LC = 0
+    C2_EC = 16*V**2*eta**2/(3*r**2)
+    C2_EC - C2_LC = 16*V**2*eta**2/(3*r**2)
+    => purely algebraic in eta, V: YES (no velocity terms)
+
+  Nil3 x S1:
+    C2_LC = 4/(3*R**4)
+    C2_EC = (16*R**2*V**2*eta**2 + 4)/(3*R**4)
+    C2_EC - C2_LC = 16*V**2*eta**2/(3*R**2)
+    => purely algebraic in eta, V: YES (no velocity terms)
+
+
+Computation time: 0.6s
+
+*Script: scripts/proofs/palatini_protection_proof.py

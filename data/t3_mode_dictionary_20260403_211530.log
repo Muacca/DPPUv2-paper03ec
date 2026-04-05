@@ -1,0 +1,63 @@
+======================================================================
+T3 x S1 EC Mode Dictionary
+======================================================================
+
+----------------------------------------------------------------------
+AX background (V=0, eta != 0)
+----------------------------------------------------------------------
+  V_eff (AX, eps=0) = 48*pi**4*L*eta**2*r/kappa**2
+  C2_LC (AX) = 0
+  C2_EC (AX) = 0
+  C2_EC - C2_LC = 0  (expect: 0)
+
+  [spin-2] d2V/deps2 (AX) = 0  =>  PASS (=0)
+  [spin-0] dV/dr (AX, iso) = 48*pi**4*L*eta**2/kappa**2
+           dV/deta (AX, iso) = 96*pi**4*L*eta*r/kappa**2
+
+  [spin-1] TWIST mode - homogeneous EFT mass check:
+    G_spin1[0,0] = 0  (mass=0 in V_eff: PASS)
+    => no additional homogeneous quadratic term is generated in the twist sector
+
+----------------------------------------------------------------------
+VT background (eta=0, V != 0)
+----------------------------------------------------------------------
+  C2_LC (VT) = 0
+  C2_EC (VT) = 0
+  Delta(V_eff_EC - V_eff_LC) = 0  => VT dropout: PASS
+  d2V/deps2 (VT) = 0  => spin-2 mass=0: PASS
+
+----------------------------------------------------------------------
+MX background (V != 0, eta != 0)
+----------------------------------------------------------------------
+  C2_LC (MX) = 0
+  C2_EC (MX) = 16*V**2*eta**2/(3*r**2)
+  C2_EC - C2_LC = 16*V**2*eta**2/(3*r**2)  (expect: 16*V^2*eta^2/(3*r^2))
+  Delta(V_eff_EC - V_eff_LC) = -256*pi**4*L*V**2*alpha*epsilon*eta**2*r/3 - 256*pi**4*L*V**2*alpha*eta**2*r/3
+  => MX EC coupling active (Delta != 0): PASS
+  d2V/deps2 (MX) = 0  => spin-2 mass=0: PASS
+
+======================================================================
+T3 x S1 Mode Dictionary Summary
+======================================================================
+
+  Quantity                               AX                 VT                 MX        
+  -------------------------------------------------------------------------------------
+  C2_EC                             = C2_LC = 0        = C2_LC = 0       16V2eta2/(3r2)  
+  alpha dropout                         PASS               PASS            X (active)    
+  spin-2 mass (d2V/deps2)           0 (T3 flat)        0 (T3 flat)        0 (T3 flat)    
+  spin-1 mass (homogeneous V_eff)    0 (massless)            0                  0         
+
+  Verification checks:
+    PASS   AX: C2_EC = C2_LC (dropout)
+    PASS   AX: spin-2 d2V/deps2 = 0
+    PASS   AX: spin-1 mass=0 in V_eff
+    PASS   VT: dropout (Delta V_eff=0)
+    PASS   VT: spin-2 d2V/deps2 = 0
+    PASS   MX: C2_EC != C2_LC (active)
+    PASS   MX: spin-2 d2V/deps2 = 0
+
+  T3 mode dictionary: PASS
+
+Computation time: 0.5s
+
+*Script: scripts/paper03ec/t3_mode_dictionary.py

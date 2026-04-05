@@ -1,0 +1,154 @@
+%==============================================================================
+% Section 3: Mode Dictionary: S^3 x S^1 under EC-Weyl
+%==============================================================================
+\section{Mode Dictionary: $\Sthree\times\Sone$ under EC--Weyl}
+\label{sec:s3}
+
+This section determines the effect of the EC--Weyl coupling on the homogeneous
+geometric degrees of freedom of $\Sthree\times\Sone$.  Since the non-propagation
+of torsion in the spin-0 sector is already established by Theorem~\ref{thm:palatini},
+we focus here on the specific consequences for $\Sthree$: Theorem~4 (Palatini
+universality) and its reflection in the mode dictionary.
+
+\subsection{Theorem~4: Palatini Universality}
+\label{sec:s3:thm4}
+
+\begin{theorem}[Palatini universality]\label{thm:paluniv}
+  In $\Sthree\times\Sone$, the spin-2 and spin-1 masses in the AX and VT
+  backgrounds are identical (SymPy exact)\textup{:}
+
+  \textbf{Spin-2 mass (five-fold degenerate)\textup{:}}
+  \begin{equation}
+    \mu^2_{\mathrm{spin2}}(\Sthree)
+    = \frac{128\pi^2 Lr}{3\kappa^2} - \frac{16384\pi^2 L\alpha}{3r}.
+  \end{equation}
+
+  \textbf{Spin-1 mass (three-fold degenerate)\textup{:}}
+  \begin{equation}
+    m^2_{\omega_k}(\Sthree) = \frac{16\pi^2 L^3}{\kappa^2 r},
+    \qquad k=0,1,2.
+  \end{equation}
+
+  Both expressions are independent of $\eta$ and $V$: the mode spectrum does
+  not depend on the type of torsion background.
+\end{theorem}
+
+The VT$-$AX difference for spin-2 mass is exactly zero (SymPy exact).  The LC
+contribution ($\alpha=0$) to the spin-2 mass is $128\pi^2 Lr/(3\kappa^2)$ and
+the EC correction is $-16384\pi^2 L\alpha/(3r)$, the latter depending only on
+the topology ($\Sthree$ geometry) and not on $\eta$ or $V$.
+
+\begin{remark}
+  The numerical evaluation at $r=3$, $L=\kappa=1$, $\alpha=0$ gives
+  $\mu^2_{\mathrm{spin2}} = 128\pi^2 \approx 1263.3$ and
+  $m^2_{\omega_k} = 16\pi^2/3 \approx 52.6$.  The LC paper~III uses $r=1$-based
+  notation, giving $128\pi^2/3\approx 421.2$ for the spin-2 mass.  The
+  discrepancy with the value $48\pi^2$ quoted there arises from the choice of
+  radius combined with conventions for the spin-2 basis/Hessian.
+\end{remark}
+
+\paragraph{Physical interpretation.}
+Palatini universality means that the difference between the AX background
+($\eta\neq 0$) and the VT background ($V\neq 0$) has no effect on the
+spin-2/spin-1 mass spectrum.  The kinematic part coming from the $\Sthree$
+geometry ($C^i_{jk}=4\varepsilon_{ijk}/r$) determines the masses, while
+torsion deforms only the shape of the potential (a consequence of Palatini
+protection, Theorem~\ref{thm:palatini}).
+Script: \texttt{paper03ec/s3\_vt\_spin\_masses.py}.
+
+\subsection{Mode Dictionary Table ($\Sthree\times\Sone$)}
+\label{sec:s3:table}
+
+Table~\ref{tab:s3} summarises the mode dictionary of $\Sthree\times\Sone$
+under EC--Weyl.
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Quantity & AX ($V=0,\,\eta\neq 0$) & VT ($\eta=0,\,V\neq 0$) & MX ($V\neq 0,\,\eta\neq 0$) \\
+\midrule
+$C^2_\EC$ & $=C^2_\LC=0$ & $=C^2_\LC=0$ & $16V^2\eta^2/(3r^2)$ \\
+AX/VT dropout & \checkmark & \checkmark & $\times$ \\
+spin-0: $r$ & propagating & propagating & propagating \\
+spin-0: $\eta,V$ & $\eta$ non-prop., $V=0$ (Thm.~2) & $\eta=0$, $V$ non-prop.\ (Thm.~2) & both non-prop.\ (Thm.~2) \\
+spin-2 mass $\mu^2$ & $128\pi^2 Lr/(3\kappa^2)-16384\pi^2 L\alpha/(3r)$ & same as AX (Thm.~4) & --- \\
+spin-1 mass $m^2_\omega$ & $16\pi^2 L^3/(\kappa^2 r)$ (3-fold) & same as AX (Thm.~4) & --- \\
+\bottomrule
+\end{tabular}%
+}
+\caption{$\Sthree\times\Sone$ mode dictionary under EC--Weyl.}
+\label{tab:s3}
+\end{table}
+
+Regarding the MX sector of $\Sthree\times\Sone$: the supplementary script \\
+\texttt{paper03ec/s3\_mx\_vacuum\_search.py} checked the stationarity conditions
+and Hessian within the range $|\eta|\le 3$.  No stable full stationary vacuum
+satisfying both $\nabla_{(r,\eta,V)}\Veff=0$ and positive-definite Hessian was
+found.  Real stationary points may appear on the $\alpha>0$ side, but all of
+them have at least one negative eigenvalue and are saddle points.  The finite-radius
+well appearing in a fixed-$V$ slice is a one-dimensional minimum in the $r$
+direction and does not constitute a full stationary vacuum.
+
+\subsection{Pontryagin Structure: AX = Pl\"{u}cker, VT = Pfaffian, MX $\neq 0$}
+\label{sec:s3:pontryagin}
+
+The Pontryagin protection structure is inherited from paper~III.
+
+\textbf{AX mode (Pl\"ucker protection):} When $V=0$, the Pontryagin density
+$P=\innerprod{R}{\star R}$ vanishes identically by a Pl\"ucker relation.
+AX torsion contributes no antisymmetric part to the Riemann tensor that could
+activate $P$.
+
+\textbf{VT mode (Pfaffian protection):} When $\eta=0$, $P$ vanishes via a
+Pfaffian-type identity.  VT torsion modifies only the symmetric part of the
+Riemann tensor, leaving the antisymmetric combination that enters $P$ zero.
+
+\textbf{MX mode:} When $V\neq 0,\eta\neq 0$, the Pontryagin density at the
+isotropic point is (from paper~III):
+\begin{equation}
+  P_0 = \frac{2V\eta(V^2r^2 + 9\eta^2 - 36)}{9r^3}.
+\end{equation}
+
+\paragraph{Effect of EC.}
+The Weyl coupling $\alpha$ enters only the action, not the definition of the
+Pontryagin density $P$ itself.  Therefore the AX/VT/MX Pontryagin classification
+is unchanged from paper~III, and what changes in the EC extension is the
+effective potential $\Veff$ side.
+
+\subsection{EC-Specific Modification under EC--Weyl}
+\label{sec:s3:ec}
+
+\textbf{Preservation of AX/VT stability.}
+Under EC correction $\alpha<0$, the structure of the AX/VT stable vacua is
+unchanged from LC.  By the AX/VT dropout (Theorem~\ref{thm:dropout}),
+$C^2_\EC = C^2_\LC$, so the Weyl coupling does not modify the effective
+potential.
+
+\textbf{EC-specific cubic coupling ($\alpha$-cubic).}
+As a new nonlinear coupling absent in LC, the following appears:
+\begin{equation}
+  \frac{\partial^3 V_\EC}{\partial\alpha\,\partial\eta\,\partial V}
+  = -\frac{128\pi^2 V\eta r}{3} \neq 0
+  \qquad (\Sthree).
+\end{equation}
+This gives the EC-specific cubic coefficient in the homogeneous EFT with respect
+to $\alpha$, a cubic channel absent in LC (script:
+\texttt{paper03ec/ec\_cubic\_vertex.py}).  This term does not appear in the
+second-order mode dictionary of Table~\ref{tab:s3} and enters only at cubic
+order in the homogeneous EFT.  The coefficient corresponds to the
+$\Sthree\times\Sone$ volume convention $\Vol(\Sthree\times\Sone)=2\pi^2 Lr^3$
+of Appendix~\ref{app:A}.  For comparison, the NY-cubic channel
+$\partial^3 V/\partial\theta\partial\eta\partial V = 4\pi^2 r^2$ is invariant
+under EC (a consequence of Palatini protection).
+
+In the auxiliary formal MIXING sector, on the other hand,
+\begin{equation}
+  C_\delta(\Sthree) = 0,
+  \qquad
+  \frac{\partial C_\delta(\Sthree)}{\partial\alpha} = 0
+\end{equation}
+(Theorem~\ref{thm:delta}, Appendix~\ref{app:D}).  Therefore the new homogeneous
+cubic structure activated by EC extension is confined to the physical $\eta$-$V$
+channel, and the $\delta$-sector remains null.

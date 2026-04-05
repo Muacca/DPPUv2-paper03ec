@@ -1,0 +1,84 @@
+======================================================================
+T3 MX Vacuum Search under EC-Weyl
+======================================================================
+
+----------------------------------------------------------------------
+Step 0: Build V_eff_EC (T3 MX)
+----------------------------------------------------------------------
+
+  [Building T3 MX engine...]
+  Done
+
+  V_eff_LC (T3 MX) = 16*pi**4*V**2*r**3/3 + 32*pi**4*V*eta*r**2*theta_NY + 48*pi**4*eta**2*r
+  delta_V_eff (EC-LC) = -256*pi**4*V**2*alpha*eta**2*r/3
+
+----------------------------------------------------------------------
+Step 1: LC reference (alpha=0)
+----------------------------------------------------------------------
+
+  Analytical: V_eff_LC(T3,MX) = (16*pi^4/kappa^2) * r * [V^2*r^2/3 + 2*V*eta*r*theta + 3*eta^2]
+  => no finite minimum: dV/deta=0 at eta=0, dV/dr=0 needs V=0 => trivial only
+
+----------------------------------------------------------------------
+Step 2: Analytic MX stationary conditions on the theta_NY=0 slice
+----------------------------------------------------------------------
+
+  From dV/deta = dV/dV = 0 at theta_NY = 0:
+    V* = ±3*sqrt(1/alpha)/4
+    eta* = ±r*sqrt(1/alpha)/4
+  Therefore alpha < 0 gives purely imaginary stationary points.
+  => no finite real MX critical point exists on the alpha<0 branch
+
+----------------------------------------------------------------------
+Step 3: Auxiliary numerical scan on the alpha<0 branch
+----------------------------------------------------------------------
+
+  delta_V_eff = -256*pi^4*V^2*alpha*eta^2*r/3
+  alpha<0: delta_V_eff > 0 => V_eff_EC > V_eff_LC in the MX sector
+
+  theta_NY    alpha                      best minimum  mode
+  ------------------------------------------------------------------
+      0.00   -0.050  r=0.01 eta=-0.00 V=0.00 E=0.0000  [trivial (eta=V=0)]
+      0.00   -0.100  r=0.01 eta=-0.00 V=0.00 E=0.0000  [trivial (eta=V=0)]
+      0.00   -0.200  r=0.01 eta=0.00 V=0.00 E=0.0000  [trivial (eta=V=0)]
+      0.50   -0.050  r=0.01 eta=-0.00 V=-0.00 E=0.0000  [trivial (eta=V=0)]
+      0.50   -0.100  r=0.01 eta=0.00 V=0.00 E=0.0000  [trivial (eta=V=0)]
+      0.50   -0.200  r=0.01 eta=-0.00 V=-0.00 E=0.0000  [trivial (eta=V=0)]
+      1.00   -0.050  r=3.69 eta=0.00 V=-0.00 E=-0.0000  [trivial (eta=V=0)]
+      1.00   -0.100  r=7.76 eta=-0.00 V=0.00 E=-0.0000  [trivial (eta=V=0)]
+      1.00   -0.200  r=4.28 eta=0.00 V=-0.00 E=-0.0000  [trivial (eta=V=0)]
+     -1.00   -0.050  r=3.69 eta=0.00 V=0.00 E=-0.0000  [trivial (eta=V=0)]
+     -1.00   -0.100  r=7.76 eta=-0.00 V=-0.00 E=-0.0000  [trivial (eta=V=0)]
+     -1.00   -0.200  r=4.28 eta=0.00 V=0.00 E=-0.0000  [trivial (eta=V=0)]
+
+  Nontrivial MX minima found in sampled alpha<0 configurations: 0/12
+
+----------------------------------------------------------------------
+Step 4: Hessian stability check for sampled MX candidates
+----------------------------------------------------------------------
+
+  No nontrivial MX minima found in the sampled alpha<0 branch
+
+  Analytical explanation:
+    delta_V_eff (EC - LC) = -256*pi**4*V**2*alpha*eta**2*r/3
+    alpha < 0 => delta_V > 0 everywhere in MX sector
+    => V_eff_EC > V_eff_LC, consistent with the absence of real critical points
+
+======================================================================
+T3 MX Vacuum Search Summary
+======================================================================
+
+  Auxiliary scan: nontrivial MX minima in alpha<0 sample = 0/12
+  Conclusion: T3 MX has no finite real critical point on the alpha<0 branch
+
+  Verdict: CONFIRMED: T3 is EC-trivial (no new phases under EC-Weyl)
+
+  paper03ec Section 4.3 content:
+    On the alpha<0 branch, the theta_NY=0 stationary solutions are not real,
+    and the EC-Weyl correction raises V_eff in the MX sector:
+    delta_V = +256|alpha|V^2*eta^2*r/3 > 0.
+    Combined with AX/VT dropout, T3 exhibits triple triviality.
+
+Computation time: 2.2s
+
+*Script: scripts/paper03ec/t3_mx_vacuum_search.py

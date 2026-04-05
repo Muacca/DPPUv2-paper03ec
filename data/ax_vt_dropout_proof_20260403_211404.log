@@ -1,0 +1,119 @@
+======================================================================
+AX/VT Dropout Proof  -- Theorem 1
+======================================================================
+
+
+[AX mode: V=0, eta != 0]
+
+=================================================================
+  S3 x S1  [AX mode]
+=================================================================
+  C2_LC = 0
+  C2_EC = 0
+  C2_EC - C2_LC = 0  (expect: 0 for AX/VT)
+  Dropout check: PASS
+
+=================================================================
+  T3 x S1  [AX mode]
+=================================================================
+  C2_LC = 0
+  C2_EC = 0
+  C2_EC - C2_LC = 0  (expect: 0 for AX/VT)
+  Dropout check: PASS
+
+=================================================================
+  Nil3 x S1  [AX mode]
+=================================================================
+  C2_LC = 4/(3*R**4)
+  C2_EC = 4/(3*R**4)
+  C2_EC - C2_LC = 0  (expect: 0 for AX/VT)
+  Dropout check: PASS
+
+
+[VT mode: eta=0, V != 0]
+
+=================================================================
+  S3 x S1  [VT mode]
+=================================================================
+  C2_LC = 0
+  C2_EC = 0
+  C2_EC - C2_LC = 0  (expect: 0 for AX/VT)
+  Dropout check: PASS
+
+=================================================================
+  T3 x S1  [VT mode]
+=================================================================
+  C2_LC = 0
+  C2_EC = 0
+  C2_EC - C2_LC = 0  (expect: 0 for AX/VT)
+  Dropout check: PASS
+
+=================================================================
+  Nil3 x S1  [VT mode]
+=================================================================
+  C2_LC = 4/(3*R**4)
+  C2_EC = 4/(3*R**4)
+  C2_EC - C2_LC = 0  (expect: 0 for AX/VT)
+  Dropout check: PASS
+
+
+[MX mode: V != 0, eta != 0  -- expect C2_EC != C2_LC]
+
+=================================================================
+  S3 x S1  [MX mode]
+=================================================================
+  C2_LC = 0
+  C2_EC = 16*V**2*eta**2/(3*r**2)
+  C2_EC - C2_LC = 16*V**2*eta**2/(3*r**2)  (expect: nonzero for MX)
+  Activation check: PASS
+
+=================================================================
+  T3 x S1  [MX mode]
+=================================================================
+  C2_LC = 0
+  C2_EC = 16*V**2*eta**2/(3*r**2)
+  C2_EC - C2_LC = 16*V**2*eta**2/(3*r**2)  (expect: nonzero for MX)
+  Activation check: PASS
+
+=================================================================
+  Nil3 x S1  [MX mode]
+=================================================================
+  C2_LC = 4/(3*R**4)
+  C2_EC = (16*R**2*V**2*eta**2 + 4)/(3*R**4)
+  C2_EC - C2_LC = 16*V**2*eta**2/(3*R**2)  (expect: nonzero for MX)
+  Activation check: PASS
+
+
+======================================================================
+  3-topology summary: AX/VT dropout (Theorem 1)
+======================================================================
+
+  Mode: AX
+    S3 x S1           : C2_EC - C2_LC = 0  [PASS]
+    T3 x S1           : C2_EC - C2_LC = 0  [PASS]
+    Nil3 x S1         : C2_EC - C2_LC = 0  [PASS]
+
+  Mode: VT
+    S3 x S1           : C2_EC - C2_LC = 0  [PASS]
+    T3 x S1           : C2_EC - C2_LC = 0  [PASS]
+    Nil3 x S1         : C2_EC - C2_LC = 0  [PASS]
+
+  Mode: MX  (expect C2_EC != C2_LC)
+    S3 x S1           : delta_C2 = 16*V**2*eta**2/(3*r**2)  [CONFIRMED]
+    T3 x S1           : delta_C2 = 16*V**2*eta**2/(3*r**2)  [CONFIRMED]
+    Nil3 x S1         : delta_C2 = 16*V**2*eta**2/(3*R**2)  [CONFIRMED]
+
+  AX dropout (all 3 topologies): PASS
+  VT dropout (all 3 topologies): PASS
+  MX non-zero delta (all 3):     PASS
+
+  Theorem 1 verification: PASS
+
+  Physical interpretation:
+  The V x eta cross product in C2_EC = C2_LC + 16*V^2*eta^2/(3*r^2)
+  vanishes when either V=0 (AX) or eta=0 (VT).
+  Only mixed (MX) backgrounds activate the EC-Weyl coupling.
+
+Computation time: 3.6s
+
+*Script: scripts/proofs/ax_vt_dropout_proof.py

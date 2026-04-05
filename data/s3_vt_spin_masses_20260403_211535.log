@@ -1,0 +1,85 @@
+======================================================================
+S3 x S1 VT Spin-2/1 Mass  -- Theorem 4 (Palatini Universality)
+======================================================================
+
+----------------------------------------------------------------------
+Step 1: S3 VT V_eff(r, V, eps, alpha) acquisition
+----------------------------------------------------------------------
+  VT dropout check: C2_EC - C2_LC = 0  (expect: 0)
+  VT dropout: PASS
+
+  V_eff(r, V, eps=0, theta=0) = (2*pi**2*L*V**2*r**3 - 72*pi**2*L*r)/(3*kappa**2)
+
+----------------------------------------------------------------------
+Step 2: Palatini protection -- dV/dV = 0 => V* = 0
+----------------------------------------------------------------------
+
+  dV/dV |_(eps=0) = 4*pi**2*L*V*r**3/(3*kappa**2)
+  V*(r) = []
+  CHECK: V* = 0: Palatini protection confirmed (V is non-dynamical)
+
+----------------------------------------------------------------------
+Step 3: Spin-2 mass d2V/deps2|_(eps=0) -- V-independence check
+----------------------------------------------------------------------
+
+  d2V/deps2|_(eps=0) = (-16384*pi**2*L*alpha*kappa**2 + 128*pi**2*L*r**2)/(3*kappa**2*r)
+  Contains V: False
+  V-independent: Palatini protection confirmed for spin-2
+
+  LC part (alpha=0): 128*pi**2*L*r/(3*kappa**2)
+  EC correction:     -16384*pi**2*L*alpha/(3*r)
+
+  Numerical (r=3, L=kappa=1, alpha=0): 1263.309363
+  128*pi^2 = 1263.309363  [expected S3 AX value]
+  Ratio to 128*pi^2: 1.000000
+
+----------------------------------------------------------------------
+Step 4: AX spin-2 comparison (Theorem 4)
+----------------------------------------------------------------------
+
+  AX d2V/deps2|_(eps=0) = (-16384*pi**2*L*alpha*kappa**2 + 128*pi**2*L*r**2)/(3*kappa**2*r)
+  AX numerical (eta=1, r=3, L=kappa=1, alpha=0): 1263.309363
+
+  VT formula (L=kappa=1, alpha=0, V=0): 128*pi**2*r/3
+  AX formula (L=kappa=1, alpha=0, eta=1): 128*pi**2*r/3
+  VT - AX = 0
+
+  Spin-2 universality (VT=AX): PASS
+  Result: = AX (Palatini universality CONFIRMED)
+
+----------------------------------------------------------------------
+Step 5: Spin-1 mass (TWIST mode, VT) -- compare to AX
+----------------------------------------------------------------------
+
+  VT spin-1 mass d2V/domega_k^2|_(omega=0):
+    omega1: 5.263789e+01
+    omega2: 5.263789e+01
+    omega3: 5.263789e+01
+
+  AX omega1 at eta=1, r=3, alpha=0: 5.263789e+01
+  VT/AX spin-1 ratio = 1.000000
+  Spin-1 universality (VT=AX): PASS
+
+======================================================================
+Theorem 4 (Palatini Universality) Summary
+======================================================================
+
+  S3 AX vs VT backgrounds give identical spin-2/1 mass spectra:
+  Spin-2: = AX (Palatini universality CONFIRMED)
+  Spin-1: = AX (Palatini universality CONFIRMED)
+
+  PASS   VT dropout (C2_EC = C2_LC)
+  PASS   Palatini protection (V* = 0)
+  PASS   Spin-2 VT = AX (Palatini universality)
+  PASS   Spin-1 VT = AX (Palatini universality)
+
+  Theorem 4 (Palatini universality): PASS
+
+  Physical interpretation:
+    Torsion background (eta, V) does NOT affect the spin-2/1 Weyl mass spectrum.
+    Only the effective potential structure (V_eff) changes with torsion mode.
+    This is the 'Palatini universality' of the EC-Weyl extension.
+
+Computation time: 2.9s
+
+*Script: scripts/paper03ec/s3_vt_spin_masses.py

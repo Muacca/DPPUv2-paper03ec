@@ -1,0 +1,70 @@
+======================================================================
+Nil3 x S1 EC Mode Dictionary
+======================================================================
+
+----------------------------------------------------------------------
+AX background (V=0, eta != 0)
+----------------------------------------------------------------------
+  C2_LC (AX) = 4/(3*R**4*epsilon**5*(epsilon + 1)**(1/3) + 15*R**4*epsilon**4*(epsilon + 1)**(1/3) + 30*R**4*epsilon**3*(epsilon + 1)**(1/3) + 30*R**4*epsilon**2*(epsilon + 1)**(1/3) + 15*R**4*epsilon*(epsilon + 1)**(1/3) + 3*R**4*(epsilon + 1)**(1/3))
+  C2_EC (AX) = 4/(3*R**4*epsilon**5*(epsilon + 1)**(1/3) + 15*R**4*epsilon**4*(epsilon + 1)**(1/3) + 30*R**4*epsilon**3*(epsilon + 1)**(1/3) + 30*R**4*epsilon**2*(epsilon + 1)**(1/3) + 15*R**4*epsilon*(epsilon + 1)**(1/3) + 3*R**4*(epsilon + 1)**(1/3))
+  C2_EC - C2_LC = 0  => AX dropout: PASS
+
+  [spin-0] V_eff (AX, eps=0) = (144*pi**4*L*R**2*eta**2 + 12*pi**4*L*R**2 - 64*pi**4*L*alpha*kappa**2)/(3*R*kappa**2)
+           dV/dr = (144*pi**4*L*R**2*eta**2 + 12*pi**4*L*R**2 + 64*pi**4*L*alpha*kappa**2)/(3*R**2*kappa**2)
+           dV/deta = 0 solutions: [0]
+
+  [spin-2] d2V/deps2 (AX) = (1056*pi**4*L*R**2*epsilon**2*(epsilon + 1)**(2/3) + 2112*pi**4*L*R**2*epsilon*(epsilon + 1)**(2/3) + 1056*pi**4*L*R**2*(epsilon + 1)**(2/3) - 19456*pi**4*L*alpha*kappa**2)/(27*R*epsilon**7*kappa**2*(epsilon + 1)**(1/3) + 189*R*epsilon**6*kappa**2*(epsilon + 1)**(1/3) + 567*R*epsilon**5*kappa**2*(epsilon + 1)**(1/3) + 945*R*epsilon**4*kappa**2*(epsilon + 1)**(1/3) + 945*R*epsilon**3*kappa**2*(epsilon + 1)**(1/3) + 567*R*epsilon**2*kappa**2*(epsilon + 1)**(1/3) + 189*R*epsilon*kappa**2*(epsilon + 1)**(1/3) + 27*R*kappa**2*(epsilon + 1)**(1/3))
+    Note: Nil3 is non-flat => spin-2 mass != 0 (unlike T3)
+
+  [spin-1] TWIST mode (1-axis mass-splitting check):
+    m^2(omega_0) = 0  (expect 0: commutative axis)
+    m^2(omega_1) = 0  (expect 0: commutative axis)
+    m^2(omega_2) = (24*pi**4*L**3*R**2 - 256*pi**4*L**3*alpha*kappa**2)/(3*R**3*kappa**2)  (expect != 0: C^2_01 axis)
+    1-axis mass splitting (m0=m1=0, m2!=0): PASS
+
+----------------------------------------------------------------------
+VT background (eta=0, V != 0)
+----------------------------------------------------------------------
+  C2_LC (VT) = 4/(3*R**4*epsilon**5*(epsilon + 1)**(1/3) + 15*R**4*epsilon**4*(epsilon + 1)**(1/3) + 30*R**4*epsilon**3*(epsilon + 1)**(1/3) + 30*R**4*epsilon**2*(epsilon + 1)**(1/3) + 15*R**4*epsilon*(epsilon + 1)**(1/3) + 3*R**4*(epsilon + 1)**(1/3))
+  C2_EC (VT) = 4/(3*R**4*epsilon**5*(epsilon + 1)**(1/3) + 15*R**4*epsilon**4*(epsilon + 1)**(1/3) + 30*R**4*epsilon**3*(epsilon + 1)**(1/3) + 30*R**4*epsilon**2*(epsilon + 1)**(1/3) + 15*R**4*epsilon*(epsilon + 1)**(1/3) + 3*R**4*(epsilon + 1)**(1/3))
+  Delta(V_eff_EC - V_eff_LC) = 0  => VT dropout: PASS
+  [spin-2] d2V/deps2|_(eps=0) (VT) = (1056*pi**4*L*R**2 - 19456*pi**4*L*alpha*kappa**2)/(27*R*kappa**2)
+    (Nil3 non-flat => nonzero; contrast with T3 which gives 0)
+
+----------------------------------------------------------------------
+MX background (V != 0, eta != 0)  - EC false vacuum structure
+----------------------------------------------------------------------
+  C2_LC (MX) = 4/(3*R**4*epsilon**5*(epsilon + 1)**(1/3) + 15*R**4*epsilon**4*(epsilon + 1)**(1/3) + 30*R**4*epsilon**3*(epsilon + 1)**(1/3) + 30*R**4*epsilon**2*(epsilon + 1)**(1/3) + 15*R**4*epsilon*(epsilon + 1)**(1/3) + 3*R**4*(epsilon + 1)**(1/3))
+  C2_EC (MX) = (16*R**2*V**2*epsilon**5*eta**2*(epsilon + 1)**(1/3) + 80*R**2*V**2*epsilon**4*eta**2*(epsilon + 1)**(1/3) + 160*R**2*V**2*epsilon**3*eta**2*(epsilon + 1)**(1/3) + 160*R**2*V**2*epsilon**2*eta**2*(epsilon + 1)**(1/3) + 80*R**2*V**2*epsilon*eta**2*(epsilon + 1)**(1/3) + 16*R**2*V**2*eta**2*(epsilon + 1)**(1/3) + 4)/(3*R**4*epsilon**5*(epsilon + 1)**(1/3) + 15*R**4*epsilon**4*(epsilon + 1)**(1/3) + 30*R**4*epsilon**3*(epsilon + 1)**(1/3) + 30*R**4*epsilon**2*(epsilon + 1)**(1/3) + 15*R**4*epsilon*(epsilon + 1)**(1/3) + 3*R**4*(epsilon + 1)**(1/3))
+  C2_EC - C2_LC = 16*V**2*eta**2/(3*R**2)  (expect: 16*V^2*eta^2/(3*R^2))
+  Delta(V_eff_EC - V_eff_LC) = -256*pi**4*L*R*V**2*alpha*eta**2/3
+  => MX EC coupling active: PASS
+
+  [EC false vacuum] V_eff(eta=V=0) = (12*pi**4*L*R**2 - 64*pi**4*L*alpha*kappa**2)/(3*R*kappa**2)
+  dV/dr (eta=V=0) = (12*pi**4*L*R**2 + 64*pi**4*L*alpha*kappa**2)/(3*R**2*kappa**2)
+  => the eta=V=0 slice admits a local minimum only for alpha<0
+  => EC false vacuum: r0 = (4*kappa/sqrt(3))*sqrt(|alpha|)
+     (from gamma_scaling_proof.py: V_eff = 4*pi^4*r + alpha*(-64*pi^4/3)/r)
+
+======================================================================
+Nil3 x S1 Mode Dictionary Summary
+======================================================================
+
+  Quantity                                AX                   VT                   MX         
+  --------------------------------------------------------------------------------------------
+  C2_EC                              = C2_LC != 0         = C2_LC != 0      C2_LC+16V2n2/(3R2) 
+  alpha dropout                          PASS                 PASS              X (active)     
+  spin-2 mass (d2V/deps2)           != 0 (curved)             != 0                 != 0        
+  spin-1 mass splitting              m2!=0, m01=0              -              see EFT at r0    
+  EC vacuum                        =LC (no change)      =LC (no change)    r0=4k/sqrt3*sqrt|a| 
+
+  PASS   AX: C2_EC = C2_LC (dropout)
+  PASS   AX: 1-axis mass splitting
+  PASS   VT: dropout (Delta V_eff=0)
+  PASS   MX: C2_EC != C2_LC (active)
+
+  Nil3 mode dictionary: PASS
+
+Computation time: 2.9s
+
+*Script: scripts/paper03ec/nil3_mode_dictionary.py

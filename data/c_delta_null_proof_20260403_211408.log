@@ -1,0 +1,105 @@
+======================================================================
+C_delta Null Proof  -- Theorem 3
+======================================================================
+
+-----------------------------------------------------------------
+  S3 x S1  [AX]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  S3 x S1  [VT]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  S3 x S1  [MX]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  T3 x S1  [AX]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  T3 x S1  [VT]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  T3 x S1  [MX]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  Nil3 x S1  [AX]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  Nil3 x S1  [VT]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+-----------------------------------------------------------------
+  Nil3 x S1  [MX]
+-----------------------------------------------------------------
+  C_delta = 0
+  dC_delta/dalpha = 0
+  Null check: PASS
+  alpha-independence: PASS
+
+======================================================================
+C_delta Summary  -- Theorem 3
+======================================================================
+
+  S3 x S1:
+    AX : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+    VT : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+    MX : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+
+  T3 x S1:
+    AX : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+    VT : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+    MX : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+
+  Nil3 x S1:
+    AX : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+    VT : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+    MX : C_delta = 0, dC_delta/dalpha = 0  [PASS]
+
+  Physical interpretation:
+  The formal auxiliary MIXING sector stays null under the EC extension.
+  No new homogeneous cubic channel appears in delta0, delta1, delta2.
+  The new EC cubic structure is confined to the physical eta-V channel.
+
+  Theorem 3 verification: PASS
+
+Computation time: 78.8s
+
+*Script: scripts/proofs/c_delta_null_proof.py

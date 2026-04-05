@@ -1,0 +1,214 @@
+%==============================================================================
+% Appendix C: Detailed Derivation of the eps-s Cross-term
+%==============================================================================
+\section{Detailed Derivation of the $\varepsilon$-$s$ Cross-term}
+\label{app:C}
+
+This appendix gives the detailed proof of Theorem~9 ($\varepsilon$-$s$ cross-term
+classification).  We show, from the algebraic confirmation of volume preservation
+and SymPy computation, that
+$\partial^2 V/\partial\varepsilon\partial s|_{\varepsilon=s=0}$ has an
+essentially different origin in the three topologies.
+
+\subsection{Algebraic Proof of Volume Preservation}
+\label{app:C:vol}
+
+\subsubsection{$\Sthree$: Volume Preservation under Squash+Shear}
+\label{app:C:s3:vol}
+
+In the volume-preserving squash+shear ansatz for $\Sthree$
+(Appendix~\ref{app:A:struct}), the determinant of the vielbein is
+\begin{equation}
+  \det(e^1,e^2,e^3)
+  \propto (1+\varepsilon)^{2/3}(1+s)^2
+        \cdot (1+\varepsilon)^{2/3}(1+s)^{-2}
+        \cdot (1+\varepsilon)^{-4/3}.
+\end{equation}
+Combining the exponents:
+\begin{equation}
+  (1+\varepsilon)^{2/3+2/3-4/3}\cdot(1+s)^{2-2}
+  = (1+\varepsilon)^0\cdot(1+s)^0 = 1.
+\end{equation}
+Hence the $\Sthree$ volume is completely independent of $\varepsilon,s$ (SymPy
+confirmed):
+\begin{equation}
+  \Vol(\Sthree;\varepsilon,s) = 2\pi^2 Lr^3
+  = \text{const w.r.t. }\varepsilon,s.
+\end{equation}
+
+\subsubsection{$\Nilthree$: Volume Preservation under Squash+Shear}
+\label{app:C:nil3:vol}
+
+In the volume-preserving squash+shear ansatz for $\Nilthree$
+(Appendix~\ref{app:A:struct}):
+\begin{equation}
+  e^0 = R\,\sigma^0,
+  \quad
+  e^1 = R(1+\varepsilon)^{2/3}(1+s)\,\sigma^1,
+  \quad
+  e^2 = R(1+\varepsilon)^{-2/3}(1+s)^{-1}\,\sigma^2.
+\end{equation}
+The $\varepsilon,s$-dependent part of the volume factor:
+\begin{equation}
+  (1+\varepsilon)^{2/3}\cdot(1+s)\cdot(1+\varepsilon)^{-2/3}\cdot(1+s)^{-1} = 1.
+\end{equation}
+Since $e^0 = R$ is independent of $\varepsilon,s$:
+\begin{equation}
+  \Vol(\Nilthree;\varepsilon,s) = (2\pi)^4 LR^3
+  = \text{const w.r.t. }\varepsilon,s.
+\end{equation}
+$\Nilthree$ also preserves volume (SymPy confirmed).
+
+\subsubsection{$\Tthree$: Non-Volume-Preservation}
+\label{app:C:t3:vol}
+
+In the $\Tthree$ squash+shear ansatz:
+\begin{equation}
+  e^1 = r(1+\varepsilon)\,\dd x^1,
+  \quad
+  e^2 = r(1+s)\,\dd x^2,
+  \quad
+  e^3 = r\,\dd x^3.
+\end{equation}
+The volume factor is the product form:
+\begin{equation}
+  \Vol(\Tthree;\varepsilon,s) = (2\pi)^4 Lr^3(1+\varepsilon)(1+s),
+\end{equation}
+which depends on $\varepsilon,s$.  In particular,
+$\partial^2\Vol/\partial\varepsilon\partial s = (2\pi)^4 Lr^3\neq 0$.
+
+\subsection{$\Tthree$ Cross-term Derivation}
+\label{app:C:t3}
+
+In the AX background ($V=0$) the effective potential of $\Tthree$, including
+squash+shear, is
+\begin{equation}
+  \Veff^{T^3}(\varepsilon,s)
+  = \frac{16\pi^4 Lr}{3\kappa^2}\cdot 9\eta^2\cdot(1+\varepsilon)(1+s)
+    + (\text{other terms}),
+\end{equation}
+where with $C^a_{bc}=0$ there is no Weyl contribution, and the torsion kinetic
+term $\propto\eta^2$ is multiplied by the volume factor $(1+\varepsilon)(1+s)$.
+
+The mixed second derivative is:
+\begin{equation}
+  \frac{\partial^2\Veff^{T^3}}{\partial\varepsilon\,\partial s}
+  \bigg|_{\varepsilon=s=0}
+  = \frac{16\pi^4 Lr}{\kappa^2}\cdot 9\eta^2\cdot
+    \frac{\partial^2}{\partial\varepsilon\partial s}[(1+\varepsilon)(1+s)]
+    \bigg|_{\varepsilon=s=0}
+  = \frac{48\pi^4 L\eta^2 r}{\kappa^2}.
+\end{equation}
+
+\paragraph{Confirmation that this is not a Weyl mass.}
+In the AX background ($V=0$), $C^a_{bc}=0$ gives $C^2_\LC=0$, and
+Theorem~\ref{thm:dropout} (AX dropout) gives $C^2_\EC=0$.  Hence this
+cross-term is $\alpha$-independent and contributes nothing to the Weyl mass.
+Numerical check (AX background): the cross-term values at $\alpha=0$ and
+$\alpha=-1$ are identical (SymPy exact).  In the MX background ($V\neq 0$),
+$\alpha$-dependent terms join via $C^2_\EC=16V^2\eta^2/(3r^2)\neq 0$, but the
+spin-2 null test ($\partial^2 V/\partial\varepsilon^2=0$,
+$\partial^2 V/\partial s^2=0$) continues to hold (because $C^2_\EC$ is
+independent of $\varepsilon,s$).
+
+Numerical example ($r=3$, $L=\kappa=\eta=1$):
+\begin{equation}
+  \partial^2 V/\partial\varepsilon\partial s
+  = 48\pi^4\times 3 \approx 1.403\times 10^4.
+\end{equation}
+
+Script: \texttt{proofs/t3\_flatness\_null\_test.py}.
+
+\subsection{$\Sthree$ Cross-term Vanishing}
+\label{app:C:s3}
+
+The vanishing of the $\Sthree$ cross-term is shown in two steps.
+
+\paragraph{Step~1 (volume preservation).}
+From \S\ref{app:C:s3:vol}, $\Vol(\Sthree;\varepsilon,s)=\text{const}$.
+The kinematic cross-term from the volume factor is zero.
+
+\paragraph{Step~2 ($s\to -s$ symmetry).}
+The squash+shear effective potential of $\Sthree$ satisfies the reflection
+symmetry:
+\begin{equation}
+  \Veff^{S^3}(\varepsilon,s) = \Veff^{S^3}(\varepsilon,-s)
+\end{equation}
+(the Weyl tensor and LC connection of $\Sthree$ include only even powers in $s$,
+arising from the $s\to-s$ symmetry).  Therefore:
+\begin{equation}
+  \frac{\partial^2 V^{S^3}}{\partial\varepsilon\partial s}
+  \bigg|_{\varepsilon=s=0} = 0
+  \quad (\text{SymPy exact}).
+\end{equation}
+
+Numerical check ($r=3$, $L=\kappa=\eta=1$, $\alpha=0$):
+$\partial^2 V/\partial\varepsilon\partial s = 0.000000\times 10^0$ (machine
+precision).
+
+\subsection{$\Nilthree$ Cross-term: Weyl Origin}
+\label{app:C:nil3}
+
+The $\Nilthree$ cross-term is non-zero despite volume preservation
+(\S\ref{app:C:nil3:vol}).
+
+In the AX background of $\Nilthree$, volume preservation means the kinematic
+term produces no cross-term.  The mixed second derivative obtained by SymPy is:
+\begin{equation}
+  \frac{\partial^2 V^{Nil^3}}{\partial\varepsilon\,\partial s}
+  \bigg|_{\varepsilon=s=0}
+  = \frac{384\pi^4 LR^2 - 8192\pi^4 L\alpha\kappa^2}{9R\kappa^2}.
+\end{equation}
+
+\paragraph{Weyl origin confirmed by $\alpha$-dependence.}
+Unlike $\Tthree$, an $\alpha$-dependent term appears.  In the convention
+$[E_0,E_1]=(1/R)E_2$ the body text writes $C^2_{01}(\Nilthree)=1/R$, but the
+implementation uses the Maurer--Cartan basis $\dd\sigma^2=-\sigma^0\wedge\sigma^1$,
+so the frame coefficient carries a minus sign:
+\begin{equation}
+  C^2_{01}(\varepsilon,s) = -\frac{(1+\varepsilon)^{-4/3}(1+s)^{-2}}{R}.
+\end{equation}
+This is asymmetric in $\varepsilon$ and $s$ (in particular the $(1+s)^{-2}$
+$s$-dependence), so despite volume preservation,
+$\partial^2 C^2_{01}/\partial\varepsilon\partial s\neq 0$, and a
+curvature-origin cross-term arises via the Weyl coupling $\alpha\cdot C^2_\EC$.
+
+Numerical examples ($R=3$, $L=\kappa=1$):
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+$\alpha$ & $\partial^2 V/\partial\varepsilon\partial s$ \\
+\midrule
+$0$ (LC) & $128\pi^4 \approx 1.247\times 10^4$ \\
+$-1$ (EC) & $11648\pi^4/27 \approx 4.202\times 10^4$ \\
+\bottomrule
+\end{tabular}
+\caption{$\Nilthree$ cross-term values for $\alpha=0$ and $\alpha=-1$.}
+\end{table}
+
+Script: \texttt{paper03ec/squash\_shear\_cross\_term.py}.
+
+\subsection{Three-Topology Cross-term Comparison Summary}
+\label{app:C:summary}
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+Topology & $\partial^2 V/\partial\varepsilon\partial s|_{\varepsilon=s=0}$ & Vol.\ pres. & $\alpha$-dep. & Origin \\
+\midrule
+$\Tthree$ & $48\pi^4 L\eta^2 r/\kappa^2 \neq 0$ & $\times$ & none & kinematic (volume factor product) \\
+$\Sthree$ & $0$ (SymPy exact) & \checkmark & none & vanishes ($s\to-s$ symmetry) \\
+$\Nilthree$ & $(384\pi^4 LR^2-8192\pi^4 L\alpha\kappa^2)/(9R\kappa^2)\neq 0$ & \checkmark & yes & curvature/Weyl ($C^2_{01}$ asymmetry) \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Three-topology cross-term comparison summary.  This table constitutes
+  the core of the proof of Theorem~\ref{thm:crossterm}: $\Tthree$ has a kinematic
+  origin from non-volume-preservation; $\Sthree$ vanishes by volume-preservation
+  plus symmetry; $\Nilthree$ has a Weyl-origin cross-term from the directional
+  asymmetry of $C^2_{01}$ despite volume preservation.}
+\label{tab:appC_summary}
+\end{table}

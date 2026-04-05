@@ -1,0 +1,96 @@
+======================================================================
+EC Cubic Vertex Analysis
+======================================================================
+
+----------------------------------------------------------------------
+Part 1: S3 cubic vertex analysis
+----------------------------------------------------------------------
+
+  [Building S3 MX engine...]
+  Done
+
+  V_eff_EC (S3) = -32*pi**2*V**2*alpha*eta**2*r/3 + 2*pi**2*V**2*r**3/3 + 4*pi**2*V*eta*r**2*theta_NY + 6*pi**2*eta**2*r - 24*pi**2*r
+  V_eff_LC (S3) = 2*pi**2*V**2*r**3/3 + 4*pi**2*V*eta*r**2*theta_NY + 6*pi**2*eta**2*r - 24*pi**2*r
+
+  [S3 theta-cubic] d3V_EC/d(theta)d(eta)d(V) = 4*pi**2*r**2
+                   d3V_LC/d(theta)d(eta)d(V) = 4*pi**2*r**2
+                   EC - LC = 0
+  S3 theta-cubic preserved in EC: PASS
+
+  [S3 alpha-cubic] d3V_EC/d(alpha)d(V)d(eta) = -128*pi**2*V*eta*r/3
+  S3 alpha-cubic is nonzero: PASS
+
+  [S3 r-eta-V cubic] d3V_EC/d(r)d(eta)d(V) = 8*pi**2*(-16*V*alpha*eta + 3*r*theta_NY)/3
+                     d3V_LC/d(r)d(eta)d(V) = 8*pi**2*r*theta_NY
+                     EC - LC = -128*pi**2*V*alpha*eta/3
+
+----------------------------------------------------------------------
+Part 2: T3 cubic vertex analysis
+----------------------------------------------------------------------
+
+  [Building T3 MX engine...]
+  Done
+
+  V_eff_EC (T3) = -256*pi**4*V**2*alpha*eta**2*r/3 + 16*pi**4*V**2*r**3/3 + 32*pi**4*V*eta*r**2*theta_NY + 48*pi**4*eta**2*r
+  V_eff_LC (T3) = 16*pi**4*V**2*r**3/3 + 32*pi**4*V*eta*r**2*theta_NY + 48*pi**4*eta**2*r
+
+  [theta-cubic] d3V_EC/d(theta)d(eta)d(V) = 32*pi**4*r**2
+                d3V_LC/d(theta)d(eta)d(V) = 32*pi**4*r**2
+                EC - LC = 0
+  theta-cubic preserved in EC: PASS
+
+  [alpha-cubic] d3V_EC/d(alpha)d(V)d(eta) = -1024*pi**4*V*eta*r/3
+  alpha-cubic is nonzero: PASS (new EC cubic coefficient)
+
+  [r-eta-V cubic] d3V_EC/d(r)d(eta)d(V) = 64*pi**4*(-16*V*alpha*eta + 3*r*theta_NY)/3
+                  d3V_LC/d(r)d(eta)d(V) = 64*pi**4*r*theta_NY
+                  EC - LC = -1024*pi**4*V*alpha*eta/3
+
+----------------------------------------------------------------------
+Part 3: Pontryagin density P alpha-independence
+----------------------------------------------------------------------
+
+  P(r, eta, V) is computed from MIXING fiber mode cubic coefficient.
+  Expected: dP/dalpha = 0 (EC-Weyl does not modify Pontryagin structure)
+
+  P_coeff (cubic coefficient) = 0
+  dP/dalpha = 0
+  P is alpha-independent: PASS
+
+----------------------------------------------------------------------
+Part 4: Nil3 cubic vertex comparison
+----------------------------------------------------------------------
+
+  [Building Nil3 MX engine...]
+  Done
+  [Nil3 theta-cubic] d3V_EC/d(theta)d(eta)d(V) = 32*pi**4*R**2
+                     d3V_LC/d(theta)d(eta)d(V) = 32*pi**4*R**2
+                     EC - LC = 0
+
+  [Nil3 alpha-cubic] d3V_EC/d(alpha)d(V)d(eta) = -1024*pi**4*R*V*eta/3
+
+======================================================================
+EC Cubic Vertex Summary
+======================================================================
+
+  [S3 cubic channels]
+    theta-cubic (NY channel) preserved: PASS
+    alpha-cubic (EC-specific) != 0:      PASS
+
+  [T3 cubic vertices]
+    theta-cubic (NY channel) preserved: PASS
+    alpha-cubic (EC-specific) != 0:     PASS
+    P alpha-independence:               PASS
+
+  [Nil3 cubic channels]
+    theta-cubic (NY channel) preserved: PASS
+    alpha-cubic (EC-specific) != 0:     PASS
+
+  Structural results from computation:
+    1. In S3, EC-Weyl adds a homogeneous EFT cubic coefficient: d3V/d(alpha)d(V)d(eta) != 0
+    2. The NY cubic channel is unchanged by EC in T3, and likewise in S3/Nil3
+    3. The MIXING-mode cubic coefficient used for P is alpha-independent
+
+Computation time: 0.7s
+
+*Script: scripts/paper03ec/ec_cubic_vertex.py

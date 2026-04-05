@@ -1,0 +1,262 @@
+%==============================================================================
+% Appendix A: Notation and Conventions
+%==============================================================================
+\section{Notation and Conventions}
+\label{app:A}
+
+This appendix collects the notation conventions, geometric parameters of the
+three topologies, definition of the EC connection, and the computational
+pipeline used in this paper.
+
+\subsection{Basic Notation and Conventions}
+\label{app:A:notation}
+
+\paragraph{Index conventions.}
+\begin{itemize}
+  \item 4D spacetime indices: $\mu,\nu = 0,1,2,3$ (0 = internal $\Sone$,
+        $1,2,3$ = internal 3D space).
+  \item Spatial tensor indices: $i,j = 1,2,3$ (internal 3D space).
+  \item Spin-2 quintet label: $A=1,\ldots,5$ (traceless symmetric).
+  \item Spin-1 triplet label: $k=0,1,2$ (vector).
+  \item Topology index: $\Sthree$, $\Tthree$, $\Nilthree$.
+\end{itemize}
+
+\paragraph{Geometric quantities.}
+\begin{itemize}
+  \item $r$: scale parameter of the internal space (common to $\Sthree$ and
+        $\Tthree$).
+  \item $R$: scale parameter of $\Nilthree$.
+  \item $L$: radius of $\Sone$.
+  \item $\kappa$: gravitational constant ($\kappa^2 = 8\pi G$).
+\end{itemize}
+
+\paragraph{Volume factors.}
+\begin{equation}
+  \Vol(\Sthree\times\Sone) = 2\pi^2 Lr^3,
+  \quad
+  \Vol(\Tthree\times\Sone) = (2\pi)^4 Lr^3,
+  \quad
+  \Vol(\Nilthree\times\Sone) = (2\pi)^4 LR^3.
+\end{equation}
+
+\paragraph{Effective potential.}
+After minisuperspace reduction, the effective potential is defined as
+\begin{equation}
+  \Veff = -\!\left(\frac{R_\EC}{2\kappa^2}
+          + \theta\,\mathcal{L}_\NY
+          + \alpha\,C^2_\EC\right)\cdot\Vol
+\end{equation}
+(sign convention: $\Veff > 0$ in the stabilisation direction).
+
+\paragraph{Pontryagin density.}
+\begin{equation}
+  P = \innerprod{R}{\star R}
+    = \frac{1}{2}\varepsilon^{abcd}R_{abef}R_{cd}{}^{ef}.
+\end{equation}
+
+\paragraph{Auxiliary MIXING cubic coefficient.}
+\begin{equation}
+  C_\delta :=
+  \left.\frac{\partial^3\Veff}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
+  \right|_{\delta=0}.
+\end{equation}
+
+\subsection{Structure Constants and Connections for the Three Topologies}
+\label{app:A:struct}
+
+\subsubsection{$\Sthree\times\Sone$}
+
+Structure constants of $\Sthree$ (in the orthonormal basis $e^i = r\sigma^i/2$
+from the left-invariant 1-forms $\sigma^i$):
+\begin{equation}
+  C^i_{jk}(\Sthree) = \frac{4}{r}\varepsilon_{ijk}
+  \qquad (i,j,k=1,2,3).
+\end{equation}
+\textbf{Important:} The coefficient is $4/r$ (not $2/r$), arising from the
+normalisation $e^i = r\sigma^i/2$ (see Appendix~\ref{app:B}).
+
+Connection coefficients by the Koszul formula:
+\begin{equation}
+  \omega_{abc} = \frac{1}{2}\bigl(C_{abc} + C_{cba} - C_{bac}\bigr).
+\end{equation}
+
+Volume-preserving squash+shear ansatz ($\det=1$):
+\begin{equation}
+  e^0 = r(1+\varepsilon)^{2/3}(1+s)^2\,\sigma^0/2,
+  \quad
+  e^1 = r(1+\varepsilon)^{2/3}(1+s)^{-2}\,\sigma^1/2,
+  \quad
+  e^2 = r(1+\varepsilon)^{-4/3}\,\sigma^2/2.
+\end{equation}
+
+\subsubsection{$\Tthree\times\Sone$}
+
+Structure constants of $\Tthree = \mathbb{R}^3/\mathbb{Z}^3$:
+\begin{equation}
+  C^a_{bc}(\Tthree) = 0 \quad \forall\,a,b,c.
+\end{equation}
+
+Non-volume-preserving squash+shear ansatz:
+\begin{equation}
+  e^1 = r(1+\varepsilon)\,\dd x^1,
+  \quad
+  e^2 = r(1+s)\,\dd x^2,
+  \quad
+  e^3 = r\,\dd x^3.
+\end{equation}
+Volume factor: $\Vol(\varepsilon,s) = (2\pi)^4 Lr^3(1+\varepsilon)(1+s)$
+($\varepsilon,s$-dependent).
+
+\subsubsection{$\Nilthree\times\Sone$}
+
+Structure constants of $\Nilthree$ (3D Heisenberg manifold):
+\begin{equation}
+  C^2_{01}(\Nilthree) = \frac{1}{R},
+  \quad \text{(all others zero)}.
+\end{equation}
+We adopt the convention $[E_0,E_1]=(1/R)E_2$ in the body of the paper.
+The implementation uses Maurer--Cartan forms $\dd\sigma^2 = -\sigma^0\wedge\sigma^1$
+as the basis, so the frame coefficient is
+$C[2,0,1] = -(1+\varepsilon)^{-4/3}(1+s)^{-2}/R$.  Both describe the same
+Heisenberg structure and differ only by a convention.
+
+Volume-preserving squash+shear ansatz:
+\begin{equation}
+  e^0 = R\,\sigma^0,
+  \quad
+  e^1 = R(1+\varepsilon)^{2/3}(1+s)\,\sigma^1,
+  \quad
+  e^2 = R(1+\varepsilon)^{-2/3}(1+s)^{-1}\,\sigma^2.
+\end{equation}
+Volume-preservation check:
+\begin{equation}
+  \det(e^0\wedge e^1\wedge e^2)
+  \propto (1+\varepsilon)^{2/3-2/3}(1+s)^{1-1} = 1. \checkmark
+\end{equation}
+
+LC background Weyl scalar ($\eta=V=0$):
+$C^2_\LC(\Nilthree) = 4/(3R^4) \neq 0$ (non-conformal flatness).
+
+\subsection{EC Connection and Contortion}
+\label{app:A:ec}
+
+The Einstein--Cartan connection is the sum of the LC connection
+$\Gamma^a{}_{bc}$ and the contortion $K^a{}_{bc}$:
+\begin{equation}
+  \omega_\EC^a{}_{bc} = \Gamma^a{}_{bc} + K^a{}_{bc}.
+\end{equation}
+Definition of contortion (from torsion $T^a{}_{bc} = 2\omega^a{}_{[bc]}$):
+\begin{equation}
+  K_{abc} = \frac{1}{2}\bigl(T_{abc} + T_{bca} - T_{cab}\bigr),
+  \qquad
+  K_{abc} = -K_{acb}.
+\end{equation}
+
+\paragraph{Torsion mode definitions (homogeneous ansatz).}
+\begin{itemize}
+  \item \textbf{AX (axial scalar)} $\eta$: traceless antisymmetric part of
+        torsion.  For $\Sthree$: $T^i{}_{jk}\propto\eta\,\varepsilon_{ijk}$.
+  \item \textbf{VT (vector-trace)} $V$: trace part of torsion.  For $\Sthree$:
+        $T^i{}_{0j}\propto V\,\delta^i_j$.
+  \item \textbf{MX mode}: coexistence of AX and VT ($\eta\neq 0$ and $V\neq 0$).
+\end{itemize}
+
+EC Weyl scalar correction in the MX mode (all topologies):
+\begin{equation}
+  C^2_\EC - C^2_\LC
+  = \frac{16V^2\eta^2}{3r^2} \quad (\Sthree, \Tthree),
+  \qquad
+  = \frac{16V^2\eta^2}{3R^2} \quad (\Nilthree).
+\end{equation}
+
+\subsection{Pontryagin Protection Mechanisms}
+\label{app:A:pont}
+
+\textbf{Pl\"ucker protection (AX mode):}
+When $V=0$, the matrix representation of the Riemann tensor satisfies the
+Pl\"ucker relation, and $P\equiv 0$.
+
+\textbf{Pfaffian protection (VT mode):}
+When $\eta=0$, $P\equiv 0$ by a Pfaffian-type identity.
+
+\subsection{Computational Pipeline}
+\label{app:A:pipeline}
+
+The computations in this paper are performed according to the following
+pipeline.
+
+\begin{enumerate}
+  \item \textbf{Geometric setup}: Set vielbein $e^i$, structure constants
+        $C^a_{bc}$, and volume factors for the three topologies
+        (\texttt{script/dppu/topology/}).
+  \item \textbf{EC connection}: Construct contortion $K$ from the torsion
+        ansatz and compute EC connection $\omega_\EC$
+        (\texttt{script/dppu/connection/}).
+  \item \textbf{Curvature tensors}: Compute from $\omega_\EC$ the curvature
+        tensor, Ricci scalar $R_\EC$, Weyl scalar $C^2_\EC$, and Pontryagin
+        density $P$ by SymPy (\texttt{script/dppu/curvature/}).
+  \item \textbf{Effective potential}: Expand $\Veff(r,\eta,V;\alpha,\theta)$
+        explicitly and obtain the Hessian matrix
+        (\texttt{script/dppu/action/}).
+  \item \textbf{Mode dictionary}: Check spin-2 quintet (squash, off-diagonal),
+        spin-1 triplet, and spin-0 mass spectra via generalised eigenvalue
+        problems and stationary-point searches
+        (\texttt{script/scripts/paper03ec/}, \texttt{script/scripts/proofs/}).
+\end{enumerate}
+
+\paragraph{Script correspondence table.}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+Content & Script \\
+\midrule
+$C^2_\EC$ symbolic computation (AX/VT/MX dropout) & \texttt{proofs/ax\_vt\_dropout\_proof.py} \\
+$\Tthree$ mode dictionary (squash/shear null) & \texttt{paper03ec/t3\_mode\_dictionary.py} \\
+$\Nilthree$ EC mode dictionary & \texttt{paper03ec/nil3\_mode\_dictionary.py} \\
+$\Tthree$ MX vacuum search & \texttt{paper03ec/t3\_mx\_vacuum\_search.py} \\
+$\Sthree$ MX stationary point search & \texttt{paper03ec/s3\_mx\_vacuum\_search.py} \\
+$\Nilthree$ MX stationary point search & \texttt{paper03ec/nil3\_mx\_vacuum\_search.py} \\
+$\Nilthree$ EFT at EC false vacuum & \texttt{paper03ec/nil3\_false\_vacuum\_eft.py} \\
+$\Sthree$ VT spin-2/1 masses & \texttt{paper03ec/s3\_vt\_spin\_masses.py} \\
+$\Nilthree$ quintet splitting & \texttt{paper03ec/nil3\_spin2\_quintet\_splitting.py} \\
+$\varepsilon$-$s$ cross-term, 3-topology comparison & \texttt{paper03ec/squash\_shear\_cross\_term.py} \\
+Palatini protection ($G_{\eta\eta}=G_{VV}=0$) & \texttt{proofs/palatini\_protection\_proof.py} \\
+Auxiliary $C_\delta$ null theorem & \texttt{proofs/c\_delta\_null\_proof.py} \\
+Cubic channel structure & \texttt{paper03ec/ec\_cubic\_vertex.py} \\
+$\gamma=1/2$ analytic proof & \texttt{proofs/gamma\_scaling\_proof.py} \\
+$\Tthree$ flatness null test & \texttt{proofs/t3\_flatness\_null\_test.py} \\
+\bottomrule
+\end{tabular}
+\caption{Correspondence between paper content and scripts.}
+\label{tab:scripts}
+\end{table}
+
+\subsection{Sanity Checks}
+\label{app:A:sanity}
+
+The main propositions of this paper were adopted after passing the following
+sanity checks.
+
+\begin{enumerate}
+  \item AX/VT dropout: $\Delta C^2=0$ (6 cases, SymPy exact zero).
+  \item Palatini protection: $G_{\eta\eta}=G_{VV}=0$ (velocity method, 3
+        topologies).
+  \item Auxiliary $\delta$-sector: $C_\delta=0$ and $\partial_\alpha C_\delta=0$
+        (3 topologies $\times$ 3 backgrounds, SymPy exact).
+  \item Palatini universality: VT$-$AX spin-2/1 mass $= 0$ (SymPy exact).
+  \item $\gamma=1/2$: $r_0^{\text{analytic}}$ vs $r_0^{\text{numeric}}$ error
+        $< 0.001$\% (all 6 points).
+  \item Quintet zero mode: $m^2(q_3)=0$ (SymPy; cross-terms also $=0$).
+  \item Volume preservation: $S^3$, $\Nilthree$ squash+shear $\det=1$ (SymPy).
+  \item Cross-term origin check: $\alpha$-dependence verification of
+        $\partial^2 V/\partial\varepsilon\partial s$ ($\Tthree$: independent;
+        $\Nilthree$: $\alpha$-dependent).
+  \item $\Sthree$ MX stationary-point search: no Hessian-positive-definite full
+        stationary vacuum in the dictionary range.
+  \item $\Nilthree$ MX stationary-point search: no real stationary point with
+        $V\eta\neq 0$ in the $\alpha<0$ branch; only local minimum remaining is
+        the $\eta=V=0$ false vacuum.
+\end{enumerate}

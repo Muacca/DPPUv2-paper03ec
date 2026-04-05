@@ -1,0 +1,228 @@
+%==============================================================================
+% Section 2: EC-Weyl Coupling Structure
+%==============================================================================
+\section{EC--Weyl Coupling Structure}
+\label{sec:ecweyl}
+
+This section introduces the basic structure of the Einstein--Cartan connection
+and determines the dependence of the EC--Weyl scalar $C^2_\EC$ on the torsion
+modes.  The main results are \textbf{Theorem~1 (AX/VT dropout)},
+\textbf{Theorem~2 (Palatini protection, EC)}, and \textbf{Theorem~3
+($\delta$-sector null theorem)}.  The first two give the selection rule of the
+EC--Weyl coupling and the non-propagation of torsion; the third establishes
+that no new homogeneous cubic channel appears in the auxiliary MIXING sector.
+
+\subsection{EC Connection and Contortion}
+\label{sec:ecweyl:connection}
+
+In Einstein--Cartan theory the connection $\omega^a{}_b$ is treated as a
+variable independent of the metric.  Its difference from the Levi--Civita (LC)
+connection $\Gamma^a{}_{bc}$ is parametrised by the contortion $K^a{}_{bc}$:
+\begin{equation}
+  \omega_\EC^a{}_{bc} = \Gamma^a{}_{bc} + K^a{}_{bc}.
+\end{equation}
+The contortion is determined from the antisymmetric torsion tensor
+$T^a{}_{bc} = 2\omega^a{}_{[bc]}$ by
+\begin{equation}
+  K_{abc} = \frac{1}{2}\bigl(T_{abc} + T_{bca} - T_{cab}\bigr),
+  \qquad
+  K_{abc} = -K_{acb}.
+\end{equation}
+
+For the homogeneous minisuperspace torsion ansatz we adopt three modes:
+\begin{itemize}
+  \item \textbf{AX mode}: axial scalar $\eta$ (traceless antisymmetric part of
+        torsion), with $V=0$ assumed.
+  \item \textbf{VT mode}: vector-trace scalar $V$ (trace part of torsion), with
+        $\eta=0$ assumed.
+  \item \textbf{MX mode}: coexistence of AX and VT, i.e.\ $V\neq 0$ and
+        $\eta\neq 0$.
+\end{itemize}
+The action is
+\begin{equation}
+  S = \int\left[\frac{R_\EC}{2\kappa^2}
+      + \theta\cdot\mathcal{L}_\NY
+      + \alpha\cdot C^2_\EC\right]\sqrt{g}\,\dd^4x,
+\end{equation}
+where $R_\EC$ is the EC Ricci scalar, $\mathcal{L}_\NY$ is the Nieh--Yan
+density \cite{NiehYan1982}, and $C^2_\EC$ is the EC Weyl scalar
+\cite{Woodard2015}.  The coupling constants are $\alpha\in\mathbb{R}$ (Weyl)
+and $\theta\in\mathbb{R}$ (NY).  The effective potential
+$\Veff(r,\eta,V;\alpha,\theta)$ is computed explicitly for each topology (script:
+\texttt{proofs/ax\_vt\_dropout\_proof.py}).
+
+\subsection{Theorem~1: AX/VT Dropout}
+\label{sec:ecweyl:thm1}
+
+\begin{theorem}[AX/VT dropout]\label{thm:dropout}
+  In all of $\Sthree\times\Sone$, $\Tthree\times\Sone$, and
+  $\Nilthree\times\Sone$, the following hold as exact symbolic identities
+  verified by SymPy\textup{:}
+  \begin{enumerate}
+    \item \textbf{AX mode} ($V=0$, $\eta\neq 0$):
+          $C^2_\EC = C^2_\LC$ (no EC correction).
+    \item \textbf{VT mode} ($\eta=0$, $V\neq 0$):
+          $C^2_\EC = C^2_\LC$ (no EC correction).
+  \end{enumerate}
+  In AX and VT backgrounds, the EC--Weyl coupling $\alpha C^2_\EC$ coincides
+  exactly with the LC case and no $\alpha$-dependent new contribution appears.
+\end{theorem}
+
+\begin{proof}[Proof outline]
+  Expanding $C^2_\EC - C^2_\LC$ symbolically for each topology and factoring,
+  every EC correction term carries $V\eta$ as a common factor.  Therefore in
+  the AX mode ($V=0$) the correction vanishes exactly, and in the VT mode
+  ($\eta=0$) it likewise vanishes (SymPy exact zero in all cases).
+\end{proof}
+
+\paragraph{Topology-specific forms.}
+For $\Sthree\times\Sone$ and $\Tthree\times\Sone$:
+\begin{equation}
+  C^2_\LC(\Sthree, \Tthree) = 0 \quad (\text{isotropic point, AX/VT background}).
+\end{equation}
+AX dropout then confirms $C^2_\EC = 0$.
+
+For $\Nilthree\times\Sone$:
+\begin{equation}
+  C^2_\LC(\Nilthree) = \frac{4}{3R^4} \neq 0
+  \quad (\text{non-conformal flatness}),
+\end{equation}
+and AX dropout gives $C^2_\EC = 4/(3R^4) = C^2_\LC$ (no EC correction).
+
+\paragraph{$\Tthree$ squash+shear null test.}
+For $\Tthree$, $C^2_\EC = 0$ holds for all $\varepsilon, s$ because
+$C^a_{bc}=0$ identically.  These six cases (3 topologies $\times$ 2 backgrounds)
+are all confirmed as exact zero by SymPy (scripts: \texttt{proofs/ax\_vt\_dropout\_proof.py},
+\texttt{proofs/t3\_flatness\_null\_test.py}).
+
+\subsection{MX Mode: EC-Specific Weyl Coupling}
+\label{sec:ecweyl:mx}
+
+As the converse of Theorem~\ref{thm:dropout}, in the MX background
+($V\neq 0,\eta\neq 0$) an EC-specific Weyl coupling appears.
+
+For $\Sthree\times\Sone$ and $\Tthree\times\Sone$:
+\begin{equation}
+  C^2_\EC = C^2_\LC + \frac{16V^2\eta^2}{3r^2}.
+\end{equation}
+For $\Nilthree\times\Sone$:
+\begin{equation}
+  C^2_\EC = C^2_\LC + \frac{16V^2\eta^2}{3R^2}
+           = \frac{4}{3R^4} + \frac{16V^2\eta^2}{3R^2}.
+\end{equation}
+In both cases the additional term is proportional to $(V\eta)^2$, so the
+torsion mixing product modifies the effective potential via the EC--Weyl
+coupling:
+\begin{equation}
+  \Delta\Veff^\EC = \alpha\cdot\frac{16V^2\eta^2}{3r^2}\cdot\Vol(M^3\times\Sone).
+\end{equation}
+This EC-specific term is the source of effective-potential deformation in the
+MX background.  Note, however, that the $\Nilthree$ EC false vacuum discussed
+in \S\ref{sec:nil3} originates from $C^2_\LC(\Nilthree)\neq 0$ on the
+$\eta=V=0$ section, which is independent of this MX term.
+
+\paragraph{Physical interpretation.}
+AX/VT dropout means that torsion alone does not generate new contributions to
+the Weyl tensor.  The essence of the EC--Weyl interaction lies in the
+``mixing product'' $V\times\eta$ of torsion, understood geometrically as the
+mechanism by which an asymmetric combination of contortion activates Weyl
+components.  This selection rule is universal across all three topologies and
+follows from the general algebraic structure of the EC connection.
+
+\subsection{Theorem~2: Palatini Protection (EC Version)}
+\label{sec:ecweyl:thm2}
+
+\begin{theorem}[Palatini protection, EC]\label{thm:palatini}
+  Under the Einstein--Cartan connection,
+  \begin{equation}
+    G^{\EC}_{\eta\eta} = G^{\EC}_{VV} = 0
+  \end{equation}
+  holds exactly, where $G^{\EC}_{AB} =
+  \partial^2\mathcal{L}_\EC/\partial(\partial_z\Phi^A)\partial(\partial_z\Phi^B)$
+  is the field-space metric (kinetic metric) of the minisuperspace.
+\end{theorem}
+
+\begin{proof}[Proof outline (velocity method)]
+  The EC Weyl scalar in the MX background,
+  $C^2_\EC(\Sthree, \Tthree, \text{MX}) = 16V^2\eta^2/(3r^2)$,
+  is an algebraic function of $(r,\eta,V)$ and contains no velocity fields
+  $\partial_z\eta$, $\partial_z V$.  Therefore, computing $G_{\eta\eta}$,
+  $G_{VV}$ by the velocity method yields only terms that vanish in the
+  $\Delta z\to 0$ limit, and no kinetic term for torsion is generated.
+  Full symbolic verification for each topology is given in script
+  \texttt{proofs/palatini\_protection\_proof.py}.
+\end{proof}
+
+\paragraph{Invariance of $r$-stiffness.}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Topology & $G_{rr}$ (LC) & $G_{rr}$ (EC) & Difference \\
+\midrule
+$\Sthree$ & 59.22 & 59.22 & 0 \\
+$\Tthree$ & 4675.6 & 4675.6 & $\approx 0$ \\
+$\Nilthree$ & 5195.2 & 5195.2 & $\approx 0$ \\
+\bottomrule
+\end{tabular}
+\caption{Kinetic metric $G_{rr}$ for the radial mode: LC vs.\ EC.  The
+  graviton kinetic structure is unchanged under the EC extension.}
+\label{tab:Grr}
+\end{table}
+
+The kinetic structure of the spin-2 graviton is also invariant under EC.
+
+\subsection{Theorem~3: $\delta$-Sector Null Theorem}
+\label{sec:ecweyl:thm3}
+
+In the EC extension, the new nonlinear coupling
+\begin{equation}
+  \frac{\partial^3 V_\EC}{\partial\alpha\,\partial\eta\,\partial V} \neq 0
+\end{equation}
+appears in the physical $(\eta,V)$ channel (\S\ref{sec:s3:ec}).  A separate
+question is whether an independent cubic channel also arises in the auxiliary
+MIXING variable $\delta_k$.  We define
+\begin{equation}
+  C_\delta(M^3;\text{mode}) :=
+  \left.\frac{\partial^3\Veff}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
+  \right|_{\delta_0=\delta_1=\delta_2=0},
+\end{equation}
+where $M^3 = \Sthree, \Tthree, \Nilthree$ and mode $=$ AX/VT/MX.
+
+\begin{theorem}[$\delta$-sector null theorem]\label{thm:delta}
+  For all three topologies and all torsion backgrounds \textup{(}AX, VT,
+  MX\textup{)},
+  \begin{equation}
+    C_\delta(M^3;\text{mode}) = 0
+    \qquad\text{and}\qquad
+    \frac{\partial C_\delta}{\partial\alpha} = 0
+  \end{equation}
+  hold as exact SymPy results.  The EC extension generates no new homogeneous
+  cubic channel in the auxiliary $\delta$-sector.
+\end{theorem}
+
+\begin{proof}[Proof outline]
+  With \texttt{fiber\_mode = MIXING} activated in the unified engine, we
+  construct $\Veff$ for each topology and torsion background, then compute the
+  third derivative $\partial_{\delta_0}\partial_{\delta_1}\partial_{\delta_2}\Veff|_{\delta=0}$
+  by direct symbolic differentiation.  All nine cases give exact zero
+  coefficients, from which $\partial_\alpha C_\delta = 0$ follows automatically.
+  The key point is not that EC has no new effects, but that the new cubic
+  structure activated by EC is localised in the physical $\eta$-$V$ channel
+  rather than the auxiliary $\delta$-sector.
+\end{proof}
+
+\paragraph{Topology-wise consequences.}
+\begin{itemize}
+  \item $\Sthree$: The formal MIXING sector is nontrivially available, yet
+        $C_\delta(\Sthree)=0$.  Hence the $\alpha$-cubic of \S\ref{sec:s3:ec}
+        appears only in the $\eta$-$V$ sector.
+  \item $\Tthree$: Flatness trivialises most of the mode dictionary.  Even the
+        formal MIXING test gives $C_\delta(\Tthree)=0$.
+  \item $\Nilthree$: Despite the non-conformal flatness and the EC false
+        vacuum, $C_\delta(\Nilthree)=0$.  The EC-specific physics of $\Nilthree$
+        resides in the background Weyl and the $(r,\eta,V)$ sector.
+\end{itemize}
+Detailed derivations and the exact check of all nine cases are given in
+Appendix~\ref{app:D} and script \texttt{proofs/c\_delta\_null\_proof.py}.
