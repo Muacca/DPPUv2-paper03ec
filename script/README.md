@@ -99,7 +99,7 @@ Technical documentation and conventions:
 | `palatini_protection_proof.py` | **Palatini protection**: V\* = 0 on-shell for VT background (dV/dV = 0) |
 | `t3_flatness_null_test.py` | **T³ flatness**: C²_LC ≡ 0 — no isolated EC slice minimum in flat topology |
 | `gamma_scaling_proof.py` | **Theorem 6 (γ=1/2 scaling)**: r₀(α) ∝ √\|α\| and V_eff^c(α) ∝ √\|α\| for Nil³ EC slice minimum |
-| `nil3_slice_minimum_stability.py` | **Theorem 6 (Nil³ EC slice minimum)**: full homogeneous Hessian criterion at $(r_0,0,0)$, with minimum / marginal / saddle classification by $|\kappa^2\theta_{\mathrm{NY}}|$ |
+| `nil3_slice_minimum_stability.py` | **Theorem 6 (Nil³ EC slice minimum)**: full homogeneous Hessian criterion at $(r_0,0,0)$, with minimum / marginal / saddle classification by $\|\kappa^2\theta_{\mathrm{NY}}\|$ |
 
 ---
 
@@ -205,7 +205,7 @@ python scripts/paper03ec/t3_mx_vacuum_search.py
 | **T³ flatness** | C²_LC ≡ 0 — no isolated EC slice minimum for flat topology — **numerical + symbolic** | `proofs/t3_flatness_null_test.py`, `paper03ec/t3_mode_dictionary.py` |
 | **Nil³ spin-2 quintet splitting** | q₃ = zero mode; 4+1 splitting — **numerical** | `paper03ec/nil3_spin2_quintet_splitting.py`, `paper03ec/nil3_mode_dictionary.py` |
 | **Nil³ EC slice-minimum EFT** | α-induced minimum at η=V=0; γ=1/2 scaling — **analytic + numerical** | `paper03ec/nil3_ec_slice_minimum_eft.py`, `proofs/gamma_scaling_proof.py` |
-| **Nil³ EC slice-minimum stability** | full homogeneous Hessian at $(r_0,0,0)$; local minimum for $|\kappa^2\theta_{\mathrm{NY}}|<1$, marginal at equality, saddle above — **analytic + symbolic** | `proofs/nil3_slice_minimum_stability.py` |
+| **Nil³ EC slice-minimum stability** | full homogeneous Hessian at $(r_0,0,0)$; local minimum for $\|\kappa^2\theta_{\mathrm{NY}}\|<1$, marginal at equality, saddle above — **analytic + symbolic** | `proofs/nil3_slice_minimum_stability.py` |
 | **ε-s cross-term decomposition** | T³=kinematic / S³=0 / Nil³=curvature — **symbolic** | `paper03ec/squash_shear_cross_term.py` |
 | **EC cubic vertex** | θ-cubic preserved; α-cubic channel EC-specific — **symbolic** | `paper03ec/ec_cubic_vertex.py` |
 | **MX vacuum existence** | Vacuum structure in MX mode per topology — **numerical scan** | `paper03ec/nil3_mx_vacuum_search.py`, `paper03ec/s3_mx_vacuum_search.py`, `paper03ec/t3_mx_vacuum_search.py` |

@@ -99,7 +99,7 @@ script/
 | `palatini_protection_proof.py` | **Palatini 保護**：VT 背景でオンシェル V\* = 0（dV/dV = 0）|
 | `t3_flatness_null_test.py` | **T³ 平坦性**：C²_LC ≡ 0 — 平坦トポロジーでは孤立した EC slice minimum なし |
 | `gamma_scaling_proof.py` | **定理 6（γ=1/2 スケーリング）**：Nil³ EC slice minimum での r₀(α) ∝ √\|α\|・V_eff^c(α) ∝ √\|α\| |
-| `nil3_slice_minimum_stability.py` | **定理 6（Nil³ EC slice minimum）**：$(r_0,0,0)$ における full homogeneous Hessian 判定。$|\kappa^2\theta_{\mathrm{NY}}|$ により local minimum / marginal / saddle を分類 |
+| `nil3_slice_minimum_stability.py` | **定理 6（Nil³ EC slice minimum）**：$(r_0,0,0)$ における full homogeneous Hessian 判定。 $\|\kappa^2\theta_{\mathrm{NY}}\|$ により local minimum / marginal / saddle を分類 |
 
 ---
 
@@ -205,7 +205,7 @@ python scripts/paper03ec/t3_mx_vacuum_search.py
 | **T³ 平坦性** | C²_LC ≡ 0 — 平坦トポロジーでは孤立した EC slice minimum なし — **数値 + 記号** | `proofs/t3_flatness_null_test.py`、`paper03ec/t3_mode_dictionary.py` |
 | **Nil³ spin-2 五重項分裂** | q₃ = ゼロモード；4+1 分裂 — **数値** | `paper03ec/nil3_spin2_quintet_splitting.py`、`paper03ec/nil3_mode_dictionary.py` |
 | **Nil³ EC slice-minimum EFT** | α 誘起極小（η=V=0）；γ=1/2 スケーリング — **解析的 + 数値** | `paper03ec/nil3_ec_slice_minimum_eft.py`、`proofs/gamma_scaling_proof.py` |
-| **Nil³ EC slice minimum の安定性** | $(r_0,0,0)$ の full homogeneous Hessian。$|\kappa^2\theta_{\mathrm{NY}}|<1$ で local minimum、等号で marginal、超えると saddle — **解析的 + 記号** | `proofs/nil3_slice_minimum_stability.py` |
+| **Nil³ EC slice minimum の安定性** | $(r_0,0,0)$ の full homogeneous Hessian。 $\|\kappa^2\theta_{\mathrm{NY}}\|<1$ で local minimum、等号で marginal、超えると saddle — **解析的 + 記号** | `proofs/nil3_slice_minimum_stability.py` |
 | **ε-s 交差項分解** | T³=kinematic / S³=0 / Nil³=curvature — **記号的** | `paper03ec/squash_shear_cross_term.py` |
 | **EC 3点頂点** | θ-cubic 保存；α-cubic は EC 固有 — **記号的** | `paper03ec/ec_cubic_vertex.py` |
 | **MX 真空存在** | 各トポロジーでの MX モード真空構造 — **数値スキャン** | `paper03ec/nil3_mx_vacuum_search.py`、`paper03ec/s3_mx_vacuum_search.py`、`paper03ec/t3_mx_vacuum_search.py` |
