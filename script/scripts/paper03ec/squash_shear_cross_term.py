@@ -60,7 +60,7 @@ kappa_num = 1.0
 eta_num   = 1.0
 r_s3_num  = 3.0
 r_t3_num  = 3.0
-r_nil_num = float(4 / sqrt(3))   # Nil3 EC false vacuum r0 = (4*kappa/sqrt(3))*sqrt(|alpha|), a=1
+r_nil_num = float(4 / sqrt(3))   # Nil3 EC slice minimum r0 = (4*kappa/sqrt(3))*sqrt(|alpha|), a=1
 
 print(f"  Numerical parameters: L=kappa=eta=1, r_S3={r_s3_num}, r_T3={r_t3_num}, r_Nil3={r_nil_num:.4f}")
 print()
@@ -244,7 +244,7 @@ if alpha_nil is not None:
 # Numerical values at two alpha points to show alpha-dependence
 subs_nil_base = [(L_nil, L_num), (kap_nil, kappa_num), (R_nil, r_nil_num)]
 if eta_nil is not None:
-    subs_nil_base.append((eta_nil, 0))   # AX false vacuum: eta=0 at extremum
+    subs_nil_base.append((eta_nil, 0))   # AX EC slice minimum: eta=0 at extremum
 
 print()
 print("  alpha-dependence check (Nil3 cross-term vs alpha):")

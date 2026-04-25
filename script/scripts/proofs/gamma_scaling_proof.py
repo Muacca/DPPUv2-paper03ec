@@ -3,7 +3,7 @@ Gamma-Scaling Proof
 ===================
 
 Theorem 6 (gamma = 1/2 scaling):
-  For the Nil3 x S1 EC false vacuum with eta = V = theta = 0,
+  For the Nil3 x S1 EC slice minimum with eta = V = theta = 0,
   the critical potential V_eff^c and the equilibrium radius r_0
   scale as:
 
@@ -21,7 +21,7 @@ Theorem 6 (gamma = 1/2 scaling):
 
   Mechanism:
     C^2_LC(Nil3, eta=V=0) = 4/(3*R^4) != 0  (Nil3 has nonzero background Weyl)
-    T3/S3: C^2_LC(eta=V=0) = 0  =>  alpha-term absent  =>  no false vacuum
+    T3/S3: C^2_LC(eta=V=0) = 0  =>  alpha-term absent  =>  no isolated EC slice minimum
 
 Author: Muacca
 Date: 2026-03-30
@@ -229,7 +229,7 @@ for topo_type, topo_name in topo_configs:
         print(f"    V_eff(eta=V=0 slice) = {ve_ec_0}")
         print(f"    alpha-dependent slice contribution = {c2lc_term}")
 
-        # Check if alpha < 0 gives a real vacuum
+        # Check if alpha < 0 gives a real stationary radius on the eta=V=0 slice.
         dV_dr_0 = cancel(diff(ve_ec_0, p['r']))
         try:
             sols_topo = solve(dV_dr_0, p['r'])
@@ -240,10 +240,10 @@ for topo_type, topo_name in topo_configs:
                 if s_neg.is_real is not False and s_neg.is_positive is not False:
                     has_vacuum = True
             if has_vacuum:
-                print(f"    => alpha < 0 gives a real vacuum  [EC false vacuum present]")
+                print(f"    => alpha < 0 gives a real stationary radius  [EC slice minimum present]")
                 go_b_candidates.append(topo_name)
             else:
-                print(f"    => no real vacuum for alpha < 0  [no EC false vacuum]")
+                print(f"    => no isolated EC slice minimum for alpha < 0")
         except Exception:
             print(f"    (vacuum analysis skipped)")
 
@@ -251,11 +251,11 @@ for topo_type, topo_name in topo_configs:
         print(f"    Engine error: {exc}")
 
 print()
-print("  [Summary: C2_LC background and EC false vacuum]")
-print(f"  T3:   C2_LC(eta=V=0) = 0   => no alpha-term => no false vacuum")
-print(f"  Nil3: C2_LC(eta=V=0) != 0  => alpha-term present => gamma=1/2 false vacuum")
+print("  [Summary: C2_LC background and EC slice minimum]")
+print(f"  T3:   C2_LC(eta=V=0) = 0   => no alpha-term => no isolated EC slice minimum")
+print(f"  Nil3: C2_LC(eta=V=0) != 0  => alpha-term present => gamma=1/2 EC slice minimum")
 print(f"  S3:   see above computation")
-print(f"  EC false vacuum candidates: {go_b_candidates}")
+print(f"  EC slice-minimum candidates: {go_b_candidates}")
 
 # ── Part 5: General theorem gamma = 1/(n-m) ──────────────────────────────────
 print()
@@ -305,6 +305,6 @@ print(f"    V_eff^c(alpha) = (32/sqrt(3))*pi^4*sqrt(|alpha|)  [gamma=1/2]")
 print(f"    = {float(32*pi**4/sqrt(3)):.4f} * sqrt(|alpha|)")
 print()
 print("  Mechanism: C^2_LC(Nil3, eta=V=0) != 0 (only Nil3 among 3 topologies)")
-print("    T3, S3: C^2_LC(eta=V=0) = 0  =>  alpha inactive  =>  no false vacuum")
+print("    T3, S3: C^2_LC(eta=V=0) = 0  =>  alpha inactive  =>  no isolated EC slice minimum")
 
 teardown_log()

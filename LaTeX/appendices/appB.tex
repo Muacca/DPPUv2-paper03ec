@@ -56,14 +56,16 @@ $\eta$ (AX torsion) & non-propagating ($G_{\eta\eta}=0$) & --- \\
         same value in VT background.
 \end{itemize}
 
-\subsection{$\Nilthree\times\Sone$: EC False-Vacuum EFT}
+\subsection{$\Nilthree\times\Sone$: EC Slice-Minimum EFT}
 \label{app:B:nil3}
 
-\textbf{Setup:} $\Nilthree\times\Sone$, EC false vacuum
+\textbf{Setup:} $\Nilthree\times\Sone$, EC slice minimum
 ($\alpha=-a^2<0$, $\eta=V=0$, $r_0=4\kappa a/\sqrt{3}$).
-``False vacuum'' refers to a local minimum of the homogeneous effective potential.
+This stationary point is a full homogeneous local minimum iff
+$|\kappa^2\theta_\NY|<1$.  The quoted EFT below uses the standard benchmark
+$\theta_\NY=0$.
 
-\paragraph{False vacuum identification.}
+\paragraph{Slice-minimum identification.}
 \begin{equation}
   r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|} = \frac{4\kappa a}{\sqrt{3}},
   \qquad
@@ -90,7 +92,7 @@ spin-2 $q_4,q_5$ & $\delta q_{4,5}$ & $m^2(q_4)=m^2(q_5)$ & 10,798 & --- \\
 \bottomrule
 \end{tabular}%
 }
-\caption{Quadratic coefficient spectrum of the $\Nilthree$ EC false-vacuum EFT.
+\caption{Quadratic coefficient spectrum of the $\Nilthree$ EC slice-minimum EFT.
   The $\eta$ row gives the potential curvature in the $\eta$ direction under
   Palatini protection ($G_{\eta\eta}=0$), not a propagating mass.}
 \label{tab:appB_nil3}
@@ -99,7 +101,7 @@ spin-2 $q_4,q_5$ & $\delta q_{4,5}$ & $m^2(q_4)=m^2(q_5)$ & 10,798 & --- \\
 \paragraph{Quadratic effective action (EFT).}
 \begin{equation}
 \begin{aligned}
-  \Veff^{Nil^3}_\mathrm{EFT}(\delta\Phi)
+  \Veff^{\Nilthree,\mathrm{EFT}}(\delta\Phi)
   &\approx V_0 + \frac{1}{2}\Bigg[
     \frac{2\sqrt{3}\pi^4 L}{a\kappa^3}(\delta r)^2
     + \frac{128\sqrt{3}\pi^4 La}{\kappa}(\delta\eta)^2 \\
@@ -113,7 +115,7 @@ spin-2 $q_4,q_5$ & $\delta q_{4,5}$ & $m^2(q_4)=m^2(q_5)$ & 10,798 & --- \\
 with $\partial^2 V/\partial r\partial\eta|_{r_0,0} = 0$ (cross-term vanishes).
 
 Scripts: \\
-\texttt{paper03ec/nil3\_false\_vacuum\_eft.py},\texttt{paper03ec/nil3\_spin2\_quintet\_splitting.py}.
+\texttt{paper03ec/nil3\_ec\_slice\_minimum\_eft.py},\texttt{paper03ec/nil3\_spin2\_quintet\_splitting.py}.
 
 \subsection{$\Tthree\times\Sone$: Trivial EFT}
 \label{app:B:t3}

@@ -81,6 +81,6 @@ Squash-Shear Cross-Term Summary  (Theorem 9)
 
   Theorem 9 verification: PASS
 
-Computation time: 11.5s
+Computation time: 11.8s
 
 *Script: scripts/paper03ec/squash_shear_cross_term.py

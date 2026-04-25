@@ -86,7 +86,7 @@ Technical documentation and conventions:
 | Script | Description |
 |--------|-------------|
 | `ec_cubic_vertex.py` | EC cubic vertex: θ-cubic preservation and α-cubic (EC-specific) channel across topologies |
-| `nil3_false_vacuum_eft.py` | Nil³ false vacuum structure for EFT: α-induced vacuum at η=V=0 |
+| `nil3_ec_slice_minimum_eft.py` | Nil³ EC slice-minimum EFT: α-induced minimum on η=V=0 |
 
 ---
 
@@ -97,8 +97,9 @@ Technical documentation and conventions:
 | `ax_vt_dropout_proof.py` | **Theorem 1 (AX/VT Dropout)**: C²_EC = C²_LC — Weyl-squared is inactive for single-component torsion |
 | `c_delta_null_proof.py` | **Theorem 3 (δ-sector null)**: C_δ ≡ 0 for the MIXING sector across all topologies and modes |
 | `palatini_protection_proof.py` | **Palatini protection**: V\* = 0 on-shell for VT background (dV/dV = 0) |
-| `t3_flatness_null_test.py` | **T³ flatness**: C²_LC ≡ 0 — no EC false vacuum in flat topology |
-| `gamma_scaling_proof.py` | **Theorem 6 (γ=1/2 scaling)**: r₀(α) ∝ √\|α\| and V_eff^c(α) ∝ √\|α\| for Nil³ false vacuum |
+| `t3_flatness_null_test.py` | **T³ flatness**: C²_LC ≡ 0 — no isolated EC slice minimum in flat topology |
+| `gamma_scaling_proof.py` | **Theorem 6 (γ=1/2 scaling)**: r₀(α) ∝ √\|α\| and V_eff^c(α) ∝ √\|α\| for Nil³ EC slice minimum |
+| `nil3_slice_minimum_stability.py` | **Theorem 6 (Nil³ EC slice minimum)**: full homogeneous Hessian criterion at $(r_0,0,0)$, with minimum / marginal / saddle classification by $|\kappa^2\theta_{\mathrm{NY}}|$ |
 
 ---
 
@@ -164,11 +165,14 @@ python scripts/proofs/c_delta_null_proof.py
 # Palatini protection (V* = 0 for VT background)
 python scripts/proofs/palatini_protection_proof.py
 
-# T³ flatness (C²_LC ≡ 0, no EC false vacuum)
+# T³ flatness (C²_LC ≡ 0, no isolated EC slice minimum)
 python scripts/proofs/t3_flatness_null_test.py
 
-# Theorem 6: Nil³ false vacuum γ=1/2 scaling
+# Theorem 6: Nil³ EC slice-minimum γ=1/2 scaling
 python scripts/proofs/gamma_scaling_proof.py
+
+# Theorem 6: Nil³ EC slice minimum stability
+python scripts/proofs/nil3_slice_minimum_stability.py
 ```
 
 ### Run Analysis Scripts
@@ -198,9 +202,10 @@ python scripts/paper03ec/t3_mx_vacuum_search.py
 | **Theorem 1: AX/VT Dropout** | C²_EC = C²_LC — single-component torsion does not activate Weyl — **symbolic proof** | `proofs/ax_vt_dropout_proof.py` |
 | **Theorem 3: δ-sector null** | C_δ ≡ 0 for MIXING sector across all topologies — **symbolic proof** | `proofs/c_delta_null_proof.py` |
 | **Palatini protection** | V\* = 0 on-shell for VT background — **analytic** | `proofs/palatini_protection_proof.py`, `paper03ec/s3_vt_spin_masses.py` |
-| **T³ flatness** | C²_LC ≡ 0 — no EC false vacuum for flat topology — **numerical + symbolic** | `proofs/t3_flatness_null_test.py`, `paper03ec/t3_mode_dictionary.py` |
+| **T³ flatness** | C²_LC ≡ 0 — no isolated EC slice minimum for flat topology — **numerical + symbolic** | `proofs/t3_flatness_null_test.py`, `paper03ec/t3_mode_dictionary.py` |
 | **Nil³ spin-2 quintet splitting** | q₃ = zero mode; 4+1 splitting — **numerical** | `paper03ec/nil3_spin2_quintet_splitting.py`, `paper03ec/nil3_mode_dictionary.py` |
-| **Nil³ false vacuum (EFT)** | α-induced vacuum at η=V=0; γ=1/2 scaling — **analytic + numerical** | `paper03ec/nil3_false_vacuum_eft.py`, `proofs/gamma_scaling_proof.py` |
+| **Nil³ EC slice-minimum EFT** | α-induced minimum at η=V=0; γ=1/2 scaling — **analytic + numerical** | `paper03ec/nil3_ec_slice_minimum_eft.py`, `proofs/gamma_scaling_proof.py` |
+| **Nil³ EC slice-minimum stability** | full homogeneous Hessian at $(r_0,0,0)$; local minimum for $|\kappa^2\theta_{\mathrm{NY}}|<1$, marginal at equality, saddle above — **analytic + symbolic** | `proofs/nil3_slice_minimum_stability.py` |
 | **ε-s cross-term decomposition** | T³=kinematic / S³=0 / Nil³=curvature — **symbolic** | `paper03ec/squash_shear_cross_term.py` |
 | **EC cubic vertex** | θ-cubic preserved; α-cubic channel EC-specific — **symbolic** | `paper03ec/ec_cubic_vertex.py` |
 | **MX vacuum existence** | Vacuum structure in MX mode per topology — **numerical scan** | `paper03ec/nil3_mx_vacuum_search.py`, `paper03ec/s3_mx_vacuum_search.py`, `paper03ec/t3_mx_vacuum_search.py` |

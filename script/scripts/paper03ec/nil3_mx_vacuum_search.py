@@ -8,7 +8,7 @@ paper03ec Section 5:
     have no real solution;
   - on the alpha < 0 branch, numerical root search finds no real MX stationary
     point for sampled nonzero theta_NY values either;
-  - the local minimum that remains on alpha < 0 is the eta = V = 0 false vacuum,
+  - the local minimum that remains on alpha < 0 is the eta = V = 0 EC slice minimum,
     not an MX vacuum.
 """
 
@@ -135,7 +135,7 @@ print("    Delta = (12*alpha)^2 - 4*27*64*alpha^2 = -6768*alpha^2 < 0")
 print("  Therefore the theta_NY = 0 MX branch has no real stationary point for any alpha != 0.")
 print()
 
-print("  For comparison, the alpha < 0 false vacuum sits on the trivial slice eta = V = 0.")
+print("  For comparison, the alpha < 0 EC slice minimum sits on the trivial slice eta = V = 0.")
 alpha_sample = -1.0
 R0 = float(4 / np.sqrt(3))
 sample_eigs = hessian_eigenvalues(
@@ -143,7 +143,7 @@ sample_eigs = hessian_eigenvalues(
     {theta_s: 0.0, alpha_s: alpha_sample, R_s: R0, eta_s: 0.0, V_s: 0.0},
 )
 print(f"    alpha = {alpha_sample:+.1f}, R0 = {R0:.6f}, Hessian eig = {sample_eigs}")
-print("  This is the false vacuum discussed in Theorem 6, not an MX stationary point.")
+print("  This is the EC slice minimum discussed in Theorem 6, not an MX stationary point.")
 print()
 
 print("Step 3: numerical root search for nonzero theta_NY")
@@ -213,7 +213,7 @@ print(f"  MX roots found in sampled nonzero-theta cases: {mx_root_count}")
 print(f"  Stable MX roots found in sampled nonzero-theta cases: {stable_mx_root_count}")
 print(f"  Trivial-slice roots found in sampled nonzero-theta cases: {trivial_slice_count}")
 if stable_mx_root_count == 0:
-    print("  Verdict: no stable Nil3 MX stationary point was found; the alpha < 0 minimum remains the eta = V = 0 false vacuum.")
+    print("  Verdict: no stable Nil3 MX stationary point was found; the alpha < 0 minimum remains the eta = V = 0 EC slice minimum.")
 else:
     print("  Verdict: unexpected stable MX root found; recheck the paper statement.")
 

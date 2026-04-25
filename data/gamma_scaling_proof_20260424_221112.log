@@ -69,23 +69,23 @@ Gamma-Scaling Proof  -- Theorem 6
   [T3]
     V_eff(eta=V=0 slice) = 0
     alpha-dependent slice contribution = 0
-    => no real vacuum for alpha < 0  [no EC false vacuum]
+    => no isolated EC slice minimum for alpha < 0
 
   [Nil3]
     V_eff(eta=V=0 slice) = (12*pi**4*R**2 - 64*pi**4*alpha)/(3*R)
     alpha-dependent slice contribution = 0
-    => alpha < 0 gives a real vacuum  [EC false vacuum present]
+    => alpha < 0 gives a real stationary radius  [EC slice minimum present]
 
   [S3]
     V_eff(eta=V=0 slice) = -24*pi**2*r
     alpha-dependent slice contribution = 0
-    => no real vacuum for alpha < 0  [no EC false vacuum]
+    => no isolated EC slice minimum for alpha < 0
 
-  [Summary: C2_LC background and EC false vacuum]
-  T3:   C2_LC(eta=V=0) = 0   => no alpha-term => no false vacuum
-  Nil3: C2_LC(eta=V=0) != 0  => alpha-term present => gamma=1/2 false vacuum
+  [Summary: C2_LC background and EC slice minimum]
+  T3:   C2_LC(eta=V=0) = 0   => no alpha-term => no isolated EC slice minimum
+  Nil3: C2_LC(eta=V=0) != 0  => alpha-term present => gamma=1/2 EC slice minimum
   S3:   see above computation
-  EC false vacuum candidates: ['Nil3']
+  EC slice-minimum candidates: ['Nil3']
 
 =================================================================
   Part 5: General theorem gamma = 1/(n-m)
@@ -131,8 +131,8 @@ Gamma-Scaling Proof  -- Theorem 6
     = 1799.6533 * sqrt(|alpha|)
 
   Mechanism: C^2_LC(Nil3, eta=V=0) != 0 (only Nil3 among 3 topologies)
-    T3, S3: C^2_LC(eta=V=0) = 0  =>  alpha inactive  =>  no false vacuum
+    T3, S3: C^2_LC(eta=V=0) = 0  =>  alpha inactive  =>  no isolated EC slice minimum
 
-Computation time: 0.6s
+Computation time: 0.7s
 
 *Script: scripts/proofs/gamma_scaling_proof.py

@@ -82,7 +82,7 @@ $$
 
 が LC ポテンシャルに加わる（ $\text{Vol}$ は内部空間の体積因子）。
 
-この EC 固有項は MX 背景における有効ポテンシャル変形の起源となる。一方、§5 で扱う $Nil^3$ の EC false vacuum は、 $\eta = V = 0$ 断面での $C^2_{\rm LC}(Nil^3)\neq 0$ という非共形平坦性に由来する。 $S^3, T^3$ では等方点周りで $V = \eta = 0$ が保たれるため、MX 項はその断面では実効的に不活性である（§3.4, §4.3 参照）。
+この EC 固有項は MX 背景における有効ポテンシャル変形の起源となる。一方、§5 で扱う $Nil^3$ の EC slice minimum は、 $\eta = V = 0$ 断面での $C^2_{\rm LC}(Nil^3)\neq 0$ という非共形平坦性に由来する。 $S^3, T^3$ では等方点周りで $V = \eta = 0$ が保たれるため、MX 項はその断面では実効的に不活性である（§3.4, §4.3 参照）。
 
 **物理的解釈**: AX/VT dropout は、torsion 単体が Weyl テンソルの新たな寄与を生まないことを意味する。EC-Weyl 相互作用の本質は torsion の「混合積」 $V\times\eta$ にあり、これは幾何学的には contortion の asymmetric な組み合わせが Weyl 成分を活性化する機構として理解できる。3 トポロジーで共通したこの選択則は、EC 接続の一般的な代数構造から来る普遍的な性質である。
 
@@ -161,6 +161,6 @@ $$
 
 - $S^3$ : formal MIXING sector は非自明に導入できるが、 $C_\delta(S^3)=0$ 。したがって §3.4 の $\alpha$ -cubic は $\delta$ -sector ではなく $\eta$ - $V$ sector にのみ現れる。
 - $T^3$ : 平坦性のもとで formal MIXING test を行っても $C_\delta(T^3)=0$ 。auxiliary cubic channel は現れない。
-- $Nil^3$ : 非共形平坦性と EC false vacuum の存在にもかかわらず、formal MIXING sector では $C_\delta(Nil^3)=0$ 。 $Nil^3$ の EC 固有物理は background Weyl と $(r,\eta,V)$ sector に現れ、 $\delta$-sector には現れない。
+- $Nil^3$ : 非共形平坦性と EC slice minimum の存在にもかかわらず、formal MIXING sector では $C_\delta(Nil^3)=0$ 。 $Nil^3$ の EC 固有物理は background Weyl と $(r,\eta,V)$ sector に現れ、 $\delta$-sector には現れない。
 
 詳細な式展開と 9 ケースの exact check は [Appendix D](paper03ec_appD.md) および [スクリプト: `proofs/c_delta_null_proof.py`] に譲る。

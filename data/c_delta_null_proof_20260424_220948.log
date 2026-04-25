@@ -100,6 +100,6 @@ C_delta Summary  -- Theorem 3
 
   Theorem 3 verification: PASS
 
-Computation time: 78.8s
+Computation time: 81.9s
 
 *Script: scripts/proofs/c_delta_null_proof.py

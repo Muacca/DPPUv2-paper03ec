@@ -19,7 +19,7 @@ backgrounds. Confirms:
 
   MX background:
     C2_EC = C2_LC + 16*V^2*eta^2 / (3*R^2)
-    EC false vacuum at r0 = (4*kappa/sqrt(3))*sqrt(|alpha|)  (eta=V=0)
+    EC slice minimum at r0 = (4*kappa/sqrt(3))*sqrt(|alpha|)  (eta=V=0)
 
 Author: Muacca
 Date: 2026-03-30
@@ -171,7 +171,7 @@ print(f"    (Nil3 non-flat => nonzero; contrast with T3 which gives 0)")
 # ── MX background (V != 0, eta != 0) ─────────────────────────────────────────
 print()
 print("-" * 70)
-print("MX background (V != 0, eta != 0)  - EC false vacuum structure")
+print("MX background (V != 0, eta != 0)  - EC slice-minimum structure")
 print("-" * 70)
 
 cfg_mx = DOFConfig(
@@ -207,13 +207,13 @@ print(f"  Delta(V_eff_EC - V_eff_LC) = {delta_veff_mx}")
 print(f"  => MX EC coupling active: {'PASS' if pass_mx_nonzero else 'FAIL (unexpected zero)'}")
 print()
 
-# EC false vacuum: locate at eta=V=0 slice
+# EC slice minimum: locate at eta=V=0 slice
 V_eff_ax_iso_eta0 = cancel(V_eff_ax_iso.subs(eta_ax, 0))
-print(f"  [EC false vacuum] V_eff(eta=V=0) = {V_eff_ax_iso_eta0}")
+print(f"  [EC slice minimum] V_eff(eta=V=0) = {V_eff_ax_iso_eta0}")
 dV_dr_lc = cancel(diff(V_eff_ax_iso_eta0, r_ax))
 print(f"  dV/dr (eta=V=0) = {dV_dr_lc}")
 print("  => the eta=V=0 slice admits a local minimum only for alpha<0")
-print("  => EC false vacuum: r0 = (4*kappa/sqrt(3))*sqrt(|alpha|)")
+print("  => EC slice minimum: r0 = (4*kappa/sqrt(3))*sqrt(|alpha|)")
 print("     (from gamma_scaling_proof.py: V_eff = 4*pi^4*r + alpha*(-64*pi^4/3)/r)")
 
 # ── Mode dictionary summary ───────────────────────────────────────────────────

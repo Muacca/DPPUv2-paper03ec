@@ -1,6 +1,6 @@
 ## 5. Mode dictionary: $Nil^3\times S^1$ under EC-Weyl
 
-本節では $Nil^3\times S^1$ の均質幾何自由度に対する EC-Weyl 結合の効果を詳細に解析する。 $Nil^3$ は 3 トポロジーの中で唯一の非共形平坦多様体であり、これが EC-Weyl 結合を通じて LC には見えない false vacuum（定理 6）、spin-2 quintet 分裂（定理 7）、1 軸質量分裂（定理 8）を生成する。
+本節では $Nil^3\times S^1$ の均質幾何自由度に対する EC-Weyl 結合の効果を詳細に解析する。 $Nil^3$ は 3 トポロジーの中で唯一の非共形平坦多様体であり、これが EC-Weyl 結合を通じて $\eta=V=0$ 断面の EC slice minimum（定理 6）、spin-2 quintet 分裂（定理 7）、1 軸質量分裂（定理 8）を生成する。
 
 ### 5.1 Nil³ の幾何的特徴
 
@@ -18,7 +18,7 @@ $$
 C^2_{\rm LC}(Nil^3,\, \eta=V=0) = \frac{4}{3R^4} \neq 0
 $$
 
-である。この非共形平坦性が EC-Weyl 結合 $\alpha \cdot C^2_{\rm EC}$ を $\eta=V=0$ 断面でも活性化し、false vacuum を生む（§5.2 参照）。
+である。この非共形平坦性が EC-Weyl 結合 $\alpha \cdot C^2_{\rm EC}$ を $\eta=V=0$ 断面でも活性化し、EC slice minimum を生む（§5.2 参照）。
 
 一方、formal MIXING sector に対する auxiliary cubic coefficient は
 
@@ -30,22 +30,30 @@ $$
 
 である（定理 3, App. D）。したがって $Nil^3$ の EC 固有物理は background Weyl と $(r,\eta,V)$ sector に現れるのであって、新しい $\delta$-sector cubic channel として現れるのではない。
 
-### 5.2 定理 6 (Nil³ EC false vacuum)
+### 5.2 定理 6 (Nil³ EC slice minimum)
 
-**定理 6 (Nil³ EC false vacuum)**: $\alpha < 0$ において、 $Nil^3\times S^1$ の均質有効ポテンシャルは $\eta = V = 0$ 断面上に正の false vacuum を持つ：
+**定理 6 (Nil³ EC slice minimum)**: $\alpha < 0$ において、 $Nil^3\times S^1$ の均質有効ポテンシャルを $\eta = V = 0$ 断面へ制限すると、正の EC-induced slice minimum
 
 $$
-r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|}, \qquad V_0 = \frac{32\sqrt{3}\,\pi^4 La}{3\kappa} > 0, \quad (\alpha = -a^2,\; a > 0).
+r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|}, \qquad V_0 = \frac{32\sqrt{3}\,\pi^4 La}{3\kappa} > 0, \quad (\alpha = -a^2,\; a > 0)
 $$
 
-ここで false vacuum は、homogeneous effective potential 上の局所極小を指す。
+を持つ。さらに、この点 $(r,\eta,V)=(r_0,0,0)$ は full homogeneous potential に対して
+
+$$
+|\kappa^2\theta_{\rm NY}|<1 \;\Rightarrow\; \text{local minimum}, \qquad
+|\kappa^2\theta_{\rm NY}|=1 \;\Rightarrow\; \text{marginal}, \qquad
+|\kappa^2\theta_{\rm NY}|>1 \;\Rightarrow\; \text{saddle}
+$$
+
+となる。旧稿ではこれを `false vacuum` と呼んでいたが、本稿では $\eta=V=0$ 断面で最初に同定されることと full homogeneous stability の条件を明示するため、`EC slice minimum` と呼ぶ。
 
 **証明**: AX/VT dropout（定理 1）により、AX 背景（ $V=0$ ）および VT 背景（ $\eta=0$ ）では $C^2_{\rm EC} = C^2_{\rm LC}$ が保たれ、EC-LC 差分はゼロである。したがって EC 拡張は AX/VT における LC 側の停留条件をずらさない。なお $Nil^3$ では $C^2_{\rm LC}\neq 0$ なので、 $\alpha$ 依存そのものは LC-Weyl 項を通じて残る。
 
-$\eta = V = 0$ の等方断面での有効ポテンシャルは、SymPy 計算により 2 項構造
+$\eta = V = 0$ の等方断面での有効ポテンシャルは、SymPy 計算により $\,\theta_{\rm NY}\,$ に依存しない 2 項構造
 
 $$
-V_{\rm eff}^{Nil^3}(r,\, \eta=0,\, V=0;\, \alpha,\, \theta=0) = \frac{4\pi^4 Lr}{\kappa^2} - \frac{64\pi^4 L\alpha}{3r}
+V_{\rm eff}^{Nil^3}(r,\, \eta=0,\, V=0;\, \alpha) = \frac{4\pi^4 Lr}{\kappa^2} - \frac{64\pi^4 L\alpha}{3r}
 $$
 
 を持つことが確認される。ここで第 1 項は LC 寄与（ $n=1$ の幂乗）、第 2 項は EC-Weyl 寄与（ $m=-1$ の幂乗）である。
@@ -62,7 +70,26 @@ $$
 V_0 = V_{\rm eff}(r_0) = \frac{32\sqrt{3}\,\pi^4 L a}{3\kappa} > 0 \quad (\alpha = -a^2 < 0)
 $$
 
-であり、 $V_0 > 0$ は false vacuum（正のエネルギー密度を持つ局所極小）であることを示す。
+であり、 $V_0 > 0$ は正のエネルギーを持つ slice minimum であることを示す。
+
+full homogeneous stability は Hessian
+
+$$
+H = \left.\frac{\partial^2 V_{\rm eff}}{\partial(r,\eta,V)^2}\right|_{(r_0,0,0)}=
+\begin{pmatrix}
+\dfrac{2\sqrt{3}\pi^4 L}{\kappa^3\sqrt{-\alpha}} & 0 & 0 \\
+0 & \dfrac{128\sqrt{3}\pi^4 L\sqrt{-\alpha}}{\kappa} & -\dfrac{512\pi^4 L\alpha\kappa^2\theta_{\rm NY}}{3} \\
+0 & -\dfrac{512\pi^4 L\alpha\kappa^2\theta_{\rm NY}}{3} & \dfrac{2048\sqrt{3}\pi^4 L\kappa(-\alpha)^{3/2}}{27}
+\end{pmatrix}
+$$
+
+で判定できる。 $r$ 方向の主小行列は常に正であり、残る $(\eta,V)$ block の判定式は
+
+$$
+\det H_{(\eta,V)} = \frac{262144\pi^8L^2\alpha^2}{9}\left(1-\kappa^4\theta_{\rm NY}^2\right)
+$$
+
+である。したがって Sylvester 判定法により、上の $|\kappa^2\theta_{\rm NY}|<1$ 条件が従う。詳細は [`script/scripts/proofs/nil3_slice_minimum_stability.py`](script/scripts/proofs/nil3_slice_minimum_stability.py) を参照。
 
 **全点との照合**（SymPy 解析解 vs 数値）:
 
@@ -74,12 +101,12 @@ $$
 | $-3.00$ | 4.000000 | 4.000000 | 0.0000% | 3117.091 | 3117.091 | 0% |
 
 
-**Fig. 1** $Nil^3$ effective potential and EC false vacuum.
+**Fig. 1** $Nil^3$ effective potential and EC slice minimum.
 ![Fig. 1](LaTeX/figures/fig01_nil3_veff.png)
 
 ### 5.3 定理 7 (Nil³ spin-2 quintet 分裂)
 
-**定理 7 (Nil³ quintet 分裂)**: $Nil^3\times S^1$ の EC false vacuum 周りの spin-2 quintet（5 成分）は
+**定理 7 (Nil³ quintet 分裂)**: $Nil^3\times S^1$ の EC slice-minimum branch 周りの spin-2 quintet（5 成分）は
 
 $$
 5 \;\to\; (1)_0 + (2)_{q_4=q_5} + (1)_\varepsilon + (1)_s
@@ -130,7 +157,7 @@ $$
 m^2(\omega_2) = \frac{24\pi^4 L^3 R^2 - 256\pi^4 L^3\alpha\kappa^2}{3R^3\kappa^2} \neq 0, \qquad m^2(\omega_0) = m^2(\omega_1) = 0.
 $$
 
-EC false vacuum $r_0 = 4\kappa a/\sqrt{3}$（ $\alpha = -a^2$ ）での値は
+EC slice minimum $r_0 = 4\kappa a/\sqrt{3}$（ $\alpha = -a^2$ ）での値は
 
 $$
 m^2(\omega_2)\big|_{r_0} = \frac{6\sqrt{3}\,\pi^4 L^3}{a\kappa^3}.
@@ -140,9 +167,9 @@ $$
 
 以後この構造を 1 軸質量分裂と呼ぶ。 $Nil^3$ の 1 次元 Lie 代数構造 ( $C^2_{01}$ のみ非零) が、spin-1 triplet の中で唯一の $\omega_2$ に質量を与え、残りの 2 成分を質量ゼロに保つ。
 
-### 5.5 Nil³ EC false vacuum の EFT
+### 5.5 Nil³ EC slice minimum の EFT
 
-EC false vacuum $r_0 = 4\kappa a/\sqrt{3}$ 周りの二次有効作用を確定する。
+EC slice minimum $r_0 = 4\kappa a/\sqrt{3}$ 周りの二次有効作用を確定する。以下では、spin-0 Hessian が diagonal block に戻る標準ベンチマーク $\theta_{\rm NY}=0$ を用いて quoted EFT を与える。
 
 **全二次係数スペクトル（ $a = \kappa = L = 1$ での数値）**:
 
@@ -169,13 +196,13 @@ $$
 O(\delta^3)
 $$
 
-として与えられる（ $\delta r$ と $\delta\eta$ の交差項はゼロ）。ここで $\delta\eta$ の係数は propagating mass ではなく、Palatini 保護（ $G_{\eta\eta}=0$ ）のもとでの $\eta$ 方向ポテンシャル曲率を表す。[スクリプト: `paper03ec/nil3_false_vacuum_eft.py`]
+として与えられる（ $\delta r$ と $\delta\eta$ の交差項はゼロ）。ここで $\delta\eta$ の係数は propagating mass ではなく、Palatini 保護（ $G_{\eta\eta}=0$ ）のもとでの $\eta$ 方向ポテンシャル曲率を表す。[スクリプト: `paper03ec/nil3_ec_slice_minimum_eft.py`]
 
 ### 5.6 Mode dictionary table (Table 3: Nil³×S¹)
 
 **Table 3: $Nil^3\times S^1$ mode dictionary under EC-Weyl**
 
-| 物理量 | AX ($V=0, \eta\neq 0$) | VT ($\eta=0, V\neq 0$) | EC false vacuum ($\eta=V=0, \alpha<0$) |
+| 物理量 | AX ($V=0, \eta\neq 0$) | VT ($\eta=0, V\neq 0$) | EC slice minimum ($\eta=V=0, \alpha<0$) |
 |---|---|---|---|
 | $C^2_{\rm EC}$ | $= C^2_{\rm LC} = 4/(3R^4)$ | $= C^2_{\rm LC} = 4/(3R^4)$ | $= C^2_{\rm LC} = 4/(3R^4)$ |
 | AX/VT dropout | ✓ | ✓ | ✗（ $C^2_{\rm LC}\neq 0$ ） |
@@ -199,4 +226,4 @@ $$
 V_{\ast}=\pm\frac{3}{4}\sqrt{\frac{1}{\alpha}}, \qquad \eta_{\ast}=\pm\frac{R}{4}\sqrt{\frac{1}{\alpha}}
 $$
 
-となるため、 $\alpha<0$ では純虚解である。一般の $\theta_{\rm NY}$ についても補助スクリプト `paper03ec/nil3_mx_vacuum_search.py` の root search で MX 安定点は見つからず、数値的に残る局所極小は $\eta=V=0$ の false vacuum のみである。Nil³ の EC 固有物理（false vacuum, quintet 分裂）は $\eta=V=0$ 断面の $C^2_{\rm LC} \neq 0$ に由来し、MX 補正とは独立である。
+となるため、 $\alpha<0$ では純虚解である。一般の $\theta_{\rm NY}$ についても補助スクリプト `paper03ec/nil3_mx_vacuum_search.py` の有限サンプル root search では辞書範囲内に安定な MX 点は見つからない。ただし本稿で厳密に用いるのは、$\eta=V=0$ stationary point の解析式と full-Hessian criterion $|\kappa^2\theta_{\rm NY}|<1$ である。Nil³ の EC 固有物理（EC slice minimum, quintet 分裂）は $\eta=V=0$ 断面の $C^2_{\rm LC} \neq 0$ に由来し、MX 補正とは独立である。

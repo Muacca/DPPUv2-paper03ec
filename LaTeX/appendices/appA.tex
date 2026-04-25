@@ -219,7 +219,8 @@ $\Nilthree$ EC mode dictionary & \texttt{paper03ec/nil3\_mode\_dictionary.py} \\
 $\Tthree$ MX vacuum search & \texttt{paper03ec/t3\_mx\_vacuum\_search.py} \\
 $\Sthree$ MX stationary point search & \texttt{paper03ec/s3\_mx\_vacuum\_search.py} \\
 $\Nilthree$ MX stationary point search & \texttt{paper03ec/nil3\_mx\_vacuum\_search.py} \\
-$\Nilthree$ EFT at EC false vacuum & \texttt{paper03ec/nil3\_false\_vacuum\_eft.py} \\
+$\Nilthree$ EFT at EC slice minimum ($\theta_\NY=0$ benchmark) & \texttt{paper03ec/nil3\_ec\_slice\_minimum\_eft.py} \\
+$\Nilthree$ slice-minimum stability ($|\kappa^2\theta_\NY|<1$) & \texttt{proofs/nil3\_slice\_minimum\_stability.py} \\
 $\Sthree$ VT spin-2/1 masses & \texttt{paper03ec/s3\_vt\_spin\_masses.py} \\
 $\Nilthree$ quintet splitting & \texttt{paper03ec/nil3\_spin2\_quintet\_splitting.py} \\
 $\varepsilon$-$s$ cross-term, 3-topology comparison & \texttt{paper03ec/squash\_shear\_cross\_term.py} \\
@@ -256,7 +257,12 @@ sanity checks.
         $\Nilthree$: $\alpha$-dependent).
   \item $\Sthree$ MX stationary-point search: no Hessian-positive-definite full
         stationary vacuum in the dictionary range.
-  \item $\Nilthree$ MX stationary-point search: no real stationary point with
-        $V\eta\neq 0$ in the $\alpha<0$ branch; only local minimum remaining is
-        the $\eta=V=0$ false vacuum.
+  \item $\Nilthree$ slice stationary point: the full homogeneous Hessian is
+        positive definite for $|\kappa^2\theta_\NY|<1$, marginal at equality,
+        and a saddle above it (SymPy exact).  See
+        \path{proofs/nil3_slice_minimum_stability.py}.
+  \item $\Nilthree$ MX stationary-point search: for $\theta_\NY=0$ there is no
+        real stationary point with $V\eta\neq 0$ in the $\alpha<0$ branch; for
+        non-zero $\theta_\NY$, sampled root search finds no stable MX point
+        within the dictionary range.
 \end{enumerate}

@@ -12,7 +12,7 @@ Step 1: Nil3 squash + shear engine
   C^2_01 matches expected -(1+eps)^(-4/3)*(1+s)^(-2)/R: True
 
 ----------------------------------------------------------------------
-Step 2: Spin-2 squash-shear 2x2 mass matrix at Nil3 false vacuum
+Step 2: Spin-2 squash-shear 2x2 mass matrix at Nil3 EC slice minimum
 ----------------------------------------------------------------------
 
   d2V/deps2 |_(eps=s=0) = (1056*pi**4*L*R**2 - 19456*pi**4*L*alpha*kappa**2)/(27*R*kappa**2)
@@ -34,7 +34,7 @@ Step 2: Spin-2 squash-shear 2x2 mass matrix at Nil3 false vacuum
   Eigenvalues (numerical):
     lambda_+ = 1.136966e+05
     lambda_- = 8.279907e+03
-    Both eigenvalues > 0: false vacuum STABLE in squash+shear
+    Both eigenvalues > 0: EC slice minimum STABLE in squash+shear
 
   Cross-check: squash-only vs squash+shear (eps component):
     squash-only d2V/deps2 = 3.919245e+04
@@ -55,7 +55,7 @@ Step 3: Off-diagonal DOFs (q3, q4, q5) -- implementation check
 Nil3 Spin-2 Quintet Splitting Summary (Theorem 7)
 ======================================================================
 
-  At the Nil3 EC false vacuum (r0 = 4*kappa/sqrt(3)*sqrt(|alpha|), eta=0):
+  At the Nil3 EC slice minimum (r0 = 4*kappa/sqrt(3)*sqrt(|alpha|), eta=0):
 
   2x2 (eps, s) block:
     lambda_+ (heavy squash/shear) = 1.136966e+05
@@ -68,7 +68,7 @@ Nil3 Spin-2 Quintet Splitting Summary (Theorem 7)
 
   Splitting pattern (Theorem 7):
     LC isotropic: 5-plet (approximate degeneracy)
-    EC false vacuum: 0 + 2 + 1 + 1 (broken by C^2_01 = 1/R direction)
+    EC slice minimum: 0 + 2 + 1 + 1 (broken by C^2_01 = 1/R direction)
 
   Contrast with S3:
     S3: SO(3) exact 5-plet degeneracy
@@ -77,6 +77,6 @@ Nil3 Spin-2 Quintet Splitting Summary (Theorem 7)
   2x2 mass stability: STABLE
   eps-component cross-check: PASS
 
-Computation time: 262.1s
+Computation time: 267.0s
 
 *Script: scripts/paper03ec/nil3_spin2_quintet_splitting.py

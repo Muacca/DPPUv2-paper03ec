@@ -79,6 +79,6 @@ T3 MX Vacuum Search Summary
     delta_V = +256|alpha|V^2*eta^2*r/3 > 0.
     Combined with AX/VT dropout, T3 exhibits triple triviality.
 
-Computation time: 2.2s
+Computation time: 2.3s
 
 *Script: scripts/paper03ec/t3_mx_vacuum_search.py

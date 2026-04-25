@@ -8,7 +8,7 @@
 
 | 物理量 | $T^3\times S^1$ | $Nil^3\times S^1$ | $S^3\times S^1$ |
 |---|---|---|---|
-| **$\eta=V=0$ 断面での EC 局所極小（ $\alpha<0$ ）** | なし | **あり（新出現）** | なし |
+| **$\eta=V=0$ 断面での EC slice minimum（ $\alpha<0$ ）** | なし | **あり（新出現）** | なし |
 | **$C^2_{\rm LC}$（ $\eta=V=0$ ）** | $0$（平坦） | **$4/(3R^4) \neq 0$** | $0$（共形平坦） |
 | **共形平坦性** | ✓（平坦） | ✗（**非共形平坦**） | ✓（共形平坦） |
 | **Palatini 保護** | ✓ | ✓ | ✓ |
@@ -41,7 +41,7 @@
 **Fig. 3** $\gamma=1/2$ scaling $r_0 \propto \sqrt{|\alpha|}$
 ![Fig. 3](LaTeX/figures/fig03_gamma_scaling.png)
 
-$Nil^3\times S^1$ の EC false vacuum のスケーリング指数を解析的に確定する。
+$Nil^3\times S^1$ の EC slice minimum のスケーリング指数を解析的に確定する。
 
 有効ポテンシャルが 2 項構造
 
@@ -65,23 +65,23 @@ $$
 
 [スクリプト: `proofs/gamma_scaling_proof.py`]
 
-### 6.4 共形平坦性と $\eta=V=0$ 断面の EC 局所極小
+### 6.4 共形平坦性と $\eta=V=0$ 断面の EC slice minimum
 
 3 トポロジーの EC 真空出現を統一的に説明する定理を述べる。
 
-**定理（3 トポロジーにおける共形平坦性と EC 局所極小）**:
+**定理（3 トポロジーにおける共形平坦性と EC slice minimum）**:
 
 $$
-C^2_{\rm LC}(\eta=V=0) = 0 \;\Longrightarrow\; \eta=V=0 \text{ 断面に EC 局所極小は現れない.}
+C^2_{\rm LC}(\eta=V=0) = 0 \;\Longrightarrow\; \eta=V=0 \text{ 断面に EC slice minimum は現れない.}
 $$
 
 各トポロジーへの適用：
 
-- **$T^3$（平坦）**: $C^2_{\rm LC} = 0$ により $\alpha$ は $V_{\rm eff}(\eta=V=0)$ を変えない。したがってこの断面上に EC 局所極小は現れない。
-- **$S^3$（共形平坦）**: $C^2_{\rm LC}(S^3, \eta=V=0) = 0$ であるため同様に EC 局所極小は現れない。
-- **$Nil^3$（非共形平坦）**: $C^2_{\rm LC}(Nil^3) = 4/(3R^4) \neq 0$ により $\alpha \cdot C^2_{\rm LC} \cdot \text{Vol} = -64\pi^4 L\alpha/(3r)$ が有効ポテンシャルに加わり、 $\alpha < 0$ で false vacuum が出現する（定理 6）。
+- **$T^3$（平坦）**: $C^2_{\rm LC} = 0$ により $\alpha$ は $V_{\rm eff}(\eta=V=0)$ を変えない。したがってこの断面上に EC slice minimum は現れない。
+- **$S^3$（共形平坦）**: $C^2_{\rm LC}(S^3, \eta=V=0) = 0$ であるため同様に EC slice minimum は現れない。
+- **$Nil^3$（非共形平坦）**: $C^2_{\rm LC}(Nil^3) = 4/(3R^4) \neq 0$ により $\alpha \cdot C^2_{\rm LC} \cdot \text{Vol} = -64\pi^4 L\alpha/(3r)$ が有効ポテンシャルに加わり、 $\alpha < 0$ で $\eta=V=0$ 断面の EC slice minimum が出現する（定理 6）。この点はさらに $|\kappa^2\theta_{\rm NY}|<1$ で full homogeneous local minimum になる。
 
-**まとめ**: 本論文で扱った 3 トポロジーの中では、共形平坦な背景では $\eta=V=0$ 断面の EC-Weyl 補正が消え、非共形平坦な $Nil^3$ でのみ EC 局所極小が現れる。
+**まとめ**: 本論文で扱った 3 トポロジーの中では、共形平坦な背景では $\eta=V=0$ 断面の EC-Weyl 補正が消え、非共形平坦な $Nil^3$ でのみ EC slice minimum が現れる。
 
 ### 6.5 AX/VT dropout の普遍性
 
@@ -98,6 +98,6 @@ $$
 | AX 背景 | $C^2_{\rm EC} = C^2_{\rm LC}$, EC-LC 差分ゼロ | ✓ |
 | VT 背景 | $C^2_{\rm EC} = C^2_{\rm LC}$, EC-LC 差分ゼロ | ✓ |
 | MX 背景（ $T^3, S^3$ ） | EC 補正あり（ $16V^2\eta^2/3r^2$ ）、しかし安定化なし | — |
-| $\eta=V=0$ 断面（ $Nil^3$, $\alpha<0$ ） | 非共形平坦な LC 背景により **false vacuum 出現** | — |
+| $\eta=V=0$ 断面（ $Nil^3$, $\alpha<0$ ） | 非共形平坦な LC 背景により **EC slice minimum 出現** | — |
 
 この 4 分類が本論文の EC-Weyl 結合の物理的全体像を与える。

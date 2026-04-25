@@ -54,6 +54,6 @@ Palatini Protection Proof  -- Theorem 2
     => purely algebraic in eta, V: YES (no velocity terms)
 
 
-Computation time: 0.6s
+Computation time: 0.7s
 
 *Script: scripts/proofs/palatini_protection_proof.py

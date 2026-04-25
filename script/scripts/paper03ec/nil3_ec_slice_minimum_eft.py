@@ -1,14 +1,14 @@
 """
-Nil3 x S1 EC False Vacuum EFT
+Nil3 x S1 EC Slice-Minimum EFT
 ================================
 
 Computes the effective field theory (EFT) coefficients around the Nil3 x S1
-EC false vacuum at r0 = (4*kappa/sqrt(3))*sqrt(|alpha|), eta*=V*=0.
+EC slice minimum at r0 = (4*kappa/sqrt(3))*sqrt(|alpha|), eta*=V*=0.
 
-EC false vacuum structure (Theorem 6):
+EC slice-minimum structure (Theorem 6):
   V_eff_EC(Nil3, r, 0, 0, alpha) = 4*pi^4*r + alpha*(-64*pi^4/3)/r
   => r0 = (4*kappa/sqrt(3))*sqrt(|alpha|)  [delta=1/2]
-  => V0 = (32/sqrt(3))*pi^4*sqrt(|alpha|)  [gamma=1/2, false vacuum energy]
+  => V0 = (32/sqrt(3))*pi^4*sqrt(|alpha|)  [gamma=1/2, slice-minimum energy]
 
 Mass spectrum at r0 (alpha = -a^2, kappa=L=1):
   spin-0 r:      m^2_r = 2*sqrt(3)*pi^4*L / (a*kappa^3)
@@ -46,17 +46,17 @@ from dppu.torsion.nieh_yan import NyVariant
 from dppu.action.ec_action import build_veff_ec
 
 print("=" * 70)
-print("Nil3 x S1 EC False Vacuum EFT")
+print("Nil3 x S1 EC Slice-Minimum EFT")
 print("=" * 70)
 print()
 
-# ── Step 1: EC false vacuum identification ────────────────────────────────────
+# ── Step 1: EC slice-minimum identification ───────────────────────────────────
 print("-" * 70)
-print("Step 1: EC false vacuum identification")
+print("Step 1: EC slice-minimum identification")
 print("-" * 70)
 print()
 print("  Nil3 AX/VT dropout => EC-Weyl does not change the eta=V=0 slice")
-print("  => false vacuum determined from the homogeneous eta=V=0 slice")
+print("  => EC slice minimum determined from the homogeneous eta=V=0 slice")
 print()
 
 cfg_ax = DOFConfig(
@@ -87,7 +87,7 @@ r0_sols = solve(dV_dR, R_s)
 print(f"  dV/dR = 0 solutions: {r0_sols}")
 
 r0_sym = r0_sols[0] if r0_sols else 4 * kappa_s * sqrt(-alpha_s / 3)
-print(f"  EC false vacuum: r0 = {r0_sym}")
+print(f"  EC slice minimum: r0 = {r0_sym}")
 print()
 
 V0 = simplify(cancel(V_eff_lc_vac.subs(R_s, r0_sym)))
@@ -257,7 +257,7 @@ if mass_vals_at1:
     print(f"    {lightest} is the lightest mode in the homogeneous EFT (m^2={mass_vals_at1[lightest]:.4f} @ a=1)")
 else:
     print("    (lightest mode: not determinable)")
-print("    eta (AX torsion) is heavy => torsion stabilized at false vacuum")
+print("    eta (AX torsion) is heavy => torsion stabilized at the EC slice minimum")
 print("    spin-1 omega_0,1 remain massless; only omega_2 acquires a mass (1-axis mass splitting)")
 
 # ── Stability check ───────────────────────────────────────────────────────────
@@ -281,6 +281,6 @@ for name, m2 in masses:
         print(f"  {name}: evaluation error: {exc}")
 
 print()
-print(f"  EC false vacuum stability: {'STABLE (all m^2 > 0)' if all_stable else 'UNSTABLE'}")
+print(f"  EC slice-minimum stability: {'STABLE (all m^2 > 0)' if all_stable else 'UNSTABLE'}")
 
 teardown_log()

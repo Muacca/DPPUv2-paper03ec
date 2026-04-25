@@ -114,6 +114,6 @@ AX/VT Dropout Proof  -- Theorem 1
   vanishes when either V=0 (AX) or eta=0 (VT).
   Only mixed (MX) backgrounds activate the EC-Weyl coupling.
 
-Computation time: 3.6s
+Computation time: 1.1s
 
 *Script: scripts/proofs/ax_vt_dropout_proof.py

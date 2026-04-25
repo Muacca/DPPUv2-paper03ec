@@ -36,13 +36,13 @@ $$
 
 ---
 
-### B.2 Nil³×S¹ — EC false vacuum EFT
+### B.2 Nil³×S¹ — EC slice-minimum EFT
 
-**設定**: $Nil^3\times S^1$, EC false vacuum（ $\alpha = -a^2 < 0, \eta = V = 0$, $r_0 = 4\kappa a/\sqrt{3}$ ）。
+**設定**: $Nil^3\times S^1$, EC slice minimum（ $\alpha = -a^2 < 0, \eta = V = 0$, $r_0 = 4\kappa a/\sqrt{3}$ ）。
 
-ここで false vacuum は、homogeneous effective potential 上の局所極小を指す。
+この stationary point は $|\kappa^2\theta_{\rm NY}|<1$ で full homogeneous local minimum となる。以下では、spin-0 Hessian が diagonal block に戻る標準 benchmark $\theta_{\rm NY}=0$ の EFT を quoted expression として採用する。
 
-**False vacuum の同定**:
+**Slice minimum の同定**:
 
 $$
 r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|} = \frac{4\kappa a}{\sqrt{3}}, \qquad V_0 = V_{\rm eff}(r_0) = \frac{32\sqrt{3}\,\pi^4 La}{3\kappa} > 0.
@@ -75,7 +75,7 @@ $$
 
 （ $\delta r$ と $\delta\eta$ の交差項はゼロ: $\partial^2 V/\partial R\partial\eta|_{r_0,0} = 0$）
 
-[スクリプト: `paper03ec/nil3_false_vacuum_eft.py`, `paper03ec/nil3_spin2_quintet_splitting.py`]
+[スクリプト: `paper03ec/nil3_ec_slice_minimum_eft.py`, `paper03ec/nil3_spin2_quintet_splitting.py`]
 
 ---
 

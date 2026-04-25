@@ -80,6 +80,6 @@ Theorem 4 (Palatini Universality) Summary
     Only the effective potential structure (V_eff) changes with torsion mode.
     This is the 'Palatini universality' of the EC-Weyl extension.
 
-Computation time: 2.9s
+Computation time: 3.0s
 
 *Script: scripts/paper03ec/s3_vt_spin_masses.py

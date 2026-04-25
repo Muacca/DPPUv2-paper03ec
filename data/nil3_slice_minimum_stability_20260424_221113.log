@@ -1,0 +1,39 @@
+======================================================================
+Nil3 EC Slice-Minimum Stability Proof
+======================================================================
+
+Step 1: eta=V=0 slice potential
+----------------------------------------------------------------------
+  V_eff|_(eta=V=theta=0) = (12*pi**4*L*R**2 - 64*pi**4*L*alpha*kappa**2)/(3*R*kappa**2)
+  dV/dR = (12*pi**4*L*R**2 + 64*pi**4*L*alpha*kappa**2)/(3*R**2*kappa**2)
+  r0 = 4*sqrt(3)*kappa*sqrt(-alpha)/3
+  V0 = 32*sqrt(3)*pi**4*L*sqrt(-alpha)/(3*kappa)
+
+Step 2: full homogeneous Hessian at the slice stationary point
+----------------------------------------------------------------------
+  H_rr = 2*sqrt(3)*pi**4*L/(kappa**3*sqrt(-alpha))
+  H_(eta,eta) = 128*sqrt(3)*pi**4*L*sqrt(-alpha)/kappa
+  det H_(eta,V) = -262144*pi**8*L**2*alpha**2*(kappa**2*theta_NY - 1)*(kappa**2*theta_NY + 1)/9
+
+  Full local minimum criterion: H_rr > 0, H_(eta,eta) > 0, det H_(eta,V) > 0
+  => iff |kappa^2 * theta_NY| < 1
+     = 1 : marginal
+     > 1 : saddle
+  determinant closed-form match: PASS
+
+Step 3: numerical benchmark
+----------------------------------------------------------------------
+  theta_NY=+0.50: eigs=[  337.435  7792.118 26601.256]  => local minimum
+  theta_NY=+1.00: eigs=[1.489e-12 3.374e+02 3.439e+04]  => marginal
+  theta_NY=+1.20: eigs=[-3231.979   337.435 37625.352]  => saddle
+
+======================================================================
+Nil3 EC Slice-Minimum Stability Summary
+======================================================================
+  Slice-potential stationary point exists for alpha<0: PASS
+  Full Hessian criterion det H_(eta,V) ~ 1-(kappa^2 theta_NY)^2: PASS
+  Numerical benchmark (min / marginal / saddle): PASS
+
+Computation time: 0.6s
+
+*Script: scripts/proofs/nil3_slice_minimum_stability.py

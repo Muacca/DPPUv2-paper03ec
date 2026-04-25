@@ -76,7 +76,7 @@ $T^3$ では physical sector にも auxiliary sector にも、EC 由来の新し
 
 ### D.4 $Nil^3\times S^1$ の exact zero
 
-$Nil^3$ は background Weyl が非零であり、EC false vacuum と spin-2/spin-1 の方向依存分裂を生む唯一のトポロジーである。それにもかかわらず、formal MIXING sector では
+$Nil^3$ は background Weyl が非零であり、EC slice minimum と spin-2/spin-1 の方向依存分裂を生む唯一のトポロジーである。それにもかかわらず、formal MIXING sector では
 
 $$
 \left.

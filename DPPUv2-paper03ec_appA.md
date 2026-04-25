@@ -152,7 +152,8 @@ $$
 | T³ MX 真空探索 | `script/scripts/paper03ec/t3_mx_vacuum_search.py` |
 | S³ MX 停留点探索 | `script/scripts/paper03ec/s3_mx_vacuum_search.py` |
 | Nil³ MX 停留点探索 | `script/scripts/paper03ec/nil3_mx_vacuum_search.py` |
-| Nil³ EFT at EC false vacuum | `script/scripts/paper03ec/nil3_false_vacuum_eft.py` |
+| Nil³ EFT at EC slice minimum (`\theta_{\rm NY}=0` benchmark) | `script/scripts/paper03ec/nil3_ec_slice_minimum_eft.py` |
+| Nil³ slice-minimum stability (`\|\kappa^2\theta_{\rm NY}\|<1`) | `script/scripts/proofs/nil3_slice_minimum_stability.py` |
 | S³ VT spin-2/1 質量 | `script/scripts/paper03ec/s3_vt_spin_masses.py` |
 | Nil³ quintet 分裂 | `script/scripts/paper03ec/nil3_spin2_quintet_splitting.py` |
 | ε-s cross-term 3 トポロジー比較 | `script/scripts/paper03ec/squash_shear_cross_term.py` |
@@ -175,4 +176,5 @@ $$
 7. 体積保存性: $S^3, Nil^3$ の squash+shear で $\det = 1$（SymPy）。
 8. cross-term 起源確認: $\partial^2 V/\partial\varepsilon\partial s$ の $\alpha$ 依存性検証（ $T^3$ : 独立, $Nil^3$ : $\alpha$ 依存）。
 9. S³ MX 停留点探索: 辞書対象範囲では Hessian 正定値の full stationary vacuum が存在しない。
-10. Nil³ MX 停留点探索: $\alpha<0$ 分枝では $V\eta\neq 0$ を満たす実数停留点が存在せず、残る局所極小は $\eta=V=0$ false vacuum のみ。
+10. Nil³ slice stationary point: full homogeneous Hessian は $|\kappa^2\theta_{\rm NY}|<1$ で正定値、 $=1$ で marginal、 $>1$ で saddle（SymPy exact; `nil3_slice_minimum_stability.py`）。
+11. Nil³ MX 停留点探索: $\theta_{\rm NY}=0$ では $\alpha<0$ 分枝に $V\eta\neq 0$ を満たす実数停留点が存在しない。非零 $\theta_{\rm NY}$ についても sampled root search では辞書範囲内に安定な MX 点は見つからない。

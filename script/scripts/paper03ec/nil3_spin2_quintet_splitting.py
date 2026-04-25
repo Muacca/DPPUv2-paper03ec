@@ -5,7 +5,7 @@ Nil3 Spin-2 Quintet Splitting (Theorem 7)
 Computes the Nil3 x S1 spin-2 quintet splitting pattern under EC-Weyl.
 The 5-plet of spin-2 perturbations (eps, s, q3, q4, q5) splits as:
   LC (isotropic): 5-plet (degenerate, like S3 SO(3) symmetry)
-  EC false vacuum: 0 + 2 + 1 + 1 (split by C^2_01 = 1/R asymmetry)
+  EC slice minimum: 0 + 2 + 1 + 1 (split by C^2_01 = 1/R asymmetry)
 
 Specifically:
   q3 = 0 (zero mode): hyperbolic rotation in (e0, e1) plane preserves C^2_01
@@ -16,7 +16,7 @@ squash-shear 2x2 mass matrix:
   M = [[d2V/deps2, d2V/deps_ds],
        [d2V/deps_ds, d2V/ds2]]
 
-at the Nil3 EC false vacuum (r0 = (4*kappa/sqrt(3))*sqrt(|alpha|), eta=0).
+at the Nil3 EC slice minimum (r0 = (4*kappa/sqrt(3))*sqrt(|alpha|), eta=0).
 
 Note: off-diagonal DOFs (q3, q4, q5) require enable_offdiag_shear=True,
 which may not be implemented. The script handles both cases gracefully.
@@ -95,7 +95,7 @@ V_eff_shear = eng_shear.data['potential']
 # ── Step 2: 2x2 squash-shear mass matrix ─────────────────────────────────────
 print()
 print("-" * 70)
-print("Step 2: Spin-2 squash-shear 2x2 mass matrix at Nil3 false vacuum")
+print("Step 2: Spin-2 squash-shear 2x2 mass matrix at Nil3 EC slice minimum")
 print("-" * 70)
 print()
 
@@ -128,7 +128,7 @@ tr_M  = cancel(M_spin2.trace())
 print(f"\n  det(M) = {det_M}")
 print(f"  tr(M)  = {tr_M}")
 
-# Numerical evaluation at EC false vacuum: r0 = 4*kappa/sqrt(3), a=kappa=L=1, eta=0
+# Numerical evaluation at EC slice minimum: r0 = 4*kappa/sqrt(3), a=kappa=L=1, eta=0
 r0_num    = float(4 / sqrt(3))
 kappa_num = 1.0
 L_num     = 1.0
@@ -162,7 +162,7 @@ if disc_num >= 0:
     print(f"    lambda_+ = {lam_p:.6e}")
     print(f"    lambda_- = {lam_m:.6e}")
     if lam_p > 0 and lam_m > 0:
-        print("    Both eigenvalues > 0: false vacuum STABLE in squash+shear")
+        print("    Both eigenvalues > 0: EC slice minimum STABLE in squash+shear")
         mass_stable = True
     elif lam_m < 0:
         print("    WARNING: shear direction has tachyon (lambda_- < 0)")
@@ -277,7 +277,7 @@ print("=" * 70)
 print("Nil3 Spin-2 Quintet Splitting Summary (Theorem 7)")
 print("=" * 70)
 print()
-print("  At the Nil3 EC false vacuum (r0 = 4*kappa/sqrt(3)*sqrt(|alpha|), eta=0):")
+print("  At the Nil3 EC slice minimum (r0 = 4*kappa/sqrt(3)*sqrt(|alpha|), eta=0):")
 print()
 
 if disc_num >= 0:
@@ -302,7 +302,7 @@ else:
 print()
 print("  Splitting pattern (Theorem 7):")
 print("    LC isotropic: 5-plet (approximate degeneracy)")
-print("    EC false vacuum: 0 + 2 + 1 + 1 (broken by C^2_01 = 1/R direction)")
+print("    EC slice minimum: 0 + 2 + 1 + 1 (broken by C^2_01 = 1/R direction)")
 print()
 print("  Contrast with S3:")
 print("    S3: SO(3) exact 5-plet degeneracy")

@@ -78,6 +78,7 @@ PROOFS_SCRIPTS=(
     proofs/t3_flatness_null_test.py
     proofs/palatini_protection_proof.py
     proofs/gamma_scaling_proof.py
+    proofs/nil3_slice_minimum_stability.py
 )
 
 # paper03ec scripts: mode dictionaries, EFT, comparisons (heavier computation)
@@ -85,7 +86,7 @@ PAPER03EC_SCRIPTS=(
     paper03ec/t3_mode_dictionary.py
     paper03ec/nil3_mode_dictionary.py
     paper03ec/s3_vt_spin_masses.py
-    paper03ec/nil3_false_vacuum_eft.py
+    paper03ec/nil3_ec_slice_minimum_eft.py
     paper03ec/nil3_spin2_quintet_splitting.py
     paper03ec/ec_cubic_vertex.py
     paper03ec/squash_shear_cross_term.py
