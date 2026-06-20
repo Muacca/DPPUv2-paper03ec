@@ -320,7 +320,7 @@ $$
 X_k = \frac{-2\omega_k + 3\delta_k}{\sqrt{13}},
 $$
 
-一般化固有値 $\lambda_{\rm phys} \approx 4.19 > 0$（3 重縮退、SO(3) 対称）。
+一般化固有値 $\lambda_{\rm phys} \approx -0.4183 < 0$（3 重縮退、SO(3) 対称、タキオン的・非ゴースト）。ここで $H_{\rm phys}$ は auxiliary 消去前の Hessian ブロックであり、物理的な有効質量²は Schur 補 $H_{\rm eff} = H_{XX} - H_{XY}^2/H_{YY}$ を用いて $\lambda_{\rm phys} = H_{\rm eff}/G_{XX} \approx -0.4183 < 0$ と得られる。消去前の比 $H_{\rm phys}/G_{\rm phys} \approx 4.19$ は射影前の Rayleigh 商であり、物理的な固有値ではない。
 
 ### 12.4 一般化固有値問題
 
@@ -333,10 +333,10 @@ $$
 手順：
 1. $H$（$V_{\rm eff}$ の $(\omega_k, \delta_k)$ に関する 6×6 Hessian）を有限差分で計算。
 2. $G$（6×6 field-space metric）を velocity-mode engine（`enable_velocity=True`）で計算。
-3. $G$ の null 方向 $Y_k$ を同定し、直交補空間に射影。
-4. 3D 物理部分空間で $H_{\rm phys} v = \lambda_{\rm phys} G_{\rm phys} v$ を解く。
+3. $G$ の null 方向 $Y_k$ を同定する：これは second-class な non-dynamical auxiliary（$G_{YY}=0$, $H_{\rm null}\approx 894.85>0$, $H_{XY}\neq 0$）。
+4. $Y_k$ を代数 EOM で消去（Schur 補）：物理的有効 Hessian は $H_{\rm eff} = H_{XX} - H_{XY}^2/H_{\rm null}$、物理固有値は $\lambda_{\rm phys} = H_{\rm eff}/G_{XX} \approx -0.4183 < 0$。$Y_k$ の素朴な直交補空間へ射影すると消去前の Rayleigh 商 $\approx 4.19$ が出るが、これは rank 落ちペンシルの有限一般化固有値ではない。
 
-> **注意**：$H$ の 6×6 問題で出る負固有値は $G$ の null 方向に乗っており、伝播しない。タキオンではない。
+> **注意（訂正済み, Paper III v2）**：負の有限固有値は $G$ の null 方向に限定されない。auxiliary $Y_k$ を Schur 消去した後の伝播モード $X_k$ は $\lambda_{\rm phys}\approx -0.4183<0$ かつ kinetic norm 正であり、タキオン的（非ゴースト）な spin-1 不安定性である。
 
 ---
 

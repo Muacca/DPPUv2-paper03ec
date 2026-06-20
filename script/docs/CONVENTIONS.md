@@ -316,7 +316,7 @@ $$
 X_k = \frac{-2\omega_k + 3\delta_k}{\sqrt{13}},
 $$
 
-with generalized eigenvalue $\lambda_{\rm phys} = H_{\rm phys}/G_{\rm phys} \approx 4.19 > 0$ (3-fold degenerate, SO(3)-symmetric).
+with generalized eigenvalue $\lambda_{\rm phys} \approx -0.4183 < 0$ (3-fold degenerate, SO(3)-symmetric, tachyonic non-ghost). Here $H_{\rm phys}$ denotes the Hessian block before auxiliary elimination; the correct effective mass is obtained via the Schur complement $H_{\rm eff} = H_{XX} - H_{XY}^2/H_{YY}$, giving $\lambda_{\rm phys} = H_{\rm eff}/G_{XX} \approx -0.4183 < 0$. The naive ratio $H_{\rm phys}/G_{\rm phys} \approx 4.19$ is the pre-elimination Rayleigh quotient and does not give the physical eigenvalue.
 
 ### 12.4 Generalized Eigenvalue Problem
 
@@ -329,10 +329,10 @@ $$
 Procedure:
 1. Compute $H$ (6×6 Hessian of $V_{\rm eff}$ with respect to $(\omega_k, \delta_k)$) by finite differences.
 2. Compute $G$ (6×6 field-space metric) via the velocity-mode engine (`enable_velocity=True`).
-3. Identify the null direction $Y_k$ of $G$; project $H$ and $G$ onto the orthogonal complement.
-4. Solve $H_{\rm phys} v = \lambda_{\rm phys} G_{\rm phys} v$ in the 3D physical subspace.
+3. Identify the null direction $Y_k$ of $G$: it is a second-class non-dynamical auxiliary ($G_{YY}=0$, $H_{\rm null}\approx 894.85>0$, $H_{XY}\neq 0$).
+4. Eliminate $Y_k$ by its algebraic equation of motion (Schur complement): the physical effective Hessian is $H_{\rm eff} = H_{XX} - H_{XY}^2/H_{\rm null}$ and the physical eigenvalue is $\lambda_{\rm phys} = H_{\rm eff}/G_{XX} \approx -0.4183 < 0$. Projecting $H,G$ onto the naive orthogonal complement of $Y_k$ instead yields the pre-Schur Rayleigh quotient $\approx 4.19$, which is **not** a finite generalized eigenvalue of the rank-deficient pencil.
 
-> **Note**: The negative eigenvalue of $H$ in the full 6×6 problem lies in the null direction of $G$ and is non-propagating. It does **not** indicate a tachyon.
+> **Note (corrected, Paper III v2)**: The negative finite eigenvalue is **not** confined to the null direction of $G$. After Schur-eliminating the auxiliary $Y_k$, the propagating physical mode $X_k$ has $\lambda_{\rm phys}\approx -0.4183<0$ with positive kinetic norm: it **is** a tachyonic (non-ghost) spin-1 instability.
 
 ---
 

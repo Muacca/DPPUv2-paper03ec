@@ -20,6 +20,8 @@ $$m^2_{\omega_k}(S^3) = \frac{16\pi^2 L^3}{\kappa^2 r}, \quad k = 0, 1, 2.$$
 
 AX 背景での $m^2_{\omega}$ と VT 背景での $m^2_{\omega}$ は完全に一致する（比率 $= 1.000000$）。
 
+**注（physical spin-1 モードとの関係）**: ここで $m^2_{\omega_k}=16\pi^2 L^3/(\kappa^2 r)$ は twist 方向 $\omega_k$ の有効ポテンシャル Hessian ${\partial}^{2} {V}\_{\rm eff}/{\partial}{\omega}\_{k}^{2}|\_{0}$（kinematic 量）であり、Palatini 普遍性（AX=VT）と 3 トポロジー比較の指標として用いる。これは spin-1 の full な physical 固有値そのものではない。twist $\omega$ と mixing $\delta$ が結合し field-space metric が rank 落ちする full な spin-1 系では、auxiliary を Schur 消去した physical mode は負の有効質量²（タキオン的・非ゴースト）をとる（paper03 §5）。本節の $m^2_{\omega_k}$ は背景非依存性（定理 4）とトポロジー比較のための kinematic 指標であり、この点は定理 4・比較結果の結論に影響しない。
+
 数値例（ $r=3, L=\kappa=1, \alpha=0$ ）:
 - spin-2: $m^2 = 128\pi^2 \approx 1263.3$（VT は AX と同値）
 - spin-1: $m^2 = 16\pi^2/3 \approx 52.6$（VT は AX と同値）
