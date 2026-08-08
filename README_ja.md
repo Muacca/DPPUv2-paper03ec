@@ -1,5 +1,7 @@
 # Einstein-Cartan + Nieh-Yan 理論における均質 3 トポロジー比較とモード辞書：EC-Weyl 結合の幾何学的構造
 
+[10.5281/zenodo.19425147](https://doi.org/10.5281/zenodo.19425147)
+
 [English README](README.md)
 
 ## 論文内容

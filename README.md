@@ -1,5 +1,7 @@
 # Homogeneous Three-Topology Comparison and Mode Dictionary in Einstein-Cartan + Nieh-Yan Theory: Geometric Structure of EC-Weyl Coupling
 
+[10.5281/zenodo.19425147](https://doi.org/10.5281/zenodo.19425147)
+
 [日本語 README](README_ja.md)
 
 ## Paper Contents
