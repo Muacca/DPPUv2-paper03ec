@@ -1,154 +1,90 @@
-%==============================================================================
-% Section 4: Mode Dictionary: T^3 x S^1 under EC-Weyl
-%==============================================================================
-\section{Mode Dictionary: $\Tthree\times\Sone$ under EC--Weyl}
-\label{sec:t3}
+\section{Static transverse deformations}
 
-This section analyses the effect of the EC--Weyl coupling on the homogeneous
-geometric degrees of freedom of $\Tthree\times\Sone$.  The flatness of $\Tthree$
-($C^a_{bc}=0$) causes a triple triviality, and we establish Theorem~5
-(torsion--volume coupling) as the origin of the squash--shear cross-term.
+\subsection{Independent normalized shape directions}
 
-\subsection{$\Tthree$ Flatness Theorem}
-\label{sec:t3:flat}
+Use the Frobenius-orthonormal traceless symmetric basis $\mathrm{tr}(T_A T_B)=\delta_{AB}$ and the single exponential chart $M=\exp(\sum_Aq_AT_A)$:
 
-$\Tthree = \mathbb{R}^3/\mathbb{Z}^3$ is a flat torus with
-\begin{equation}
-  C^a_{bc}(\Tthree) = 0 \quad \forall\,a,b,c.
+\begin{equation}\tag{H-01}\label{eq:H-01}
+\begin{aligned}
+T_1&=\frac{\mathrm{diag}(1,1,-2)}{\sqrt6},\qquad
+T_2=\frac{\mathrm{diag}(1,-1,0)}{\sqrt2},\\
+T_3&=\frac{E_{01}+E_{10}}{\sqrt2},\quad
+T_4=\frac{E_{02}+E_{20}}{\sqrt2},\quad
+T_5=\frac{E_{12}+E_{21}}{\sqrt2}.
+\end{aligned}
 \end{equation}
-This flatness causes the Weyl tensor to vanish, setting all spin-2/spin-1
-masses to zero.
 
-\paragraph{Spin-2 mass (squash direction).}
-By exact SymPy computation,
-\begin{equation}
-  \frac{\partial^2 V}{\partial\varepsilon^2}\bigg|_{\varepsilon=0}
-  = 0 \quad \forall\,\eta, V, \alpha.
+Here $E_{ij}$ is the matrix unit. At fixed $r,L,\eta,V$, the aligned static torsion contribution is independent of $M$ in all three models. The shape derivatives therefore come from $-R_{\rm LC}/(2\kappa^2)-\alpha I_{\rm LC}$. For an arbitrary constant unimodular $M$, the spatial structure matrix is $N=r^{-1}M N_0M^{\mathsf T}$, where $N_0$ is respectively $4I$, $0$, or $-E_{22}$. This symmetric matrix can be diagonalized to the $n_i$ of Section 3, extending those identities to all five shape directions.
+
+For the round sphere, rotational invariance makes the Hessian a multiple of the identity in this basis. A one-direction calculation with $M=\mathrm{diag}(t,t,t^{-2})$, $t=\exp(q_1/\sqrt6)$, gives $R_{\rm LC}''(0)=-64/r^2$ and $I_{\rm LC}''(0)=4096/r^4$. Consequently,
+
+\begin{equation}\tag{H-02}\label{eq:H-02}
+\left.\nabla_qU_X\right|_{S^3,0}=0,\qquad
+\left.H^{\mathrm{shape}}_X\right|_{S^3,0}
+=\left(\frac{8\pi^2Lr}{\kappa^2}-\frac{1024\pi^2L\alpha}{r}\right)I_5.
 \end{equation}
-With $C^a_{bc}=0$, the Weyl tensor vanishes and no geometric mass term for spin-2
-arises.  Script: \texttt{paper03ec/t3\_mode\_dictionary.py}.
 
-\paragraph{Spin-2 mass (shear direction).}
-Similarly,
-\begin{equation}
-  \frac{\partial^2 V}{\partial s^2}\bigg|_{s=0}
-  = 0 \quad \forall\,\eta, V, \alpha
+For $\alpha=0$, $r=3$, $L=\kappa=1$, this is $24\pi^2I_5$, as in Paper III. Flat $T^3$ has zero shape gradient and Hessian on the entire constant volume-preserving family, including the aligned MX torsion term, which depends only on the fixed amplitudes and volume. A nonzero torsionful EC curvature on $T^3$ is compatible with these zero shape derivatives.
+
+\subsection{Nil: a nonstationary shape and five path coefficients}
+
+For Nil, $N=-(Me_2)(Me_2)^{\mathsf T}/r$ has rank one. Define $z=(M^{\mathsf T}M)_{22}>0$. Its only nonzero eigenvalue is $-z/r$, so $R_{\rm LC}=-z^2/(2r^2)$ and $I_{\rm LC}=4z^4/(3r^4)$. The full aligned static potential is
+
+\begin{equation}\tag{H-03}\label{eq:H-03}
+\begin{aligned}
+U_X&=Az^2+Bz^4+U_{\mathrm{tor},X},\\
+A&=\frac{c_{\mathrm{Nil}^3}Lr}{4\kappa^2},\qquad
+B=-\frac{4\alpha c_{\mathrm{Nil}^3}L}{3r},\\
+U_{\mathrm{tor},X}&=c_{\mathrm{Nil}^3}Lr^3
+\left[\frac{3\eta^2}{\kappa^2r^2}+\frac{V^2}{3\kappa^2}
+-\chi_X\frac{16\alpha\eta^2V^2}{3r^2}\right].
+\end{aligned}
 \end{equation}
-(SymPy exact zero; script: \texttt{proofs/t3\_flatness\_null\_test.py}).
 
-\paragraph{Spin-1 mass.}
-With $C^a_{bc}=0$, all spin-1 components are massless: $m^2_\omega = 0$.
+For $f(z)=Az^2+Bz^4$, let $f'=f'(1)=2A+4B$ and $f''=f''(1)=2A+12B$. Differentiating $z=(\exp(2\sum q_AT_A))_{22}$ gives the full five-direction result
 
-\subsection{Mode Dictionary Table ($\Tthree\times\Sone$)}
-\label{sec:t3:table}
-
-\begin{table}[H]
-\centering
-\small
-\begin{tabular}{lccc}
-\toprule
-Quantity & AX ($V=0,\,\eta\neq 0$) & VT ($\eta=0,\,V\neq 0$) & MX ($V\neq 0,\,\eta\neq 0$) \\
-\midrule
-$C^2_\EC$ & $=C^2_\LC=0$ & $=C^2_\LC=0$ & $16V^2\eta^2/(3r^2)$ \\
-AX/VT dropout & \checkmark & \checkmark & $\times$ \\
-spin-0: $r$ & propagating & propagating & propagating \\
-spin-0: $\eta,V$ & $\eta$ non-prop., $V=0$ & $\eta=0$, $V$ non-prop. & both non-prop. \\
-spin-2 mass $\mu^2$ & $0$ ($\Tthree$ flatness) & $0$ ($\Tthree$ flatness) & $0$ ($\Tthree$ flatness) \\
-spin-1 mass $m^2_\omega$ & $0$ (massless) & $0$ & $0$ \\
-\bottomrule
-\end{tabular}
-\caption{$\Tthree\times\Sone$ mode dictionary under EC--Weyl.}
-\label{tab:t3}
-\end{table}
-
-\subsection{Triple Triviality of $\Tthree$}
-\label{sec:t3:triple}
-
-The effect of the EC--Weyl coupling in $\Tthree\times\Sone$ is trivial in three
-senses.
-
-\paragraph{(i) AX dropout.}
-From $C^a_{bc}=0$ we get $C^2_\LC=0$; Theorem~\ref{thm:dropout} (AX dropout)
-then gives $C^2_\EC = C^2_\LC = 0$.  The coupling $\alpha$ does not modify the
-effective potential in the AX background.
-
-\paragraph{(ii) VT dropout.}
-Similarly, $\eta=0$ gives Theorem~\ref{thm:dropout} (VT dropout) and
-$C^2_\EC=0$.  In the VT background too, $\alpha$ is inactive.
-
-\paragraph{(iii) MX correction.}
-In the MX background ($V\eta\neq 0$) where AX/VT dropout does not apply,
-$C^2_\EC = 16V^2\eta^2/(3r^2)\neq 0$.  For $\alpha<0$ this correction gives
-$\Delta\Veff^\EC > 0$, pushing the potential upward.  Whether a finite MX
-critical point exists is examined algebraically in \S\ref{sec:t3:mx}.
-
-The auxiliary EFT coefficient is also
-\begin{equation}
-  C_\delta(\Tthree) = 0,
-  \qquad
-  \frac{\partial C_\delta(\Tthree)}{\partial\alpha} = 0
+\begin{equation}\tag{H-04}\label{eq:H-04}
+\begin{aligned}
+\left.\nabla_qU_X\right|_0
+&=\left(-\frac{4f'}{\sqrt6},0,0,0,0\right),\\
+\left.H^{\mathrm{shape}}_X\right|_0
+&=\mathrm{diag}\left(\frac{32A+128B}{3},0,0,4A+8B,4A+8B\right).
+\end{aligned}
 \end{equation}
-(Theorem~\ref{thm:delta}, Appendix~\ref{app:D}).  Hence in $\Tthree$, neither
-the physical sector nor the auxiliary sector develops a new homogeneous cubic
-channel from the EC extension.
 
-\subsection{Theorem~5: Torsion--Volume Coupling}
-\label{sec:t3:thm5}
+The off-diagonal entries of this five-dimensional Hessian vanish at the chart origin. At $\alpha=-\beta<0$ and $\eta=V=0$, Paper II's radial slice critical point is $r_*=4\kappa\sqrt{\beta/3}$, where $A=B>0$. Evaluating the derivatives transverse to that radius slice gives
 
-\begin{theorem}[Torsion--volume coupling]\label{thm:tvol}
-  In $\Tthree\times\Sone$, the mixed second derivative of the squash and shear
-  parameters satisfies
-  \begin{equation}
-    \frac{\partial^2\Veff}{\partial\varepsilon\,\partial s}\bigg|_{\varepsilon=s=0}
-    = \frac{48\pi^4 L\eta^2 r}{\kappa^2} \neq 0 \quad (\eta\neq 0).
-  \end{equation}
-  The origin of this cross-term is the kinematic mixing of the volume element
-  $(1+\varepsilon)(1+s)$, independent of the Weyl mass.
-\end{theorem}
-
-\begin{proof}[Proof outline]
-  The effective potential of $\Tthree$ takes the form (AX background, $V=0$):
-  \begin{equation}
-    V_\mathrm{eff}^{T^3}(\varepsilon,s)
-    \supset \frac{16\pi^4 Lr}{\kappa^2}\cdot 9\eta^2\cdot(1+\varepsilon)(1+s)
-    + \cdots
-  \end{equation}
-  (with $C^a_{bc}=0$ the Weyl contribution is absent, and the torsion kinetic
-  term $\propto\eta^2$ is multiplied by the volume factor $(1+\varepsilon)(1+s)$).
-  The mixed derivative yields:
-  \begin{equation}
-    \frac{\partial^2 V_\mathrm{eff}^{T^3}}{\partial\varepsilon\,\partial s}
-    \bigg|_{\varepsilon=s=0}
-    = \frac{16\pi^4 Lr}{\kappa^2}\cdot 9\eta^2\cdot 1
-    = \frac{48\pi^4 L\eta^2 r}{\kappa^2}.
-  \end{equation}
-
-  \textit{Confirmation that this is not a Weyl mass.}  In the AX background
-  ($V=0$), $C^a_{bc}=0$ gives $C^2_\LC=0$, and Theorem~\ref{thm:dropout} (AX
-  dropout) gives $C^2_\EC = 0$, so this cross-term is $\alpha$-independent and
-  carries no Weyl-mass contribution.  Numerical check (AX background): the
-  cross-term value is identical for $\alpha=0$ and $\alpha=-1$ (SymPy exact).
-  In the MX background ($V\neq 0$), $\alpha$-dependent terms join the
-  cross-term via $C^2_\EC=16V^2\eta^2/(3r^2)\neq 0$, but the spin-2 null test
-  ($\partial^2 V/\partial\varepsilon^2=0$, $\partial^2 V/\partial s^2=0$)
-  continues to hold (because $C^2_\EC$ is independent of $\varepsilon,s$).
-  Scripts: \texttt{proofs/t3\_flatness\_null\_test.py},
-  \texttt{paper03ec/squash\_shear\_cross\_term.py}.
-\end{proof}
-
-\subsection{Absence of MX Critical Points}
-\label{sec:t3:mx}
-
-We examine critical points of the $\Tthree$ MX sector for $\alpha<0$.
-Solving $\partial\Veff/\partial\eta = \partial\Veff/\partial V = 0$ symbolically
-by SymPy, the MX solution is
-\begin{equation}
-  V^* = \pm\frac{3}{4}\sqrt{\frac{1}{\alpha}},
-  \qquad
-  \eta^* = \pm\frac{r}{4}\sqrt{\frac{1}{\alpha}},
+\begin{equation}\tag{H-05}\label{eq:H-05}
+\begin{aligned}
+\partial_rU_X&=0,\qquad \partial_LU_X=\frac{2A}{L},\qquad
+\partial_\eta U_X=\partial_VU_X=0,\\
+\nabla_qU_X&=(-4\sqrt6 A,0,0,0,0),\qquad
+\nabla_\omega U_X=\nabla_\delta U_X=0,\\
+H^{\mathrm{shape}}_X&=A\,\mathrm{diag}\left(\frac{160}{3},0,0,12,12\right).
+\end{aligned}
 \end{equation}
-which is purely imaginary for $\alpha<0$ (no real solution).  Therefore
-\textbf{no finite real MX critical point exists in $\Tthree$ for $\alpha<0$}.
-This is consistent with the analysis in \S\ref{sec:t3:triple} that the MX
-correction pushes the potential upward, giving no new homogeneous local minimum
-in the MX sector of $\Tthree$.  Script: \texttt{paper03ec/t3\_mx\_vacuum\_search.py}.
+
+The nonzero shape and circumference derivatives make this point stationary only on the radius slice. Its shape second derivatives consist of two zero entries, a twofold equal pair, and one remaining entry in the specified exponential chart. The $T_2$ and $T_3$ exponentials stay entirely in the determinant-one $0$--$1$ block and keep $z=1$ exactly, giving two exactly flat paths. Appendix E uses the integral harmonic-form lattice to distinguish compact metrics on these paths and identifies discrete sign reversals.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\textwidth]{figures/nil_shape_paths.png}
+\caption{Nil shape paths and their derivatives, with $A=B=1$ and zero torsion. The $T_1$ first derivative is nonzero at the reference point. The bars show first and second derivatives in the exponential chart (H-01). The two flat curves coincide exactly.}
+\label{fig:nil_shape_paths}
+\end{figure}
+
+\subsection{Static twist coefficients}
+
+In a diagonal spatial frame write $e^3\mapsto e^3+w_i e^i$. Then $C^3{}_{jk}=\sum_iw_i C^i{}_{jk}$, while $C^i{}_{jk}$ is unchanged. On this constant-twist family the tensor identity $W_{\rm EC}=W_{\rm LC}$ and $I_2=I_3=8h^2V^2/3$ hold exactly. Hence the additional sectors have no twist derivatives in this family. For an undeformed spatial coframe, $w_i=L\omega_i/r$. At $\omega=0$ the first derivative vanishes and all three actions have
+
+\begin{equation}\tag{H-06}\label{eq:H-06}
+\begin{aligned}
+H^{\omega}_{S^3}&=\frac{2\pi^2L^3}{\kappa^2r}I_3,\qquad H^{\omega}_{T^3}=0,\\
+H^{\omega}_{\mathrm{Nil}^3}&=\mathrm{diag}\left(0,0,
+\frac{c_{\mathrm{Nil}^3}L^3}{2\kappa^2r}
+-\frac{16\alpha c_{\mathrm{Nil}^3}L^3}{3r^3}\right).
+\end{aligned}
+\end{equation}
+
+The LC-Weyl twist Hessian is zero at round $S^3$; its invariant can start at higher order. Nil selects the noncommutative direction, whereas constant torus twists leave the local curvature invariants unchanged. These coefficients measure static directional costs. For the derivative terms, Paper III finds a vanishing quadratic twist velocity term at zero twist when $\alpha=0$, and Section 6 evaluates a coupled shape--twist family at nonzero coupling.
+
+For completeness, at $q=\omega=\delta=\eta=V=0$ the round-sphere background has $\partial_rU=-12c_{S^3}L/\kappa^2$ and $\partial_LU=-12c_{S^3}r/\kappa^2$. The round-sphere coefficients above are therefore coefficients along the displayed directions at a point with nonzero radius and circumference derivatives. At the torsion-free flat-torus point the displayed restricted potential and its first derivatives vanish.

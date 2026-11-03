@@ -1,103 +1,90 @@
-## 6. Three-topology comparison
+# 6. 周期的なshapeとtwistの連成
 
-本節では §3–5 の成果を統合し、 $S^3\times S^1$、 $T^3\times S^1$、 $Nil^3\times S^1$ の 3 トポロジーにわたる系統的比較を行う。主結果は **定理 9（ε-s cross-term 分類）** であり、 $\gamma = 1/2$ スケーリング定理と共形平坦性定理がこれを補完する。
+## 6.1 metric微分を含む曲率成分
 
-### 6.1 Table 4: 3 トポロジー比較サマリー
+$`S^3\times S^1`$ 上で $`r,L,\eta,V`$ を固定し、 $`h=\eta/r`$ 、torsion軸をframeの第3方向に整列させる。次のcoframeを使い、周波数系列にはPaper03の非退化な族(X4)を採用する。
 
-**Table 4: $S^3$, $T^3$, $Nil^3$ の EC-Weyl 下での比較**
-
-| 物理量 | $T^3\times S^1$ | $Nil^3\times S^1$ | $S^3\times S^1$ |
-|---|---|---|---|
-| **$\eta=V=0$ 断面での EC slice minimum（ $\alpha<0$ ）** | なし | **あり（新出現）** | なし |
-| **$C^2_{\rm LC}$（ $\eta=V=0$ ）** | $0$（平坦） | **$4/(3R^4) \neq 0$** | $0$（共形平坦） |
-| **共形平坦性** | ✓（平坦） | ✗（**非共形平坦**） | ✓（共形平坦） |
-| **Palatini 保護** | ✓ | ✓ | ✓ |
-| **spin-2 構造（AX 背景）** | $0$（平坦性） | 非零質量 | $128\pi^2 Lr/(3\kappa^2) - 16384\pi^2 L\alpha/(3r)$（5 重縮退） |
-| **spin-1 構造** | 全成分 質量ゼロ | **1 軸質量分裂**（ $\omega_2$ のみ） | 3 重縮退 |
-| **$\gamma_{\rm EC}$** | — | **$1/2$（厳密）** | — |
-| **ε-s cross-term** | kinematic | curvature/Weyl | $0$（消滅） |
-
-### 6.2 定理 9 (ε-s cross-term 分類)
-
-**定理 9 (ε-s cross-term 分類)**: squash パラメータ $\varepsilon$ と shear パラメータ $s$ の混合 2 次微分 $\partial^2 V/\partial\varepsilon\partial s\big|_{\varepsilon=s=0}$ は、3 トポロジーで本質的に異なる起源を持つ：
-
-| トポロジー | $\partial^2 V/\partial\varepsilon\partial s$ | 起源 | 体積保存 |
-|---|---|---|---|
-| $T^3$ | $48\pi^4 L\eta^2 r/\kappa^2 \neq 0$ | **純 kinematic**（体積非保存） | ✗ |
-| $Nil^3$ | $(384\pi^4 LR^2 - 8192\pi^4 L\alpha\kappa^2)/(9R\kappa^2) \neq 0$ | **純 curvature/Weyl** | ✓ |
-| $S^3$ | $0$（SymPy exact） | 消滅（体積保存 $+$ $s\to -s$ 対称性） | ✓ |
-
-
-**証明の概略**: 詳細な式展開は [Appendix C](paper03ec_appC.md) に譲る。本文で必要な論点は次の 3 点である。
-
-- $T^3$ では体積因子 $(1+\varepsilon)(1+s)$ が非自明であり、 $C^a_{bc}=0$ にもかかわらず純粋に kinematic な cross-term が生じる（定理 5, App. C.2）。
-- $Nil^3$ では体積保存は成り立つが、 $C^2_{01}$ の方向非対称性により $\alpha$ 依存の curvature/Weyl 起源 cross-term が残る（App. C.1.2, C.4）。
-- $S^3$ では体積保存に加えて $s\to -s$ 対称性があるため、cross-term は消滅する（App. C.1.1, C.3）。
-
-**物理的意味**: この分類は各トポロジーの幾何的性質（平坦性, 共形平坦性, 体積保存, 非可換構造）を squash-shear cross-term という観測量に直接写し込む。[スクリプト: `paper03ec/squash_shear_cross_term.py`]
-
-### 6.3 γ = 1/2 スケーリング定理
-
-**Fig. 3** $\gamma=1/2$ scaling $r_0 \propto \sqrt{|\alpha|}$
-![Fig. 3](LaTeX/figures/fig03_gamma_scaling.png)
-
-$Nil^3\times S^1$ の EC slice minimum のスケーリング指数を解析的に確定する。
-
-有効ポテンシャルが 2 項構造
+式(J-01)。
 
 $$
-V_{\rm eff} = A\cdot r^n + \alpha\cdot B\cdot r^m
+\begin{aligned}
+e^0&=rf\sigma^0,\quad e^1=rf^{-1}\sigma^1,\quad e^2=r\sigma^2,
+\quad e^3=L(\mathrm{d}y+w\sigma^0),\quad f=e^s,\\
+w_n(y)&=A\cos(2\pi ny),\qquad
+f_n^2=1-\frac{L^2w_n^2}{2r^2},\qquad
+0<A<\frac{\sqrt2r}{L},\quad n\ge1.
+\end{aligned}
 $$
 
-を持つ場合、一般的なスケーリング則は
+まず任意の滑らかな $`f(y)>0,w(y)`$ を許す。primeはy微分であり、第3節の物理円方向の微分とは区別する。coframeの一階・二階微分をCartan曲率に保持すると、次を得る。
+
+式(J-02)。
 
 $$
-r_0 \propto |\alpha|^{1/(n-m)}, \quad V^c \propto |\alpha|^{n/(n-m)}, \quad \gamma = \frac{n}{n-m}.
+\begin{aligned}
+W_{\mathrm{EC}}&=W_{\mathrm{LC}},\qquad
+R_{\mathrm{EC}}-R_{\mathrm{LC}}=-6h^2-\frac23V^2,\qquad\mathcal N=0,\\
+I_2&=\frac83h^2V^2+4h^2\left(\frac{(w')^2}{f^2r^2}+\frac{4(s')^2}{L^2}\right),
+\qquad I_3=\frac83h^2V^2.
+\end{aligned}
 $$
 
-$Nil^3$ では $n = 1$（LC 項の幂乗）, $m = -1$（EC 項の幂乗）であるから
+torsion依存部分はmetric曲率全体を展開せずにも求まる。 $`(\sigma^0,\sigma^1,\sigma^2,\mathrm{d}y)`$ に対するcoframe行列を $`A^a{}_{\mu}`$ とし、 $`B=A^{-1}`$ 、 $`b_a=B^y{}_a`$ 、 $`D=A'B`$ と置く。構造テンソルには静的部分に加えて微分部分 $`(C_{\partial})^a{}_{bc}=D^a{}_c b_b-D^a{}_b b_c`$ が現れる。この族では $`b=(-w/(rf),0,0,1/L)`$ であり、Dの非零成分は $`D_{00}=s'`$ 、 $`D_{11}=-s'`$ 、 $`D_{30}=Lw'/(rf)`$ となる。contortionのframe成分は一定である。これらを式(G-04)と曲率式(B-02)へ代入すると、torsionによる差のWeyl射影は零となる。その微分部分は追加9成分に属し、静的な混合部分と直交し、ノルムは $`4h^2[(w')^2/(f^2r^2)+4(s')^2/L^2]`$ となる。4形式部分は一定である。完全NYを構成する両縮約はともに $`-4hV`$ で、式(J-02)の局所的な相殺を与える。
+
+$`I_{\mathrm{tf}}-I_{\mathrm{LC}}`$ の定数項 $`16h^2V^2/3`$ はPaper02の静的結果である。変化する幾何からの追加寄与は式(J-02)の微分項であり、9成分部分だけが担う。
+
+## 6.2 周波数多項式と四次係数の厳密な正値性
+
+式(J-01)の係数関数を1を法とする基準位相nyで表す。構造係数と接続はnの一次、曲率は二次となる。位相反転に対して静的係数は偶、一階微分の係数は奇、二階微分の係数は偶であり、周期積分で奇数次が消える。次を定義する。
+
+式(J-03)。
 
 $$
-n - m = 2, \quad \gamma = \delta = \frac{1}{2} \quad (\text{代数的必然}).
+\begin{aligned}
+\mathcal R(n)&=\mathcal R_0+n\mathcal R_1+n^2\mathcal R_2,\\
+\int_0^1 I_{\mathrm{LC}}(n)\thinspace \mathrm{d}y&=Q_0+Q_2n^2+Q_4n^4,
+\qquad Q_4=\int_0^1\lVert\Pi_W\mathcal R_2\rVert^2\thinspace \mathrm{d}y,\\
+D_A&=4h^2\int_0^1\left(\frac{(w_1')^2}{f_1^2r^2}
++\frac{4(s_1')^2}{L^2}\right)\mathrm{d}y.
+\end{aligned}
 $$
 
-**$T^3$, $S^3$ への非適用性**: $T^3$ は平坦（ $C^2_{\rm LC} = 0$ ）、 $S^3$ は共形平坦（ $C^2_{\rm LC}({\eta=V=0}) = 0$ ）であるため、EC-Weyl 項 $\alpha \cdot C^2_{\rm EC}$ が $\eta=V=0$ 断面に寄与しない（§6.4 参照）。したがってこのスケーリング則は $Nil^3$ にのみ適用される。
+ここで $`\Pi_W`$ は付録AのWeyl射影である。式(J-03)の周波数係数 $`\mathcal R_2`$ は既約成分 $`R^{(2)}`$ と区別する。この係数は一定contortionに依存せず、LC Riemann曲率の対称性を持つため、三つの二乗不変量は同じ $`Q_4`$ を持つ。さらに、許された任意の固定非零振幅Aについて厳密に正となる。 $`y=1/4`$ では $`w_1=w_1''=s_1'=0`$ 、 $`s_1''=-L^2v^2/(2r^2)`$ となる。この点の $`\mathcal R_2`$ の独立な非零成分は $`(\mathcal R_2)_{0303}=(\mathcal R_2)_{1313}=-v^2/(2r^2)`$ のみであり、次が従う。
 
-[スクリプト: `proofs/gamma_scaling_proof.py`]
-
-### 6.4 共形平坦性と $\eta=V=0$ 断面の EC slice minimum
-
-3 トポロジーの EC 真空出現を統一的に説明する定理を述べる。
-
-**定理（3 トポロジーにおける共形平坦性と EC slice minimum）**:
+式(J-04)。
 
 $$
-C^2_{\rm LC}(\eta=V=0) = 0 \;\Longrightarrow\; \eta=V=0 \text{ 断面に EC slice minimum は現れない.}
+\left.\lVert\Pi_W\mathcal R_2\rVert^2\right|_{y=1/4}
+=\frac{v^4}{3r^4}=\frac{(2\pi A)^4}{3r^4}>0,
+\qquad v=w_1'(1/4)=-2\pi A.
 $$
 
-各トポロジーへの適用：
+$`Q_4`$ の被積分関数は非負かつ滑らかなので、式(J-04)から $`Q_4>0`$ が従う。これは選んだ振幅での数値確認に限られない。また $`D_A\ge0`$ であり、 $`h\ne0`$ なら厳密に正である。
 
-- **$T^3$（平坦）**: $C^2_{\rm LC} = 0$ により $\alpha$ は $V_{\rm eff}(\eta=V=0)$ を変えない。したがってこの断面上に EC slice minimum は現れない。
-- **$S^3$（共形平坦）**: $C^2_{\rm LC}(S^3, \eta=V=0) = 0$ であるため同様に EC slice minimum は現れない。
-- **$Nil^3$（非共形平坦）**: $C^2_{\rm LC}(Nil^3) = 4/(3R^4) \neq 0$ により $\alpha \cdot C^2_{\rm LC} \cdot \text{Vol} = -64\pi^4 L\alpha/(3r)$ が有効ポテンシャルに加わり、 $\alpha < 0$ で $\eta=V=0$ 断面の EC slice minimum が出現する（定理 6）。この点はさらに $|\kappa^2\theta_{\rm NY}|<1$ で full homogeneous local minimum になる。
+$`\overline U_A`$ を曲率二乗項を含まない静的EC作用の経路平均とし、スカラー微分係数 $`C_A`$ はPaper03から継承する。整数 $`n\ge1`$ に対する積分作用は厳密に次となる。
 
-**まとめ**: 本論文で扱った 3 トポロジーの中では、共形平坦な背景では $\eta=V=0$ 断面の EC-Weyl 補正が消え、非共形平坦な $Nil^3$ でのみ EC slice minimum が現れる。
+式(J-05)。
 
-### 6.5 AX/VT dropout の普遍性
+$$
+\begin{aligned}
+S_{\mathrm{LC}}(n)=S_{\mathrm W}(n)
+&=\overline U_A-C_A n^2-\alpha\mathcal V(Q_0+Q_2n^2+Q_4n^4),\\
+S_{\mathrm{tf}}(n)-S_{\mathrm W}(n)
+&=-\alpha\mathcal V\left(\frac{16}{3}h^2V^2+D_A n^2\right),\\
+C_A&=\frac{\pi^2L^3}{16\kappa^2r}
+\int_0^1\frac{w_1^2(w_1')^2}{f_1^4}\thinspace \mathrm{d}y>0,
+\qquad\mathcal V=\frac{\pi^2Lr^3}{4}.
+\end{aligned}
+$$
 
-定理 1 の AX/VT dropout は全 3 トポロジーで成立し、EC-Weyl 結合の幾何的影響を精密に局所化する。
+固定した非零振幅では、三作用の最高次項は共通して $`-\alpha\mathcal VQ_4n^4`$ となる。正のαでは負の無限大、負のαでは正の無限大へ向かう。零結合ではPaper03の $`\overline U_A-C_A n^2\to-\infty`$ に戻る。したがって負の結合は、この固定振幅系列における高周波の下降を除く。この評価は振幅 $`A`$ を固定した整数周波数の系列についてのものである。
 
-**普遍的帰結**: EC-Weyl 相互作用 $\alpha \cdot C^2_{\rm EC}$ の LC からの差異（新寄与）は、torsion の「混合積」 $V\times\eta \neq 0$ の MX 背景においてのみ顕在化する。AX 単独あるいは VT 単独の torsion では、いかなるトポロジーにおいても EC-Weyl 補正はゼロとなる。
+## 6.3 有限周波数での比較
 
-**物理的含意**: この選択則は EC 接続の代数的構造から来る普遍的な性質であり、特定のトポロジーに依存しない。torsion が単純（1 成分）な背景では、contortion の asymmetric な積み合わせが必要な Weyl 成分を活性化できないことを意味する。
+$`r=3`$ 、 $`L=\kappa=\eta=V=1`$ 、 $`A=0.5`$ では、 $`Q_0=0.0003213884274`$ 、 $`Q_2=0.01228429824`$ 、 $`Q_4=0.2062093292`$ 、 $`D_A=0.2462621564`$ となる。スカラー部分は $`\overline U_A=-44.0019357894`$ 、 $`C_A=0.06430979322`$ であり、零結合でPaper03を再現する。
 
-3 トポロジー比較における EC-Weyl 結合の効果は以下に集約される：
+$`\alpha=-10^{-4}`$ では、この固定振幅系列の正整数周波数についての最小値は三作用とも $`n=5`$ にある。LC-Weylと既約EC-Weyl作用は −44.7490306345（round参照 −44.4132198049）、Ricciトレース除去作用は −44.7040679354（同モデルのround参照 −44.4092719631）となる。正の四次成長と、有限周波数で参照配置より低い作用を取ることは両立する。いずれも指定した族(J-01)に沿った作用の比較である。
 
-| 状況 | EC の効果 | 3 トポロジー共通 |
-|---|---|---|
-| AX 背景 | $C^2_{\rm EC} = C^2_{\rm LC}$, EC-LC 差分ゼロ | ✓ |
-| VT 背景 | $C^2_{\rm EC} = C^2_{\rm LC}$, EC-LC 差分ゼロ | ✓ |
-| MX 背景（ $T^3, S^3$ ） | EC 補正あり（ $16V^2\eta^2/3r^2$ ）、しかし安定化なし | — |
-| $\eta=V=0$ 断面（ $Nil^3$, $\alpha<0$ ） | 非共形平坦な LC 背景により **EC slice minimum 出現** | — |
+![coupled_profiles](LaTeX/figures/coupled_profiles.png)
 
-この 4 分類が本論文の EC-Weyl 結合の物理的全体像を与える。
+式(J-01)の連成profile。 $`r=3`$ 、 $`L=\kappa=\eta=V=1`$ 、 $`A=0.5`$ 。左： $`\alpha=-10^{-4},0,10^{-4}`$ のLC-Weyl・既約EC-Weyl作用とround参照との差。右： $`\alpha=-10^{-4}`$ のRicciトレース除去作用の追加分を、既知の定数混合項と9成分の微分項へ分離。周波数は正整数である。

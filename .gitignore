@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+LaTeX/*.aux
+LaTeX/*.log
+LaTeX/*.out
+LaTeX/*.toc
+LaTeX/main.pdf
+# Output folders created by the reproduction instructions and the notebook
+/recomputed/
+/rendered/
+/recomputed-notebook-*/

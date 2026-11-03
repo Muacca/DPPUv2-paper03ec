@@ -1,0 +1,70 @@
+{
+  "schema": "paper03ec.data.v2",
+  "paper_version": "v4",
+  "circle": {
+    "topology": "S3",
+    "r": 2,
+    "L": 1,
+    "profile": "h=0.30+0.15 sin(2 pi y); V=0.40+0.20 cos(2 pi y)",
+    "direction": "z=L*y",
+    "boundary": "smooth periodic"
+  },
+  "nil": {
+    "A": 1,
+    "B": 1,
+    "chart": "M=exp(q T_A), tr(T_A T_B)=delta_AB",
+    "meaning": "fixed-r,L path coefficients; not a stationary background or particle masses"
+  },
+  "coupled": {
+    "parameters": {
+      "amplitude": 0.5,
+      "r": 3.0,
+      "L": 1.0,
+      "eta": 1.0,
+      "V": 1.0
+    },
+    "kappa": 1,
+    "alphas": [
+      -0.0001,
+      0,
+      0.0001
+    ],
+    "profile": "w_n=A cos(2 pi n y), f_n^2=1-L^2 w_n^2/(2r^2)",
+    "quadrature_samples": 512,
+    "frequency_range": [
+      1,
+      16
+    ],
+    "meaning": "fixed-amplitude off-shell sequence; no global lower bound or physical stability claim"
+  },
+  "files": [
+    {
+      "name": "circle_profile.csv",
+      "sha256": "2bcdf8a4650c010ae2699d76e2ee45d716c82f26cfbc89a41fc7c3bb2fe107dd"
+    },
+    {
+      "name": "coupled_coefficients.json",
+      "sha256": "6419f192e9d758b337953492f04ca1d47927d5a71d408b7cb4b911aa7ba7e041"
+    },
+    {
+      "name": "coupled_profiles.csv",
+      "sha256": "f78989d5a22897d890c6c764d9499277b21ccfdd272c628d9ebb59747a4cc1ea"
+    },
+    {
+      "name": "exact_results.json",
+      "sha256": "e63eac8fd8e2f41a8737aff922b362a6ab0128c7b0abd1096666ba87ee30637b"
+    },
+    {
+      "name": "extension_results.json",
+      "sha256": "99dd7e4dbb058df429e61b01c9c196be437c2c5e328416eee9249771016e9533"
+    },
+    {
+      "name": "nil_coefficients.csv",
+      "sha256": "e6429e440a1c7cedac0e5232d3e172a0ef2d3ba49c66173e3a4ad00fe2678365"
+    },
+    {
+      "name": "nil_paths.csv",
+      "sha256": "d58529dc7c65c1690c0c3a7f835c928554e46f1c30ada98dc79042974d7c4a12"
+    }
+  ]
+}

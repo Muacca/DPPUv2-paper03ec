@@ -1,357 +1,101 @@
-%==============================================================================
-% Section 5: Mode Dictionary: Nil^3 x S^1 under EC-Weyl
-%==============================================================================
-\section{Mode Dictionary: $\Nilthree\times\Sone$ under EC--Weyl}
-\label{sec:nil3}
+\section{Torsion-axis orientation and interaction order}
 
-This section analyses in detail the effect of the EC--Weyl coupling on the
-homogeneous geometric degrees of freedom of $\Nilthree\times\Sone$.  Among the
-three topologies, $\Nilthree$ is the only non-conformally flat manifold, and
-this property generates---via the EC--Weyl coupling---an EC slice minimum
-(Theorem~6), a spin-2 quintet splitting (Theorem~7), and a uniaxial mass
-splitting (Theorem~8), all absent in LC.
+\subsection{The extra nine-component sector sees anisotropy}
 
-\subsection{Geometric Properties of $\Nilthree$}
-\label{sec:nil3:geom}
+Keep the product metric and the $n_i$ constant, set twist to zero, and let $u$ be a constant unit vector in the unrotated four-frame. Respecifying aligned torsion after a constant coframe rotation is equivalent to
 
-The geometry of $\Nilthree$ (the three-dimensional Heisenberg manifold) is
-characterised by a single non-zero structure constant:
-\begin{equation}
-  C^2_{01}(\Nilthree) = \frac{1}{R},
+\begin{equation}\tag{O-01}\label{eq:O-01}
+T^{\mathrm{AX}}_{abc}=2h\varepsilon_{abcd}u_d,\qquad
+T^{\mathrm{VT}}_{abc}=\frac{V}{3}(\delta_{ac}u_b-\delta_{ab}u_c),\qquad
+u_au_a=1.
 \end{equation}
-where $R$ is the scale parameter of $\Nilthree$.  We adopt the convention
-$[E_0,E_1] = (1/R)E_2$.  In the implementation, the Maurer--Cartan form
-$\dd\sigma^2 = -\sigma^0\wedge\sigma^1$ is used as the basis, so the frame
-coefficient is $C[2,0,1] = -(1+\varepsilon)^{-4/3}(1+s)^{-2}/R$.  Both
-expressions describe the same Heisenberg structure and differ only by a
-convention choice.  This single-component Lie structure is the source of the
-spin-2 quintet splitting and uniaxial mass splitting discussed below.
 
-\paragraph{Non-conformal flatness.}
-The background ($\eta=V=0$) Weyl scalar is
-\begin{equation}
-  C^2_\LC(\Nilthree,\,\eta=V=0) = \frac{4}{3R^4} \neq 0.
-\end{equation}
-This non-conformal flatness activates the EC--Weyl coupling $\alpha\cdot C^2_\EC$
-even on the $\eta=V=0$ section, generating the EC slice minimum
-(\S\ref{sec:nil3:ecslice}).
+The exact static result is
 
-The auxiliary cubic coefficient satisfies
-\begin{equation}
-  C_\delta(\Nilthree) = 0,
-  \qquad
-  \frac{\partial C_\delta(\Nilthree)}{\partial\alpha} = 0
-\end{equation}
-(Theorem~\ref{thm:delta}, Appendix~\ref{app:D}).  The EC-specific physics of
-$\Nilthree$ therefore appears in the background Weyl and the $(r,\eta,V)$
-sector, not as a new $\delta$-sector cubic channel.
-
-\subsection{Theorem~6: $\Nilthree$ EC Slice Minimum}
-\label{sec:nil3:ecslice}
-
-\begin{theorem}[$\Nilthree$ EC slice minimum]\label{thm:ecslice}
-  For $\alpha<0$, the homogeneous effective potential of $\Nilthree\times\Sone$
-  restricted to the $\eta=V=0$ section supports a positive EC-induced slice
-  minimum\textup{:}
-  \begin{equation}
-    r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|},
-    \qquad
-    V_0 = \frac{32\sqrt{3}\,\pi^4 La}{3\kappa} > 0,
-    \quad (\alpha = -a^2,\; a>0).
-  \end{equation}
-  Moreover, the stationary point $(r,\eta,V)=(r_0,0,0)$ is a local minimum of
-  the full homogeneous potential for $|\kappa^2\theta_\NY|<1$, marginal for
-  $|\kappa^2\theta_\NY|=1$, and a saddle for $|\kappa^2\theta_\NY|>1$.
-\end{theorem}
-
-\paragraph{Terminological note.}
-Earlier drafts referred to this point as a ``false vacuum.''  In the present
-revision we use ``EC slice minimum'' to emphasise that it is first identified
-on the $\eta=V=0$ section and that full homogeneous stability requires the
-explicit Hessian criterion stated above.
-
-\begin{proof}
-  By AX/VT dropout (Theorem~\ref{thm:dropout}), in the AX background ($V=0$)
-  and the VT background ($\eta=0$), $C^2_\EC = C^2_\LC$ holds, so the EC
-  extension does not shift the LC stationarity conditions.  (Since
-  $C^2_\LC(\Nilthree)\neq 0$, the $\alpha$-dependence through the LC--Weyl term
-  remains, but this is already present in LC.)
-
-  On the $\eta=V=0$ isotropic section, SymPy confirms the two-term structure:
-  \begin{equation}
-    \Veff^{Nil^3}(r,\,\eta=0,\,V=0;\,\alpha)
-    = \frac{4\pi^4 Lr}{\kappa^2} - \frac{64\pi^4 L\alpha}{3r}.
-  \end{equation}
-  The first term is the LC contribution (power $n=1$) and the second is the
-  EC--Weyl contribution (power $m=-1$).
-
-  The stationarity condition $\partial\Veff/\partial r=0$ gives
-  \begin{equation}
-    \frac{4\pi^4 L}{\kappa^2} + \frac{64\pi^4 L\alpha}{3r^2} = 0
-    \quad\Rightarrow\quad
-    r_0^2 = -\frac{16\alpha\kappa^2}{3} = \frac{16|\alpha|\kappa^2}{3},
-    \quad
-    r_0 = \frac{4\kappa}{\sqrt{3}}\sqrt{|\alpha|}.
-  \end{equation}
-  The vacuum energy is
-  \begin{equation}
-    V_0 = \Veff(r_0) = \frac{32\sqrt{3}\,\pi^4 La}{3\kappa} > 0
-    \quad (\alpha = -a^2 < 0),
-  \end{equation}
-  establishing a positive slice minimum.
-
-  Full homogeneous stability is decided by the Hessian at the stationary point:
-  \begin{equation}
-    H =
-    \left.\frac{\partial^2\Veff}{\partial(r,\eta,V)^2}\right|_{(r_0,0,0)}
-    =
-    \begin{pmatrix}
-      \dfrac{2\sqrt{3}\pi^4 L}{\kappa^3\sqrt{-\alpha}} & 0 & 0 \\[6pt]
-      0 & \dfrac{128\sqrt{3}\pi^4 L\sqrt{-\alpha}}{\kappa}
-        & -\dfrac{512\pi^4 L\alpha\kappa^2\theta_\NY}{3} \\[8pt]
-      0 & -\dfrac{512\pi^4 L\alpha\kappa^2\theta_\NY}{3}
-        & \dfrac{2048\sqrt{3}\pi^4 L\kappa(-\alpha)^{3/2}}{27}
-    \end{pmatrix}.
-  \end{equation}
-  The $r$-direction principal minor is always positive, while the remaining
-  $(\eta,V)$ block has determinant
-  \begin{equation}
-    \det H_{(\eta,V)}
-    = \frac{262144\pi^8L^2\alpha^2}{9}
-      \left(1-\kappa^4\theta_\NY^2\right).
-  \end{equation}
-  Sylvester's criterion therefore gives the stated condition
-  $|\kappa^2\theta_\NY|<1$ for a full homogeneous local minimum, with the
-  equality case marginal and the larger-$|\theta_\NY|$ regime a saddle.
-  Script: \texttt{proofs/nil3\_slice\_minimum\_stability.py}.
-\end{proof}
-
-\paragraph{Numerical verification.}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lllllll}
-\toprule
-$\alpha$ & $r_0$ (analytic) & $r_0$ (numeric) & Error & $V_0$ (analytic) & $V_0$ (numeric) & Error \\
-\midrule
-$-0.05$ & 0.516398 & 0.516400 & 0.0004\% & 402.415 & 402.415 & $<10^{-6}$\% \\
-$-0.50$ & 1.632993 & 1.633000 & 0.0004\% & 1272.547 & 1272.547 & $<10^{-6}$\% \\
-$-1.00$ & 2.309401 & 2.309400 & 0.0000\% & 1799.653 & 1799.653 & $<10^{-6}$\% \\
-$-3.00$ & 4.000000 & 4.000000 & 0.0000\% & 3117.091 & 3117.091 & 0\% \\
-\bottomrule
-\end{tabular}
-\caption{Analytic vs.\ numeric comparison for the $\Nilthree$ EC slice minimum
-  (with $\kappa=L=1$).}
-\label{tab:nil3fv}
-\end{table}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\textwidth]{figures/fig01_nil3_veff.png}
-  \caption{$\Nilthree$ effective potential $\Veff(r)$ on the $\eta=V=0$ section
-    for $\alpha=-1$, $\kappa=L=1$.  The LC part ($\alpha=0$, dashed) is
-    monotonically increasing; the EC--Weyl term ($-64\pi^4 L\alpha/(3r)$)
-    creates a slice minimum at $r_0 = 2.309$ (solid).}
-  \label{fig:nil3veff}
-\end{figure}
-
-\subsection{Theorem~7: $\Nilthree$ Spin-2 Quintet Splitting}
-\label{sec:nil3:thm7}
-
-\begin{theorem}[$\Nilthree$ quintet splitting]\label{thm:quintet}
-  The spin-2 quintet (5 components) around the $\Nilthree\times\Sone$ EC
-  slice-minimum branch splits as
-  \begin{equation}
-    5 \;\to\; (1)_0 + (2)_{q_4=q_5} + (1)_\varepsilon + (1)_s,
-  \end{equation}
-  where the subscript on each bracket denotes the multiplicity.
-\end{theorem}
-
-\paragraph{Complete splitting pattern.}
-At $a=\kappa=L=1$, $r_0=4/\sqrt{3}$, $\alpha=-1$:
-
-\begin{table}[H]
-\centering
-\begin{tabular}{llll}
-\toprule
-Component & DOF & Mass $m^2$ & Physical interpretation \\
-\midrule
-$q_3$ & off-diagonal (0--1) & $\mathbf{0}$ (zero mode) & Geometric protection by $\Nilthree$ symmetry \\
-$q_4$ & off-diagonal (0--2) & $1.080\times 10^4$ & Degenerate mass \\
-$q_5$ & off-diagonal (1--2) & $1.080\times 10^4$ & Degenerate with $q_4$ ($\Nilthree$ symmetry) \\
-$\varepsilon$ & squash & $3.919\times 10^4$ & Axial deformation (U(1) breaking) \\
-$s$ & shear & $8.278\times 10^4$ & Shear deformation \\
-\bottomrule
-\end{tabular}
-\caption{$\Nilthree$ spin-2 quintet splitting at the EC slice minimum
-  ($a=\kappa=L=1$, $r_0=4/\sqrt{3}$).}
-\label{tab:quintet}
-\end{table}
-
-The squash--shear block eigenvalues are
-$\lambda_+ = 1.137\times 10^5$ and $\lambda_- = 8.280\times 10^3$ (SymPy
-confirmed).
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\textwidth]{figures/fig02_nil3_quintet_splitting.png}
-  \caption{$\Nilthree$ spin-2 quintet splitting $5\to 0+2+1+1$ at the EC slice
-    minimum.  The zero mode $q_3$ is geometrically protected by the
-    one-dimensional Lie structure of $\Nilthree$, and the $q_4$--$q_5$ degeneracy
-    reflects the symmetric role of $e^0$ and $e^1$ with respect to $C^2_{01}$.}
-  \label{fig:quintet}
-\end{figure}
-
-\paragraph{Geometric interpretation of $q_3=0$.}
-The $G_3$ transformation is a hyperbolic rotation in the $(e^0,e^1)$ plane:
-\begin{equation}
-  e^0 \to c_3 e^0 + s_3 e^1,
-  \quad
-  e^1 \to s_3 e^0 + c_3 e^1
-  \quad (c_3^2 - s_3^2 = 1).
-\end{equation}
-Under this transformation, the sole structure constant $C^2_{01}$ transforms as
-\begin{equation}
-  C^2_{01} \to \frac{c_3^2 - s_3^2}{R} = \frac{1}{R}
-\end{equation}
-(hyperbolic identity), and is therefore invariant.  Consequently $\Veff$ has no
-$q_3$ dependence and $m^2(q_3)=0$.  This is a geometric symmetry protection
-by the one-dimensional Lie structure of $\Nilthree$ ($C^2_{01}$ only), not a
-tachyonic instability.
-
-\paragraph{Interpretation of $q_4=q_5$ degeneracy.}
-$G_4$ and $G_5$ are hyperbolic rotations in the $(0\text{--}2)$ and
-$(1\text{--}2)$ planes, respectively.  In $\Nilthree$, $e^2$ is the ``result
-axis'' of $C^2_{01}$, and $e^0, e^1$ play symmetric roles with respect to
-$C^2_{01}$.  This symmetry forces $m^2(q_4)=m^2(q_5)$.
-
-Script: \texttt{paper03ec/nil3\_spin2\_quintet\_splitting.py}.
-
-\subsection{Theorem~8: Uniaxial Mass Splitting}
-\label{sec:nil3:thm8}
-
-\begin{theorem}[Uniaxial mass splitting]\label{thm:uniaxial}
-  In the spin-1 sector of $\Nilthree\times\Sone$, only one axis acquires a
-  mass via the directional selectivity of $C^2_{01}$\textup{:}
-  \begin{equation}
-    m^2(\omega_2) = \frac{24\pi^4 L^3 R^2 - 256\pi^4 L^3\alpha\kappa^2}{3R^3\kappa^2}
-    \neq 0,
-    \qquad
-    m^2(\omega_0) = m^2(\omega_1) = 0.
-  \end{equation}
-  At the EC slice minimum $r_0 = 4\kappa a/\sqrt{3}$ ($\alpha=-a^2$)\textup{:}
-  \begin{equation}
-    m^2(\omega_2)\big|_{r_0} = \frac{6\sqrt{3}\,\pi^4 L^3}{a\kappa^3}.
-  \end{equation}
-\end{theorem}
-
-\paragraph{Physical interpretation.}
-$C^2_{01}$ corresponds to the non-commutativity in the $(0\text{--}1)$ plane
-direction.  $\omega_2$ is the twist in the $(0\text{--}1)$ direction, and only
-this component acquires a mass from $C^2_{01}\neq 0$.  $\omega_0$ and $\omega_1$
-are commutative directions (with respect to $C^2_{01}$) and remain massless.
-This structure is termed uniaxial mass splitting.  The one-dimensional Lie
-algebra structure of $\Nilthree$ ($C^2_{01}$ only non-zero) gives mass to the
-unique $\omega_2$ among the spin-1 triplet, while keeping the other two
-massless.
-
-\subsection{EFT around the $\Nilthree$ EC Slice Minimum}
-\label{sec:nil3:eft}
-
-We determine the quadratic effective action around the EC slice minimum
-$r_0=4\kappa a/\sqrt{3}$.  The quoted EFT below uses the standard benchmark
-$\theta_\NY=0$, for which the spin-0 Hessian returns to a diagonal block.
-
-\paragraph{Full quadratic coefficient spectrum (numerical values at $a=\kappa=L=1$).}
-
-\begin{table}[H]
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{llll}
-\toprule
-DOF & Quadratic coefficient (analytic) & Numeric ($a=\kappa=L=1$) & $\alpha$-dependence \\
-\midrule
-$r$ (radial) & $2\sqrt{3}\pi^4 L/(a\kappa^3)$ & 337.4 & $\propto 1/a$ (light) \\
-$\omega_2$ (non-comm.\ spin-1) & $6\sqrt{3}\pi^4 L^3/(a\kappa^3)$ & 1012 & $\propto 1/a$ (light) \\
-$\eta$ (axial torsion; non-prop.) & $128\sqrt{3}\pi^4 La/\kappa$ & 21,596 & $\propto a$ (heavy) \\
-spin-2 squash $\varepsilon$ & $6272\sqrt{3}\pi^4 La/(27\kappa)$ & 39,192 & $\propto a$ (heavy) \\
-$\omega_0,\omega_1$ & $0$ & 0 & massless \\
-$q_3$ (zero mode) & $0$ & 0 & zero mode \\
-$q_4,q_5$ & $m^2(q_4)=m^2(q_5)$ & 10,798 & --- \\
-\bottomrule
-\end{tabular}%
-}
-\caption{Quadratic coefficient spectrum of the $\Nilthree$ EC slice-minimum EFT
-  at $a=\kappa=L=1$.  The $\eta$ row gives the potential curvature in the $\eta$
-  direction under Palatini protection ($G_{\eta\eta}=0$), not a propagating mass.}
-\label{tab:nil3eft}
-\end{table}
-
-\paragraph{Two-group hierarchy.}
-``Geometric modes'' ($r$, $\omega_2$) scale as $\propto 1/a$ (lighter for
-large $|\alpha|$), while ``torsion/curvature modes'' ($\eta$-direction curvature,
-spin-2) scale as $\propto a$ (heavier for large $|\alpha|$).
-
-The quadratic effective action is
-\begin{equation}
+\begin{equation}\tag{O-02}\label{eq:O-02}
 \begin{aligned}
-  \Veff^{\Nilthree,\mathrm{EFT}}(\delta\Phi)
-  &\approx V_0 + \frac{1}{2}\Bigg[
-    \frac{2\sqrt{3}\pi^4 L}{a\kappa^3}(\delta r)^2
-    + \frac{128\sqrt{3}\pi^4 La}{\kappa}(\delta\eta)^2 \\
-  &\quad
-    + \frac{6272\sqrt{3}\pi^4 La}{27\kappa}(\delta\varepsilon)^2
-    + \frac{6\sqrt{3}\pi^4 L^3}{a\kappa^3}(\delta\omega_2)^2
-  \Bigg]
-  + O(\delta^3)
+W_{\mathrm{EC}}&=W_{\mathrm{LC}},\qquad
+R_{\mathrm{EC}}=R_{\mathrm{LC}}-6h^2-\frac23V^2,\\
+I_2&=\frac83h^2V^2+4h^2\sum_{i=0}^2(n_j-n_k)^2u_i^2,\\
+I_3&=\frac83h^2V^2,\qquad \mathcal N=\mathcal P=0.
 \end{aligned}
 \end{equation}
-with the cross-term $\partial^2 V/\partial r\partial\eta|_{r_0,0}=0$.
-Scripts: \texttt{paper03ec/nil3\_false\_vacuum\_eft.py}.
 
-\subsection{Mode Dictionary Table ($\Nilthree\times\Sone$)}
-\label{sec:nil3:table}
+In the sum, $(i,j,k)$ is cyclic. Only the extra nine-component sector produces this orientation dependence. It vanishes at round $S^3$ and flat $T^3$, but need not vanish on an anisotropic shape or on Nil. The scalar, LC-Weyl, and irreducible EC-Weyl actions are independent of this constant orientation. Equation (O-02) is an identity for constant orientations $u$.
 
-\begin{table}[H]
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lccc}
-\toprule
-Quantity & AX ($V=0,\,\eta\neq 0$) & VT ($\eta=0,\,V\neq 0$) & EC slice min.\ ($\eta=V=0$, $\alpha<0$) \\
-\midrule
-$C^2_\EC$ & $4/(3R^4)$ & $4/(3R^4)$ & $4/(3R^4)$ \\
-AX/VT dropout & \checkmark & \checkmark & $\times$ ($C^2_\LC\neq 0$) \\
-spin-0: $r$ & propagating & propagating & prop., $m^2_r = 2\sqrt{3}\pi^4 L/(a\kappa^3)$ \\
-spin-0: $\eta,V$ & $\eta$ non-prop. & $V$ non-prop. & $\eta$ non-prop.; curvature coeff.\ $= 128\sqrt{3}\pi^4 La/\kappa$ \\
-spin-2 $\mu^2$ & $(1056\pi^4 LR^2-19456\pi^4 L\alpha\kappa^2)/(27R\kappa^2)$ & same & at $r_0$: $6272\sqrt{3}\pi^4 La/(27\kappa)$ \\
-spin-2 splitting & (isotropic pt.) & --- & $5\to 0+2+1+1$ (Thm.~7) \\
-spin-1 splitting & $m^2(\omega_2)\neq 0$, $m^2(\omega_{0,1})=0$ (Thm.~8) & --- & $m^2(\omega_2)=6\sqrt{3}\pi^4 L^3/(a\kappa^3)$ \\
-\bottomrule
-\end{tabular}%
-}
-\caption{$\Nilthree\times\Sone$ mode dictionary under EC--Weyl.}
-\label{tab:nil3}
-\end{table}
+For the ordered mixing rotation $O=R_{03}(\delta_0)R_{13}(\delta_1)R_{23}(\delta_2)$, with $\tan\vartheta_i=\delta_i$, put $c_i=(1+\delta_i^2)^{-1/2}$ and $s_i=\delta_i c_i$. The torsion axis is $u=O^{\mathsf T}e_3$, with
 
-\paragraph{Supplementary note on the $\Nilthree$ MX background.}
-In the MX background ($V\neq 0,\eta\neq 0$), the general formula of
-\S\ref{sec:ecweyl:mx} gives
-\begin{equation}
-  \Delta\Veff^{\EC}(\Nilthree, \mathrm{MX})
-  = -\frac{256\pi^4 LRV^2\alpha\eta^2}{3} \neq 0
+\begin{equation}\tag{O-03}\label{eq:O-03}
+u=(-s_0,-c_0s_1,-c_0c_1s_2,c_0c_1c_2).
 \end{equation}
-as the EC--LC difference (SymPy: \texttt{nil3\_mode\_dictionary.py}).
-However, the MX stationarity conditions ($\theta_\NY=0$):
-\begin{equation}
-  V_* = \pm\frac{3}{4}\sqrt{\frac{1}{\alpha}},
-  \qquad
-  \eta_* = \pm\frac{R}{4}\sqrt{\frac{1}{\alpha}},
+
+Each $u_i^2$ is even in every $\delta_j$. Thus all pure cubic mixing monomials vanish at $\delta=0$ on this family. The quadratic orientation coefficients in the trace-free model are
+
+\begin{equation}\tag{O-04}\label{eq:O-04}
+H^{\delta}_{\mathrm{tf}}
+=-8\alpha c_M Lr^3 h^2\,
+\mathrm{diag}\big((n_1-n_2)^2,(n_0-n_2)^2,(n_0-n_1)^2\big).
 \end{equation}
-are purely imaginary for $\alpha<0$ (no real MX stationary point).  Numerical
-root search by \texttt{paper03ec/nil3\_mx\_vacuum\_search.py} provides only a
-finite sampled check for general $\theta_\NY$, and no MX stable point is found
-within the dictionary range.  The rigorous statement used in this paper is
-instead the analytic slice stationary point together with the full-Hessian
-criterion $|\kappa^2\theta_\NY|<1$.  The EC-specific physics of $\Nilthree$
-(EC slice minimum, quintet splitting) originates from $C^2_\LC\neq 0$ on the
-$\eta=V=0$ section, independently of the MX correction.
+
+At the undeformed Nil shape this gives equal $\delta_0,\delta_1$ coefficients and a zero $\delta_2$ coefficient. Expanding around a nonzero $\bar h$ with $h=\bar h+\varphi$ produces the mixed cubic term
+
+\begin{equation}\tag{O-05}\label{eq:O-05}
+\left.\Delta U_{\mathrm{tf}}\right|_{\varphi\delta^2,\mathrm{Nil}^3}
+=-\frac{8\alpha c_{\mathrm{Nil}^3}Lr^3\bar h}{r^2}
+\,\varphi(\delta_0^2+\delta_1^2).
+\end{equation}
+
+This interaction couples an axial-amplitude fluctuation to two orientation fluctuations. It belongs entirely to the extra pair-antisymmetric curvature sector. Pure orientation cubics vanish by parity, while the background axial amplitude permits this mixed cubic.
+
+\subsection{Field order of the aligned mixed term}
+
+The aligned static term $-16\alpha h^2V^2/3$ from Paper II is fourth order in the field amplitudes at zero torsion. Its expansion provides a comparison with the orientation interaction above. Let $h=\bar h+\varphi$ and $V=\bar V+v$. The degree-two, degree-three, and degree-four pieces of $h^2V^2$ are, respectively,
+
+\begin{equation}\tag{O-06}\label{eq:O-06}
+\begin{aligned}
+[h^2V^2]_2&=\bar V^2\varphi^2+4\bar h\bar V\varphi v+\bar h^2v^2,\\
+[h^2V^2]_3&=2\bar V\varphi^2v+2\bar h\varphi v^2,\\
+[h^2V^2]_4&=\varphi^2v^2.
+\end{aligned}
+\end{equation}
+
+At a nonstationary background the constant and linear pieces also enter the expansion. Equation (O-06) expresses the field order of Paper II's static potential in terms of the fluctuations $\varphi,v$, with $\alpha$ held fixed. The cubic terms therefore depend on the chosen background; field order and derivative order label different features of the interaction.
+
+\subsection{Finite-angle extrema and degeneracies}
+
+Equation (O-02) also determines the global orientation extrema at fixed
+geometry and amplitudes. On the unit three-sphere,
+
+\begin{equation}\tag{O-07}\label{eq:O-07}
+\begin{aligned}
+\Delta U_{\mathrm{tf}}&=K_u u^{\mathsf T}D u,\qquad K_u=-4\alpha\mathcal V h^2,\\
+D&=\mathrm{diag}\big((n_1-n_2)^2,(n_0-n_2)^2,(n_0-n_1)^2,0\big),
+\qquad\mathcal V=c_M Lr^3.
+\end{aligned}
+\end{equation}
+
+For $K_u\ne0$, Lagrange multipliers give $Du=\lambda u$. Hence every critical
+set is the unit sphere in an eigenspace $E_\lambda$ of $D$, with tangent Hessian
+
+\begin{equation}\tag{O-08}\label{eq:O-08}
+u\in S(E_\lambda),\qquad
+H_{\mathrm{tan}}=\left.2K_u(D-\lambda I)\right|_{u^\perp}.
+\end{equation}
+
+For $\alpha<0$ the minimum is $S(\ker D)$ and the maximum is the sphere of
+the largest eigenspace; for $\alpha>0$ they exchange. Intermediate eigenspheres
+are saddles. The degeneracies are exhaustive: if the three distinct $n_i$
+are ordered with consecutive gaps $a,b>0$, the eigenvalues are
+$0,a^2,b^2,(a+b)^2$. Unequal gaps give four antipodal pairs; equal gaps give
+an intermediate critical circle of saddles. Exactly two equal $n_i$ give
+two critical circles, with eigenvalues $0,0,d^2,d^2$. All equal $n_i$,
+$\alpha=0$, or $h=0$ make the whole orientation sphere flat.
+
+On Nil, $D=r^{-2}\mathrm{diag}(1,1,0,0)$. For $\alpha<0$ its minimum circle
+lies in $\mathrm{span}(e_2,e_3)$ and its maximum circle in
+$\mathrm{span}(e_0,e_1)$, each with one tangent zero direction and two equal
+transverse eigenvalues. For $\alpha\le0$ the orientation contribution is
+nonnegative at every shape and vanishes at the aligned axis $u=e_3$.
+Allowing this constant-axis freedom therefore does not lower Paper II's
+aligned static infimum over the same shape domain and fixed controls.
+This is a corollary of (O-02).

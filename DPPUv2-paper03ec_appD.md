@@ -1,106 +1,20 @@
-## Appendix D. auxiliary $\delta$-sector null theorem の詳細
+# 付録D. 再現方法と改訂注記
 
-本付録では、定理 3（ $\delta$-sector null theorem）の詳細を与える。目的は、EC 拡張で physical な $(\eta, V)$ channel に新しい $\alpha$-cubic が現れる一方で、auxiliary な MIXING 変数 $\delta_k$ に対しては新しい homogeneous cubic channel が現れないことを厳密に示すことである。
+## D.1 コードとデータ
 
-### D.1 定義
+公開補足資料には、現行のCartan式・射影、外積代数計算、厳密な記号結果、3図の保存データを収録する。実行にはPython 3.11以降と `script/requirements.txt` の依存ライブラリが必要であり、notebookにはさらにJupyter環境が必要である。再計算と保存データの描画を分離する。 `script` ディレクトリから次を実行する。
 
-unified engine の formal MIXING sector に対して
+```bash
+python -m pip install -r requirements.txt
+python -B paper03ec.py verify
+python -B paper03ec.py recompute --output ../recomputed
+python -B paper03ec.py render --data ../data/paper03ec_v4 --output ../rendered
+```
 
-$$
-C_\delta(M^3;{\rm mode}) \;:=\;
-\left.
-\frac{\partial^3 V_{\rm eff}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-\right|_{\delta_0=\delta_1=\delta_2=0}
-$$
+出力先には新しいフォルダを指定する。 `DPPUv2_Paper_Figures_EC.ipynb` は隣接するviewerから保存データを読み、再計算は明示的に選択した場合に行い、実行ごとに日時付きの新しいフォルダへ出力する。manifestには指定profile、座標、規約、ファイルハッシュを記録する。記号計算はテンソル恒等式、スカラー縮約、静的横断変形、Euler式、停留枝の係数、連成profileの周波数項、Nilの調和形式格子の式を再現し、図の描画はその計算とは独立に保存数値データを使う。
 
-を定義する。ここで $M^3 = S^3, T^3, Nil^3$、mode $=$ AX/VT/MX である。
+## D.2 改訂注記
 
-本稿で確認する命題は
+v4では完全NYの曲率側係数を $`1/2`$ とし、大域的規格化をPaper01〜02に揃えた。以前の計算入力との対応は $`T_{\mathrm{geom}}=-\tau`$ であり、現行補足コードは幾何学的torsionを直接使う。既約EC-WeylとRicciトレース除去後のEC曲率を区別し、Paper02の静的恒等式を本稿で指定した変分へ展開した。
 
-$$
-C_\delta = 0,
-\qquad
-\frac{\partial C_\delta}{\partial\alpha} = 0
-$$
-
-の 2 つである。後者は前者の直ちの帰結だが、script では独立に出力して確認する。
-
-### D.2 $S^3\times S^1$ の exact zero
-
-$S^3$ では MIXING sector 自体は非自明に導入できる。したがって、もし auxiliary cubic channel が存在するなら、最も現れやすいのはこのトポロジーである。
-
-SymPy による直接計算では、AX/VT/MX の各背景に対して
-
-$$
-\left.
-\frac{\partial^3 V_{\rm eff}^{S^3}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-\right|_{\delta=0}
-= 0
-$$
-
-が厳密に成立する。したがって
-
-$$
-\frac{\partial C_\delta(S^3)}{\partial\alpha}=0
-$$
-
-も厳密に成立する。
-
-この結果は、§3.4 の
-
-$$
-\frac{\partial^3 V_{\rm eff}}{\partial\alpha\,\partial\eta\,\partial V}
-= -\frac{128\pi^2 V\eta r}{3} \neq 0
-$$
-
-と対照的である。すなわち、EC 拡張で新たに活性化する cubic 構造は physical な $\eta$ - $V$ channel に限られ、auxiliary な $\delta$ -sector には現れない。
-
-### D.3 $T^3\times S^1$ の exact zero
-
-$T^3$ では平坦性 $C^a{}_{bc}=0$ が mode dictionary の大半を trivialize する。formal MIXING sector に対しても同様に、
-
-$$
-\left.
-\frac{\partial^3 V_{\rm eff}^{T^3}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-\right|_{\delta=0}
-= 0
-$$
-
-が AX/VT/MX の全背景で exact zero となる。したがって
-
-$$
-\frac{\partial C_\delta(T^3)}{\partial\alpha}=0.
-$$
-
-$T^3$ では physical sector にも auxiliary sector にも、EC 由来の新しい homogeneous cubic channel は現れない。
-
-### D.4 $Nil^3\times S^1$ の exact zero
-
-$Nil^3$ は background Weyl が非零であり、EC slice minimum と spin-2/spin-1 の方向依存分裂を生む唯一のトポロジーである。それにもかかわらず、formal MIXING sector では
-
-$$
-\left.
-\frac{\partial^3 V_{\rm eff}^{Nil^3}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-\right|_{\delta=0}
-= 0
-$$
-
-が AX/VT/MX の全背景で exact zero となる。よって
-
-$$
-\frac{\partial C_\delta(Nil^3)}{\partial\alpha}=0.
-$$
-
-このことは、 $Nil^3$ の EC 固有物理が background Weyl と $(r,\eta,V)$ sector に現れるのであって、新しい auxiliary $\delta$ -sector cubic channel に現れるのではないことを意味する。
-
-### D.5 9 ケースのまとめ
-
-| トポロジー | AX | VT | MX | $\partial_\alpha C_\delta$ |
-|---|---|---|---|---|
-| $S^3\times S^1$ | $0$ | $0$ | $0$ | $0$ |
-| $T^3\times S^1$ | $0$ | $0$ | $0$ | $0$ |
-| $Nil^3\times S^1$ | $0$ | $0$ | $0$ | $0$ |
-
-以上より、formal MIXING sector に対して定義される auxiliary cubic coefficient は全 3 トポロジーで厳密に消え、EC 拡張の新しい homogeneous cubic 構造は physical な $\eta$ - $V$ channel に限られる。
-
-[スクリプト: `proofs/c_delta_null_proof.py`]
+従来の普遍的なPalatini保護とspin-2運動構造の不変性、全一様変数に関するNil極小と $`\lvert\kappa^2\theta\rvert=1`$ の閾値、粒子質量およびspin-1 tachyonとしての解釈は撤回する。第3〜5節には、それらに対応する制限された方程式と変形係数を示した。内部双対縮約によるPontryagin解釈と、それに基づくトポロジカル・chiralな結論も撤回する。付録Cに座標と経路の比較を示し、相互作用の次数や規格化を含む旧版からの変更内容は、リポジトリの `CHANGELOG.md` に記載する。

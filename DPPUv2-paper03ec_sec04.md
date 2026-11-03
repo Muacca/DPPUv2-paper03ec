@@ -1,104 +1,100 @@
-## 4. Mode dictionary: $T^3\times S^1$ under EC-Weyl
+# 4. 静的な横断変形
 
-本節では $T^3\times S^1$ の均質幾何自由度に対する EC-Weyl 結合の効果を解析する。 $T^3$ の平坦性（構造定数 $C^a_{bc} = 0$）が引き起こす三重の triviality と、squash-shear cross-term の kinematic 起源（**定理 5**）を確立する。
+## 4.1 独立で正規化されたshape方向
 
-### 4.1 T³ 平坦性定理
+Frobenius内積で $`\mathrm{tr}(T_A T_B)=\delta_{AB}`$ を満たすtraceless対称基底を使い、一つの指数写像 $`M=\exp(\sum_Aq_AT_A)`$ でshapeを指定する。
 
-$T^3 = \mathbb{R}^3/\mathbb{Z}^3$ は平坦なトーラスであり、構造定数
-
-$$
-C^a_{bc}(T^3) = 0 \quad \forall\, a, b, c
-$$
-
-が恒等的にゼロとなる。この平坦性は Weyl テンソルの消滅を通じて spin-2/spin-1 の全質量をゼロにする。
-
-**spin-2 質量（squash 方向）**: SymPy 厳密計算により
+式(H-01)。
 
 $$
-\frac{\partial^2 V}{\partial\varepsilon^2}\bigg|_{\varepsilon=0} = 0 \quad \forall\, \eta, V, \alpha
+\begin{aligned}
+T_1&=\frac{\mathrm{diag}(1,1,-2)}{\sqrt6},\qquad
+T_2=\frac{\mathrm{diag}(1,-1,0)}{\sqrt2},\\
+T_3&=\frac{E_{01}+E_{10}}{\sqrt2},\quad
+T_4=\frac{E_{02}+E_{20}}{\sqrt2},\quad
+T_5=\frac{E_{12}+E_{21}}{\sqrt2}.
+\end{aligned}
 $$
 
-が確認される。 $C^a_{bc} = 0$ より Weyl テンソルが消えるため、spin-2 に対する幾何的質量項が生じない。[スクリプト: `paper03ec/t3_mode_dictionary.py`]
+$`E_{ij}`$ は行列単位である。 $`r,L,\eta,V`$ を固定した整列静的torsionの寄与は、三モデルとも $`M`$ に依存しない。shape微分は $`-R_{\mathrm{LC}}/(2\kappa^2)-\alpha I_{\mathrm{LC}}`$ から生じる。任意の一定な単位行列式 $`M`$ について、空間構造行列は $`N=r^{-1}M N_0M^{\mathsf T}`$ と書ける。 $`N_0`$ は順に $`4I`$ 、零、 $`-E_{22}`$ である。この対称行列を第3節の $`n_i`$ へ対角化できるため、その恒等式は全5方向のshape変形にも成り立つ。
 
-**spin-2 質量（shear 方向）**: 同様に
+round球面では回転対称性により、この基底のHessianは単位行列に比例する。 $`M=\mathrm{diag}(t,t,t^{-2})`$ 、 $`t=\exp(q_1/\sqrt6)`$ とした一方向の計算から、 $`R_{\mathrm{LC}}''(0)=-64/r^2`$ 、 $`I_{\mathrm{LC}}''(0)=4096/r^4`$ を得る。したがって次が成り立つ。
 
-$$
-\frac{\partial^2 V}{\partial s^2}\bigg|_{s=0} = 0 \quad \forall\, \eta, V, \alpha
-$$
-
-が成立する（SymPy exact zero）。[スクリプト: `proofs/t3_flatness_null_test.py`]
-
-**spin-1 質量**: $C^a_{bc} = 0$ により、全 spin-1 成分は質量ゼロとなる（ $m^2_\omega = 0$ ）。
-
-### 4.2 Mode dictionary table (Table 2: T³×S¹)
-
-**Table 2: $T^3\times S^1$ mode dictionary under EC-Weyl**
-
-| 物理量 | AX ($V=0, \eta\neq 0$) | VT ($\eta=0, V\neq 0$) | MX ($V\neq 0, \eta\neq 0$) |
-|---|---|---|---|
-| $C^2_{\rm EC}$ | $= C^2_{\rm LC} = 0$ | $= C^2_{\rm LC} = 0$ | $16V^2\eta^2/(3r^2)$ |
-| AX/VT dropout | ✓ | ✓ | ✗ |
-| spin-0: $r$ | 力学的 | 力学的 | 力学的 |
-| spin-0: $\eta, V$ | $\eta$ 非力学的, $V=0$ | $\eta=0$, $V$ 非力学的 | 両方非力学的 |
-| spin-2 質量 $\mu^2$ | $0$（ $T^3$ 平坦性） | $0$（ $T^3$ 平坦性） | $0$（ $T^3$ 平坦性） |
-| spin-1 質量 $m^2_\omega$ | $0$（質量ゼロ） | $0$ | $0$ |
-
-### 4.3 T³ の三重 triviality
-
-$T^3\times S^1$ における EC-Weyl 結合の効果は 3 つの意味で trivial となる。
-
-**① AX dropout**: $C^a_{bc} = 0$ より $C^2_{\rm LC} = 0$、定理 1 の AX dropout により $C^2_{\rm EC} = C^2_{\rm LC} = 0$。 $\alpha$ は有効ポテンシャルを変えない（AX 背景）。
-
-**② VT dropout**: 同様に $\eta = 0$ より定理 1 の VT dropout が適用され、 $C^2_{\rm EC} = 0$。VT 背景でも $\alpha$ は不活性。
-
-**③ MX 補正**: AX/VT dropout が外れる MX 背景（ $V\eta \neq 0$ ）では $C^2_{\rm EC} = 16V^2\eta^2/(3r^2) \neq 0$ となる。 $\alpha < 0$ ではこの補正は $\Delta V_{\rm eff}^{\rm EC} > 0$ を与えてポテンシャルを押し上げる。有限な MX 臨界点の有無は §4.5 で代数的に判定する。
-
-formal MIXING sector に対する auxiliary EFT 係数も
+式(H-02)。
 
 $$
-C_\delta(T^3) = 0,
-\qquad
-\frac{\partial C_\delta(T^3)}{\partial\alpha} = 0
+\left.\nabla_qU_X\right|_{S^3,0}=0,\qquad
+\left.H^{\mathrm{shape}}_X\right|_{S^3,0}
+=\left(\frac{8\pi^2Lr}{\kappa^2}-\frac{1024\pi^2L\alpha}{r}\right)I_5.
 $$
 
-を満たす（定理 3, App. D）。したがって $T^3$ では、physical sector でも auxiliary sector でも EC 拡張による新しい homogeneous cubic channel は現れない。
+$`\alpha=0`$ 、 $`r=3`$ 、 $`L=\kappa=1`$ ではPaper03の $`24\pi^2I_5`$ に戻る。平坦トーラスでは、一定で体積保存のshape族全体で勾配もHessianも零になる。整列MXの項も固定振幅と体積だけに依存するため、この結論を変えない。ただし、shape微分が零でもtorsionを含むEC曲率自体が零とは限らない。
 
-### 4.4 定理 5 (torsion-volume coupling)
+## 4.2 Nil：非停留shapeと5方向の経路係数
 
-**定理 5 (torsion-volume coupling)**: $T^3\times S^1$ において、squash パラメータ $\varepsilon$ と shear パラメータ $s$ の混合 2 次微分は
+Nilでは $`N=-(Me_2)(Me_2)^{\mathsf T}/r`$ がrank 1となる。 $`z=(M^{\mathsf T}M)_{22}>0`$ と置くと、唯一の非零固有値は $`-z/r`$ であり、 $`R_{\mathrm{LC}}=-z^2/(2r^2)`$ 、 $`I_{\mathrm{LC}}=4z^4/(3r^4)`$ を得る。整列した静的ポテンシャル全体は次である。
 
-$$
-\frac{\partial^2 V_{\rm eff}}{\partial\varepsilon\,\partial s}\bigg|_{\varepsilon=s=0} = \frac{48\pi^4 L\eta^2 r}{\kappa^2} \neq 0 \quad (\eta \neq 0)
-$$
-
-を満たす。この cross-term の起源は体積素 $(1+\varepsilon)(1+s)$ の kinematic mixing であり、Weyl 質量とは無関係である。
-
-**証明の概略**: $T^3$ の有効ポテンシャルは
+式(H-03)。
 
 $$
-V_{\rm eff}(T^3) = \frac{16\pi^4 r}{3}\left[V^2 r^2 + 6V\eta r\theta + 9\eta^2 - 16\alpha V^2\eta^2\right]
+\begin{aligned}
+U_X&=Az^2+Bz^4+U_{\mathrm{tor},X},\\
+A&=\frac{c_{\mathrm{Nil}^3}Lr}{4\kappa^2},\qquad
+B=-\frac{4\alpha c_{\mathrm{Nil}^3}L}{3r},\\
+U_{\mathrm{tor},X}&=c_{\mathrm{Nil}^3}Lr^3
+\left[\frac{3\eta^2}{\kappa^2r^2}+\frac{V^2}{3\kappa^2}
+-\chi_X\frac{16\alpha\eta^2V^2}{3r^2}\right].
+\end{aligned}
 $$
 
-として書かれる（AX 背景では $V=0$）。squash と shear を加えると体積因子として $(1+\varepsilon)(1+s)$ が積として現れ、この因子が $\partial^2/\partial\varepsilon\partial s$ に対して非零寄与を与える。具体的には
+$`f(z)=Az^2+Bz^4`$ とし、 $`f'=f'(1)=2A+4B`$ 、 $`f''=f''(1)=2A+12B`$ と書く。 $`z=(\exp(2\sum q_AT_A))_{22}`$ を微分すると、5方向すべてを含む結果を得る。
+
+式(H-04)。
 
 $$
-V_{\rm eff}^{T^3}(\varepsilon, s) \supset \frac{16\pi^4 r}{\kappa^2}\cdot 9L\eta^2 \cdot (1+\varepsilon)(1+s) + \cdots
+\begin{aligned}
+\left.\nabla_qU_X\right|_0
+&=\left(-\frac{4f'}{\sqrt6},0,0,0,0\right),\\
+\left.H^{\mathrm{shape}}_X\right|_0
+&=\mathrm{diag}\left(\frac{32A+128B}{3},0,0,4A+8B,4A+8B\right).
+\end{aligned}
 $$
 
-から $\partial^2 V/\partial\varepsilon\partial s = 48\pi^4 L\eta^2 r/\kappa^2$ が導かれる。
+この5次元Hessianの非対角成分は座標原点で零になる。 $`\alpha=-\beta<0`$ 、 $`\eta=V=0`$ の場合、Paper02の半径slice臨界点は $`r_*=4\kappa\sqrt{\beta/3}`$ であり、そこで $`A=B>0`$ となる。この半径sliceを横断する方向も含めて微分を評価すると、次を得る。
 
-**Weyl 質量でないことの確認**: AX 背景（ $V=0$ ）では $C^a_{bc}=0$ により $C^2_{\rm LC}=0$、さらに定理 1（AX dropout）により $C^2_{\rm EC} = C^2_{\rm LC} = 0$ が成立するため、この cross-term は $\alpha$ に独立であり Weyl 質量への寄与はゼロ。数値確認（AX 背景）： $\alpha=0$ と $\alpha=-1$ で cross-term 値が同一（SymPy exact）。なお MX 背景（ $V\neq 0$ ）では $C^2_{\rm EC} = 16V^2\eta^2/(3r^2) \neq 0$ となり、cross-term に $\alpha$ 依存項が加わるが、spin-2 null test（ $\partial^2 V/\partial\varepsilon^2 = 0$, $\partial^2 V/\partial s^2 = 0$ ）は依然成立する（ $C^2_{\rm EC}$ が $\varepsilon, s$ に非依存なため）。[スクリプト: `proofs/t3_flatness_null_test.py`, `paper03ec/squash_shear_cross_term.py`]
-
-### 4.5 MX 臨界点の不存在
-
-$\alpha < 0$ での $T^3$ MX sector の臨界点を解析する。
-
-$\partial V_{\rm eff}/\partial\eta = \partial V_{\rm eff}/\partial V = 0$ の拘束面を SymPy で解くと、 $T^3$ の MX 解は
+式(H-05)。
 
 $$
-V^* = \pm\frac{3}{4}\sqrt{\frac{1}{\alpha}}, \quad \eta^* = \pm\frac{r}{4}\sqrt{\frac{1}{\alpha}}
+\begin{aligned}
+\partial_rU_X&=0,\qquad \partial_LU_X=\frac{2A}{L},\qquad
+\partial_\eta U_X=\partial_VU_X=0,\\
+\nabla_qU_X&=(-4\sqrt6 A,0,0,0,0),\qquad
+\nabla_\omega U_X=\nabla_\delta U_X=0,\\
+H^{\mathrm{shape}}_X&=A\thinspace \mathrm{diag}\left(\frac{160}{3},0,0,12,12\right).
+\end{aligned}
 $$
 
-であり、 $\alpha < 0$ では純虚数になる（実数解なし）。したがって **$T^3$ には $\alpha < 0$ のもとで有限な実 MX 臨界点が存在しない**。
+shapeと円周長の微分が非零であるため、この点の停留性は半径sliceに限られる。指定した指数座標でのshape二階微分は、零2方向、等しい2方向、残り1方向からなる。 $`T_2`$ と $`T_3`$ の指数写像は行列式1の $`0`$–$`1`$ block内にとどまり、 $`z=1`$ を厳密に保つため、二つの平坦な経路を与える。付録Eでは調和形式の整数格子を用いて、両経路上のコンパクト計量を識別し、離散的な符号反転の同定を示す。
 
-これは §4.3 の `MX 補正はポテンシャルを押し上げる` という解析と整合しており、 $T^3$ の MX sector が新たな均質局所極小を与えないことを示す。[スクリプト: `paper03ec/t3_mx_vacuum_search.py`]
+![nil_shape_paths](LaTeX/figures/nil_shape_paths.png)
+
+$`A=B=1`$ 、torsion零でのNilのshape経路と微分。基準点で $`T_1`$ の一次微分が非零である。棒は式(H-01)の指数座標での一次・二次微分を示す。二つの平坦曲線は厳密に重なる。
+
+## 4.3 静的twist係数
+
+対角空間frameで $`e^3\mapsto e^3+w_i e^i`$ と書くと、 $`C^3{}_{jk}=\sum_iw_i C^i{}_{jk}`$ が加わり、空間の $`C^i{}_{jk}`$ は変わらない。この一定twist族では、テンソルとして $`W_{\mathrm{EC}}=W_{\mathrm{LC}}`$ 、さらに $`I_2=I_3=8h^2V^2/3`$ が厳密に成り立つ。追加二成分はこの族のtwist微分に寄与しない。未変形の空間coframeでは $`w_i=L\omega_i/r`$ である。 $`\omega=0`$ の一次微分は零であり、三作用のHessianは共通して次となる。
+
+式(H-06)。
+
+$$
+\begin{aligned}
+H^{\omega}_{S^3}&=\frac{2\pi^2L^3}{\kappa^2r}I_3,\qquad H^{\omega}_{T^3}=0,\\
+H^{\omega}_{\mathrm{Nil}^3}&=\mathrm{diag}\left(0,0,
+\frac{c_{\mathrm{Nil}^3}L^3}{2\kappa^2r}
+-\frac{16\alpha c_{\mathrm{Nil}^3}L^3}{3r^3}\right).
+\end{aligned}
+$$
+
+round球面でLC-Weylのtwist Hessianは零であり、その不変量はより高い次数から現れ得る。Nilでは非可換方向が選ばれ、一定のトーラスtwistは局所曲率不変量を変えない。これらの係数は静的変形の方向別コストを表す。微分項については、 $`\alpha=0`$ でtwist零における二次のtwist速度項が消えることをPaper03が示し、第6節で非零結合の連成shape–twist族を評価する。
+
+停留性も補足する。 $`q=\omega=\delta=\eta=V=0`$ のround球面では $`\partial_rU=-12c_{S^3}L/\kappa^2`$ 、 $`\partial_LU=-12c_{S^3}r/\kappa^2`$ となる。したがって上のround球面の係数は、半径と円周長の一次微分が非零の点での、表示した方向の係数である。torsion-freeで平坦なトーラス点では、ここで扱う制限ポテンシャルと一次微分は零である。

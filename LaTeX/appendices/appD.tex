@@ -1,117 +1,20 @@
-%==============================================================================
-% Appendix D: Auxiliary delta-sector Null Theorem
-%==============================================================================
-\section{Auxiliary $\delta$-Sector Null Theorem}
-\label{app:D}
+\section{Reproduction and revision note}
 
-This appendix gives the detailed proof of Theorem~3 ($\delta$-sector null
-theorem).  The objective is to show rigorously that while new $\alpha$-cubics
-appear in the physical $(\eta,V)$ channel through the EC extension, no new
-homogeneous cubic channel appears in the auxiliary MIXING variable $\delta_k$.
+\subsection{Code and data}
 
-\subsection{Definition}
-\label{app:D:def}
+The supplement contains the current Cartan and projection formulas, an exterior-algebra calculation, exact symbolic results, and the data for the three figures. It requires Python 3.11 or later and the dependencies in \texttt{script/requirements.txt}; the notebook additionally requires a Jupyter environment. Recomputing the results and rendering the saved results are separate operations. From the \texttt{script} directory:
 
-For the formal MIXING sector of the unified engine, we define
-\begin{equation}
-  C_\delta(M^3;\text{mode}) :=
-  \left.\frac{\partial^3\Veff}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-  \right|_{\delta_0=\delta_1=\delta_2=0},
-\end{equation}
-where $M^3 = \Sthree, \Tthree, \Nilthree$ and mode $=$ AX/VT/MX.
+\begin{lstlisting}
+python -m pip install -r requirements.txt
+python -B paper03ec.py verify
+python -B paper03ec.py recompute --output ../recomputed
+python -B paper03ec.py render --data ../data/paper03ec_v4 --output ../rendered
+\end{lstlisting}
 
-The two propositions we verify are:
-\begin{equation}
-  C_\delta = 0,
-  \qquad
-  \frac{\partial C_\delta}{\partial\alpha} = 0.
-\end{equation}
-The latter follows immediately from the former, but it is verified independently
-in the scripts.
+Output directories must be new. The notebook \texttt{DPPUv2\_Paper\_Figures\_EC.ipynb} loads saved data by default through its adjacent viewer; recalculation is an explicit option that writes to a new time-stamped folder. The manifest records the prescribed profiles, coordinate chart, conventions, and file hashes. The symbolic calculation reproduces the tensor identities, scalar reductions, static transverse formulas, and Euler equations, the stationary-branch coefficients, the coupled-profile frequency terms, and the Nil harmonic-lattice formulas. Figure rendering uses the saved numerical data independently of that calculation.
 
-\subsection{$\Sthree\times\Sone$: Exact Zero}
-\label{app:D:s3}
+\subsection{Revision note}
 
-The formal MIXING sector can be introduced non-trivially for $\Sthree$.
-Therefore, if an auxiliary cubic channel exists, this topology is the most
-likely place to find it.
+Version 4 adopts the complete-NY curvature coefficient $1/2$ and the global normalization of Papers I--II. Earlier computational inputs used $T_{\rm geom}=-\tau$; the present supplement uses geometric torsion directly. The curvature comparison distinguishes irreducible EC-Weyl from Ricci-tracefree EC curvature and extends Paper II's static identities to the variations specified here.
 
-By SymPy direct computation, for each of the AX/VT/MX backgrounds:
-\begin{equation}
-  \left.\frac{\partial^3\Veff^{S^3}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-  \right|_{\delta=0} = 0.
-\end{equation}
-Consequently:
-\begin{equation}
-  \frac{\partial C_\delta(\Sthree)}{\partial\alpha} = 0.
-\end{equation}
-
-This result contrasts with \S\ref{sec:s3:ec}:
-\begin{equation}
-  \frac{\partial^3\Veff}{\partial\alpha\,\partial\eta\,\partial V}
-  = -\frac{128\pi^2 V\eta r}{3} \neq 0.
-\end{equation}
-The new cubic structure activated by the EC extension is confined to the physical
-$\eta$-$V$ channel and does not appear in the auxiliary $\delta$-sector.
-
-\subsection{$\Tthree\times\Sone$: Exact Zero}
-\label{app:D:t3}
-
-The flatness $C^a_{bc}=0$ trivialises most of the mode dictionary of $\Tthree$.
-Even for the formal MIXING sector, the same holds:
-\begin{equation}
-  \left.\frac{\partial^3\Veff^{T^3}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-  \right|_{\delta=0} = 0
-  \quad \text{(all AX/VT/MX backgrounds)}.
-\end{equation}
-Consequently:
-\begin{equation}
-  \frac{\partial C_\delta(\Tthree)}{\partial\alpha} = 0.
-\end{equation}
-In $\Tthree$, neither the physical sector nor the auxiliary sector develops
-EC-derived new homogeneous cubic channels.
-
-\subsection{$\Nilthree\times\Sone$: Exact Zero}
-\label{app:D:nil3}
-
-$\Nilthree$ has non-zero background Weyl and generates an EC slice minimum on
-the $\eta=V=0$ section together with
-spin-2/spin-1 directional splitting.  Nevertheless, for the formal MIXING sector:
-\begin{equation}
-  \left.\frac{\partial^3\Veff^{Nil^3}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-  \right|_{\delta=0} = 0
-  \quad \text{(all AX/VT/MX backgrounds)}.
-\end{equation}
-Consequently:
-\begin{equation}
-  \frac{\partial C_\delta(\Nilthree)}{\partial\alpha} = 0.
-\end{equation}
-The EC-specific physics of $\Nilthree$ (EC slice minimum, quintet splitting) appears
-in the background Weyl and the $(r,\eta,V)$ sector, not as a new auxiliary
-$\delta$-sector cubic channel.
-
-\subsection{Summary of All Nine Cases}
-\label{app:D:summary}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{lcccc}
-\toprule
-Topology & AX & VT & MX & $\partial_\alpha C_\delta$ \\
-\midrule
-$\Sthree\times\Sone$ & $0$ & $0$ & $0$ & $0$ \\
-$\Tthree\times\Sone$ & $0$ & $0$ & $0$ & $0$ \\
-$\Nilthree\times\Sone$ & $0$ & $0$ & $0$ & $0$ \\
-\bottomrule
-\end{tabular}
-\caption{All nine cases of the auxiliary cubic coefficient $C_\delta$.  All
-  entries are exact zero.}
-\label{tab:appD}
-\end{table}
-
-The above shows that the auxiliary cubic coefficient defined for the formal
-MIXING sector vanishes exactly in all three topologies, and the new homogeneous
-cubic structure of the EC extension is confined to the physical $\eta$-$V$
-channel.
-
-Script: \texttt{proofs/c\_delta\_null\_proof.py}.
+The preceding universal Palatini-protection and unchanged spin-2 kinetic claims, the full homogeneous Nil minimum and its $|\kappa^2\theta|=1$ threshold, and the particle-mass and spin-1 tachyon interpretations are withdrawn. Sections 3--5 give the restricted equations and deformation coefficients in their place. The internal-dual Pontryagin interpretation and the associated topological and chiral conclusions are also withdrawn. Appendix C gives the coordinate and path comparisons; the repository's \texttt{CHANGELOG.md} records the detailed changes to the preceding version, including interaction order and normalization.

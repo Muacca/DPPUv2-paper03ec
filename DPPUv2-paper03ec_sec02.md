@@ -1,166 +1,92 @@
-## 2. EC-Weyl 結合の構造
+# 2. 幾何・作用・変分条件
 
-本節では、Einstein-Cartan 接続の基本構造を導入し、EC-Weyl scalar $C^2_{\rm EC}$ が torsion モードに対してどのような依存性を示すかを確定する。主要結果は **定理 1 (AX/VT dropout)**、**定理 2 (Palatini 保護 EC 版)**、**定理 3 (δ-sector null theorem)** であり、前二者が EC-Weyl 結合の選択則と torsion の非伝播性を与え、後者が auxiliary な MIXING sector に新たな homogeneous cubic channel が生じないことを与える。
+## 2.1 coframeとtorsion
 
-### 2.1 EC 接続と contortion
+向き付けたEuclidean正規直交frameを使う。空間添字は $`i,j,k=0,1,2`$ 、円方向は3とする。円座標の周期は1、 $`L`$ は物理円周長である。twistとmixingが零のcoframeを次で定める。
 
-Einstein-Cartan 理論では、接続 $\omega^{a}{}\_{b}$ を計量と独立な変数として扱い、Levi-Civita (LC) 接続 $\Gamma^{a}{}\_{bc}$ との差を contortion $K^{a}{}_{bc}$ で表す：
-
-$$
-\omega_{\rm EC}^a{}_{bc} = \Gamma^a{}_{bc} + K^a{}_{bc}.
-$$
-
-Contortion は反対称な torsion テンソル $T^{a}{}\_{bc} = 2\omega^{a}{}\_{[bc]}$ から
+式(G-01)。
 
 $$
-K_{abc} = \frac{1}{2}\bigl(T_{abc} + T_{bca} - T_{cab}\bigr)
+e^i=r M^i{}_j\sigma^j,\qquad e^3=L\thinspace \mathrm{d}y,\qquad
+\det M=1,\quad y\sim y+1,\quad r,L>0.
 $$
 
-として定義され、 $K_{abc} = -K_{acb}$ を満たす。
+球面では巡回的に $`\mathrm{d}\sigma^i=4\sigma^j\wedge\sigma^k`$ とし、round球面の物理半径は $`r/2`$ になる。トーラスの形式は閉じ、三空間角の周期を各 $`2\pi`$ とする。Nilでは $`\sigma^0=\mathrm{d}x`$ 、 $`\sigma^1=\mathrm{d}w`$ 、 $`\sigma^2=\mathrm{d}z-x\mathrm{d}w`$ を用い、周期を $`(2\pi,2\pi,4\pi^2)`$ 、 $`x`$ 面の貼合せを $`z\mapsto z+2\pi w`$ とする。変分中もこの同一視を固定する。
 
-均質 minisuperspace の torsion ansatz として、本論文では 3 つのモードを用いる：
-
-- **AX モード**: 軸性スカラー $\eta$（torsion のトレースレス反対称部分）。 $V = 0$ を前提とする。
-- **VT モード**: ベクトル-トレース混合スカラー $V$（torsion のトレース部分）。 $\eta = 0$ を前提とする。
-- **MX モード**: AX と VT の共存、すなわち $V \neq 0, \eta \neq 0$。
-
-作用は
+式(G-02)。
 
 $$
-S = \int \left[\frac{R_{\rm EC}}{2\kappa^2} + \theta \cdot \mathcal{L}_{\rm NY} + \alpha \cdot C^2_{\rm EC}\right]\sqrt{g}\,d^4x
+\mathrm{Vol}=c_M Lr^3,\qquad
+c_{S^3}=\frac{\pi^2}{4},\quad c_{T^3}=(2\pi)^3,\quad
+c_{\mathrm{Nil}^3}=(2\pi)^4.
 $$
 
-と書かれ、 $R_{\rm EC}$ は EC Ricci scalar、 $\mathcal{L}\_{\rm NY}$ は Nieh-Yan 密度、 $C^2\_{\rm EC}$ は EC Weyl scalar である。パラメータ $\alpha \in \mathbb{R}$（Weyl coupling）, $\theta \in \mathbb{R}$（NY coupling）を持つ。
+torsionには第一Cartan式で定義する幾何学的torsionを使い、軸性成分とベクトルトレース成分を円方向へ整列させる。
 
-均質背景での有効ポテンシャル $V_{\rm eff}(r, \eta, V; \alpha, \theta)$ は $S^3\times S^1$, $T^3\times S^1$, $Nil^3\times S^1$ それぞれについて陽に計算される（スクリプト: `proofs/ax_vt_dropout_proof.py`）。
-
-### 2.2 定理 1 (AX/VT dropout)
-
-EC Weyl scalar の torsion モード依存性を確定する基本定理を述べる。
-
-**定理 1 (AX/VT dropout)**: $S^3\times S^1$, $T^3\times S^1$, $Nil^3\times S^1$ の全 3 トポロジーにおいて、以下が SymPy による厳密な記号恒等式として成立する：
-
-1. **AX モード** ($V = 0$, $\eta \neq 0$):
-   $$C^2_{\rm EC} = C^2_{\rm LC} \quad \text{（EC 補正なし）.}$$
-
-2. **VT モード** ($\eta = 0$, $V \neq 0$):
-   $$C^2_{\rm EC} = C^2_{\rm LC} \quad \text{（EC 補正なし）.}$$
-
-すなわち、AX および VT の単純背景では EC-Weyl coupling $\alpha C^2_{\rm EC}$ の効果は Levi-Civita の場合と完全に一致し、 $\alpha$ に依存する新寄与は現れない。
-
-**証明の概略**: 各トポロジーで $C^2_{\rm EC} - C^2_{\rm LC}$ を記号的に展開して因数分解すると、EC 補正項は一様に $V\eta$ を因子にもつ。したがって AX モード ($V=0$) では補正は厳密にゼロとなり、VT モード ($\eta=0$) でも同様に消える（SymPy exact zero による記号的確認による）。
-
-**各トポロジーの具体形**:
-
-$S^3\times S^1$ および $T^3\times S^1$ では：
-$$C^2_{\rm LC}(S^3, T^3) = 0 \quad (\text{等方点, AX/VT 背景}),$$
-AX dropout により $C^2_{\rm EC} = 0$ も確認される。
-
-$Nil^3\times S^1$ では：
-$$C^2_{\rm LC}(Nil^3) = \frac{4}{3R^4} \neq 0 \quad (\text{非共形平坦性}),$$
-AX dropout により $C^2_{\rm EC} = 4/(3R^4) = C^2_{\rm LC}$ が保たれる（EC による補正は無い）。
-
-**T³ squash+shear null test**: $T^3$ においては、squash パラメータ $\varepsilon$ と shear パラメータ $s$ を両方加えた場合も $C^2_{\rm EC} = 0$ が $\forall \varepsilon, s$ で成立する（ $C^a_{bc} = 0$ による形式的消滅）。
-
-以上の 3 トポロジー × 2 背景（AX, VT）= 6 ケースは、いずれも SymPy による厳密なゼロ恒等式として確認した。詳細な記号計算は [スクリプト: `proofs/ax_vt_dropout_proof.py`, `proofs/t3_flatness_null_test.py`] に対応する。
-
-### 2.3 MX モード: EC 固有の Weyl 結合
-
-定理 1 の裏面として、MX 背景（ $V \neq 0, \eta \neq 0$ ）においては EC 固有の Weyl 結合が現れる。
-
-$S^3\times S^1$ および $T^3\times S^1$ の MX モード：
-$$C^2_{\rm EC} = C^2_{\rm LC} + \frac{16V^2\eta^2}{3r^2}.$$
-
-$Nil^3\times S^1$ の MX モード：
-$$C^2_{\rm EC} = C^2_{\rm LC} + \frac{16V^2\eta^2}{3R^2} = \frac{4}{3R^4} + \frac{16V^2\eta^2}{3R^2}.$$
-
-いずれも追加項は $V\cdot\eta$ の 2 乗に比例し、torsion の混合積が EC-Weyl 結合を通じて有効ポテンシャルを変形する。具体的には
+式(G-03)。
 
 $$
-\Delta V_{\rm eff}^{\rm EC} = \alpha \cdot \frac{16V^2\eta^2}{3r^2} \cdot \text{Vol}(M^3\times S^1)
+\begin{aligned}
+T^a&=\mathrm{d}e^a+\omega^a{}_b\wedge e^b
+=\frac12 T^a{}_{bc}e^b\wedge e^c,\qquad h=\frac{\eta}{r},\\
+T^{\mathrm{AX}}_{ijk}&=2h\varepsilon_{ijk},\qquad
+T^{\mathrm{VT}}_{abc}=\frac{V}{3}
+(\delta_{ac}\delta_{b3}-\delta_{ab}\delta_{c3}).
+\end{aligned}
 $$
 
-が LC ポテンシャルに加わる（ $\text{Vol}$ は内部空間の体積因子）。
+AXは $`V=0`$ 、VTは $`h=0`$ 、MXは両方を許す族とする。補足コードは幾何学的torsionを直接使う。接続の符号と添字順序を次で固定する。
 
-この EC 固有項は MX 背景における有効ポテンシャル変形の起源となる。一方、§5 で扱う $Nil^3$ の EC slice minimum は、 $\eta = V = 0$ 断面での $C^2_{\rm LC}(Nil^3)\neq 0$ という非共形平坦性に由来する。 $S^3, T^3$ では等方点周りで $V = \eta = 0$ が保たれるため、MX 項はその断面では実効的に不活性である（§3.4, §4.3 参照）。
-
-**物理的解釈**: AX/VT dropout は、torsion 単体が Weyl テンソルの新たな寄与を生まないことを意味する。EC-Weyl 相互作用の本質は torsion の「混合積」 $V\times\eta$ にあり、これは幾何学的には contortion の asymmetric な組み合わせが Weyl 成分を活性化する機構として理解できる。3 トポロジーで共通したこの選択則は、EC 接続の一般的な代数構造から来る普遍的な性質である。
-
-### 2.4 定理 2 (Palatini 保護 EC 版)
-
-**定理 2 (Palatini 保護 EC 版)**: Einstein-Cartan 接続のもとでも
+式(G-04)。
 
 $$
-G_{\eta\eta}^{\rm EC} = G_{VV}^{\rm EC} = 0
+\begin{aligned}
+\mathrm{d}e^a&=\frac12 C^a{}_{bc}e^b\wedge e^c,\qquad
+\omega_{ab}=\Gamma_{abc}e^c,\\
+\Gamma^{\mathrm{LC}}_{abc}&=\frac12(C_{abc}+C_{cba}-C_{bac}),\\
+K_{abc}&=-\frac12(T_{abc}+T_{bca}-T_{cab}),\qquad
+\Gamma=\Gamma^{\mathrm{LC}}+K.
+\end{aligned}
 $$
 
-が厳密に成立する。ここで $G_{AB}^{\rm EC} = \partial^2 \mathcal{L}_{\rm EC}/\partial(\partial_z\Phi^A)\partial(\partial_z\Phi^B)$ は minisuperspace の場の空間計量（kinetic metric）を表す。
+## 2.2 三つの曲率二乗項
 
-**証明の概略（速度法）**: §2.3 で得た MX 背景の EC Weyl scalar
+既約Weylテンソルを $`W_{\mathrm{EC}}`$ 、Ricciトレース除去テンソルを $`\widehat R_{\mathrm{EC}}`$ と書く。付録Aでは、対交換対称性やtorsion-freeの代数Bianchi恒等式を仮定せずに射影を定義する。四次元Euclidean内積では次が成り立つ。
 
-$$
-C^2_{\rm EC}(S^3, T^3, \text{MX}) = \frac{16V^2\eta^2}{3r^2}
-$$
-
-は $(r,\eta,V)$ の代数関数であり、速度場 $\partial_z\eta$, $\partial_z V$ を含まない。したがって速度法で $G_{\eta\eta}, G_{VV}$ を計算しても、 $\Delta z \to 0$ 極限で消える項しか現れず、torsion の kinetic term は生成されない。詳細な式展開と各トポロジーでの確認は [スクリプト: `proofs/palatini_protection_proof.py`] に対応する。
-
-**r-stiffness の不変性**:
-
-| トポロジー | $G_{rr}$ (LC) | $G_{rr}$ (EC) | 差分 |
-|---|---|---|---|
-| $S^3$ | 59.22 | 59.22 | 0 |
-| $T^3$ | 4675.6 | 4675.6 | $\approx 0$ |
-| $Nil^3$ | 5195.2 | 5195.2 | $\approx 0$ |
-
-spin-2 重力子の kinetic 構造も EC で不変である。
-
-### 2.5 定理 3 (δ-sector null theorem)
-
-EC 拡張では、physical な $(\eta, V)$ channel に
+式(C-01)。
 
 $$
-\frac{\partial^3 V_{\rm eff}}{\partial\alpha\,\partial\eta\,\partial V} \neq 0
+\begin{aligned}
+\widehat R_{\mathrm{EC}}&=W_{\mathrm{EC}}+R^{(2)}+R^{(3)},\\
+I_{\mathrm{tf}}&=I_{\mathrm W}+I_2+I_3,\qquad
+I_{\mathrm W}=\lVert W_{\mathrm{EC}}\rVert^2,\quad
+I_a=\lVert R^{(a)}\rVert^2\ (a=2,3).
+\end{aligned}
 $$
 
-という新しい homogeneous cubic coefficient が現れる（§3.4）。これに対して、auxiliary な MIXING 変数 $\delta_k$ にも独立の cubic channel が生じるかどうかは、別途確認しておく必要がある。
+成分数は $`10+9+1`$ である。 $`R^{(2)}`$ は対交換反対称かつRicci-free、 $`R^{(3)}`$ は4形式である。LC比較値は $`I_{\mathrm{LC}}=\lVert W_{\mathrm{LC}}\rVert^2`$ とする。次の作用で $`X\in\lbrace\mathrm{LC},\mathrm W,\mathrm{tf}\rbrace`$ を比較する。
 
-そこで unified engine の formal MIXING sector に対して
-
-$$
-C_\delta(M^3;{\rm mode}) \;:=\;
-\left.
-\frac{\partial^3 V_{\rm eff}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-\right|_{\delta_0=\delta_1=\delta_2=0}
-$$
-
-を定義する。ここで $M^3 = S^3, T^3, Nil^3$、mode $=$ AX/VT/MX である。
-
-**定理 3 (δ-sector null theorem)**: 全 3 トポロジー、かつ AX/VT/MX の全背景に対して
+式(C-02)。
 
 $$
-C_\delta(M^3;{\rm mode}) = 0
+\begin{aligned}
+S_X&=-\int\mathrm{vol}\left[\frac{R_{\mathrm{EC}}}{2\kappa^2}
++\alpha I_X+\theta\mathcal N\right],\qquad \kappa^2>0,\\
+\mathcal N\thinspace \mathrm{vol}&=T^a\wedge T_a-e^a\wedge e^b\wedge R_{ab}
+=\mathrm{d}(e^a\wedge T_a).
+\end{aligned}
 $$
 
-が SymPy の厳密計算として成立する。したがって
+負号はPaper03の縮約ポテンシャル規約に揃える。宇宙項やsourceは加えない。 $`\alpha`$ と $`\theta`$ は固定定数である。静的ポテンシャル $`U_X`$ は一定profileに対する作用値である。
 
-$$
-\frac{\partial C_\delta}{\partial \alpha} = 0
-$$
+## 2.3 固定量と変分量
 
-も自動的に従う。すなわち、EC 拡張は auxiliary な $\delta$-sector に新たな homogeneous cubic channel を生成しない。
+| 族 | 固定量と変分量 |
+|---|---|
+| 円方向torsion | $`r,L,M`$ を固定しtwist・mixingを零とする。滑らかで周期的な $`\eta(y),V(y)`$ を変分する。 |
+| 静的shape | $`r,L,\eta,V`$ を固定し、行列式1の指数経路で $`M`$ を変分する。 |
+| 静的twist | 空間幾何とtorsion成分を固定し、 $`e^3=L(\mathrm{d}y+\omega_i\sigma^i)`$ とする。 |
+| 静的mixing | twistを零とし、coframe回転後のframeに同じtorsion成分を再指定する。 |
+| 連成周期shape–twist | 球面上で $`r,L,\eta,V`$ とtorsion軸を固定し、第6節の $`M=\mathrm{diag}(f,f^{-1},1)`$ 、 $`\omega=(w,0,0)`$ を変化させる。 |
 
-**証明の概略**: unified engine で `fiber_mode = MIXING` を有効化し、各トポロジー・各 torsion 背景に対して $V_{\rm eff}$ を構成し、 
-
-$$
-\partial_{\delta_0}\partial_{\delta_1}\partial_{\delta_2}V_{\rm eff}|_{\delta=0}
-$$
-
-を直接記号微分する。9 ケースすべてで係数は exact zero となり、したがって $\partial\_\alpha C_\delta$ も exact zero である。ここで重要なのは、この結果が「EC 固有効果が存在しない」ことではなく、EC 拡張で新たに活性化する cubic 構造が auxiliary な $\delta$ -sector ではなく physical な $\eta$ - $V$ channel に局在していることを意味する点である。
-
-**3 トポロジーでの帰結**:
-
-- $S^3$ : formal MIXING sector は非自明に導入できるが、 $C_\delta(S^3)=0$ 。したがって §3.4 の $\alpha$ -cubic は $\delta$ -sector ではなく $\eta$ - $V$ sector にのみ現れる。
-- $T^3$ : 平坦性のもとで formal MIXING test を行っても $C_\delta(T^3)=0$ 。auxiliary cubic channel は現れない。
-- $Nil^3$ : 非共形平坦性と EC slice minimum の存在にもかかわらず、formal MIXING sector では $C_\delta(Nil^3)=0$ 。 $Nil^3$ の EC 固有物理は background Weyl と $(r,\eta,V)$ sector に現れ、 $\delta$-sector には現れない。
-
-詳細な式展開と 9 ケースの exact check は [Appendix D](paper03ec_appD.md) および [スクリプト: `proofs/c_delta_null_proof.py`] に譲る。
+静的mixingの処方は、metricの幾何に対するtorsion軸を変える。全場を同時に回すframeのgauge変換とは区別する。以下で半径を微分するときは $`\eta,V`$ を固定し、 $`h=\eta/r`$ は半径とともに変化する。半径臨界点を求める際に固定した $`L`$ についても、停留性を判定するため一次微分を示す。

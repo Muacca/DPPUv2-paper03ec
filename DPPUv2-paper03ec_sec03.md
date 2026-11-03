@@ -1,92 +1,137 @@
-## 3. Mode dictionary: $S^3\times S^1$ under EC-Weyl
+# 3. 円方向torsionと曲率成分
 
-本節では $S^3\times S^1$ の均質幾何自由度に対する EC-Weyl 結合の効果を、 $S^3$ 固有の mode dictionary として確定する。spin-0 セクターの非伝播性は §2.4 の **定理 2 (Palatini 保護 EC 版)** により既に確定しているので、ここではその $S^3$ での具体的帰結、すなわち **定理 4 (Palatini 普遍性)** とモード辞書への反映に集中する。
+## 3.1 微分を含む厳密な分離
 
-### 3.1 定理 4 (Palatini 普遍性)
+一定の $`M`$ では、一定の空間直交回転で構造行列を対角化できる。巡回的に $`\mathrm{d}e^i=n_i e^j\wedge e^k`$ と書き、 $`n_i`$ を定数とする。round球面、平坦トーラス、未変形Nilはそれぞれ $`(4/r,4/r,4/r)`$ 、 $`(0,0,0)`$ 、 $`(0,0,-1/r)`$ に対応する。 $`\dot f=D_3f=L^{-1}\mathrm{d}f/\mathrm{d}y`$ と定める。 $`\mathrm{d}K`$ を含む $`\mathrm{d}\omega+\omega\wedge\omega`$ から直接計算すると、次を得る。
 
-**定理 4 (Palatini 普遍性)**: $S^3\times S^1$ において、AX 背景と VT 背景の spin-2/spin-1 質量は SymPy 厳密計算で完全に一致する：
-
-**spin-2 質量（5 重縮退）**:
-$$\mu^2_{\rm spin2}(S^3) = \frac{128\pi^2 Lr}{3\kappa^2} - \frac{16384\pi^2 L\alpha}{3r}$$
-
-AX 背景での $\partial^2 V/\partial\varepsilon^2|_{\varepsilon=0}$ と VT 背景での同量は完全に等しい（VT $-$ AX $= 0$, SymPy exact）。また、この式は $\eta, V$ を含まない：torsion 背景の種類に非依存である。
-
-LC 部分（ $\alpha=0$ ）の寄与は $128\pi^2 Lr/(3\kappa^2)$、EC 補正は $-16384\pi^2 L\alpha/(3r)$ であり、後者は $\eta, V$ に非依存でトポロジー（ $S^3$ 幾何）のみに依存する。
-
-*注*: 本稿のログと数値例は $r=3, L=\kappa=1, \alpha=0$ を用いているため、上式は $\mu^2_{\rm spin2}=128\pi^2 \approx 1263.3$ と評価される。LC 版 paper03 の本文は $r=1$ ベースの数値表示を用いており、その場合の本式は $128\pi^2/3 \approx 421.2$ となる。paper03 の「 $\mu^2_q = 48\pi^2$ 」との差は、半径の取り方に加えて spin-2 基底/Hessian の規約差に由来する。
-
-**spin-1 質量（3 重縮退）**:
-$$m^2_{\omega_k}(S^3) = \frac{16\pi^2 L^3}{\kappa^2 r}, \quad k = 0, 1, 2.$$
-
-AX 背景での $m^2_{\omega}$ と VT 背景での $m^2_{\omega}$ は完全に一致する（比率 $= 1.000000$）。
-
-**注（physical spin-1 モードとの関係）**: ここで $m^2_{\omega_k}=16\pi^2 L^3/(\kappa^2 r)$ は twist 方向 $\omega_k$ の有効ポテンシャル Hessian ${\partial}^{2} {V}\_{\rm eff}/{\partial}{\omega}\_{k}^{2}|\_{0}$（kinematic 量）であり、Palatini 普遍性（AX=VT）と 3 トポロジー比較の指標として用いる。これは spin-1 の full な physical 固有値そのものではない。twist $\omega$ と mixing $\delta$ が結合し field-space metric が rank 落ちする full な spin-1 系では、auxiliary を Schur 消去した physical mode は負の有効質量²（タキオン的・非ゴースト）をとる（paper03 §5）。本節の $m^2_{\omega_k}$ は背景非依存性（定理 4）とトポロジー比較のための kinematic 指標であり、この点は定理 4・比較結果の結論に影響しない。
-
-数値例（ $r=3, L=\kappa=1, \alpha=0$ ）:
-- spin-2: $m^2 = 128\pi^2 \approx 1263.3$（VT は AX と同値）
-- spin-1: $m^2 = 16\pi^2/3 \approx 52.6$（VT は AX と同値）
-
-**物理的解釈**: Palatini 普遍性は、torsion 背景（ $\eta \neq 0$ の AX vs $V \neq 0$ の VT）の違いが spin-2/spin-1 の質量スペクトルに影響しないことを意味する。 $S^3$ 幾何（ $C^i_{jk} = 4\varepsilon_{ijk}/r$ ）から来る kinematic 部分が質量を決定し、torsion は potential の形のみを変形する（Palatini 保護の帰結）。
-
-[スクリプト: `paper03ec/s3_vt_spin_masses.py`]
-
-### 3.2 Mode dictionary table (Table 1: S³×S¹)
-
-$S^3\times S^1$ の EC-Weyl 下でのモード辞書をまとめる。
-
-**Table 1: $S^3\times S^1$ mode dictionary under EC-Weyl**
-
-| 物理量 | AX ($V=0, \eta\neq 0$) | VT ($\eta=0, V\neq 0$) | MX ($V\neq 0, \eta\neq 0$) |
-|---|---|---|---|
-| $C^2_{\rm EC}$ | $= C^2_{\rm LC} = 0$ | $= C^2_{\rm LC} = 0$ | $16V^2\eta^2/(3r^2)$ |
-| AX/VT dropout | ✓ | ✓ | ✗ |
-| spin-0: $r$ | 力学的（伝播） | 力学的（伝播） | 力学的（伝播） |
-| spin-0: $\eta, V$ | $\eta$ 非力学的, $V=0$（定理 2） | $\eta=0$, $V$ 非力学的（定理 2） | 両方非力学的（定理 2） |
-| spin-2 質量 $\mu^2$ | $128\pi^2 Lr/(3\kappa^2) - 16384\pi^2 L\alpha/(3r)$（5 重縮退） | AX と同値（定理 4） | — |
-| spin-1 質量 $m^2_\omega$ | $16\pi^2 L^3/(\kappa^2 r)$（3 重縮退） | AX と同値（定理 4） | — |
-
-$S^3\times S^1$ の MX セクターについては、補助スクリプト `paper03ec/s3_mx_vacuum_search.py` で停留条件と Hessian を点検した。その結果、paper03-EC の辞書対象範囲（ $\|\eta\|\le 3$ ）では $\nabla_{(r,\eta,V)}V_{\rm eff}=0$ と Hessian 正定値を同時に満たす安定な full stationary vacuum は見つからない。 $\alpha>0$ 側に実数 MX 停留点そのものは現れ得るが、いずれも負固有値を 1 つ以上持つ鞍点である。固定 $V$ スライスに現れる有限半径の井戸は $r$ 方向の 1 次元極小にとどまり、full stationary vacuum を意味しない。
-
-### 3.3 P 保護: AX = Plücker, VT = Pfaffian, MX = P ≠ 0
-
-Pontryagin 密度の保護構造は paper03 から継承される。
-
-**AX モード（Plücker 保護）**: $V = 0$ のとき、Pontryagin 密度 $P = \langle R, \star R\rangle$ は Plücker 関係式により恒等的にゼロとなる。これは AX torsion が Riemann テンソルの反対称部分に寄与しないことによる幾何的消去である。
-
-**VT モード（Pfaffian 保護）**: $\eta = 0$ のとき、 $P$ は Pfaffian 型の恒等式により消滅する。VT torsion は Riemann テンソルの対称部分のみを修正し、Pontryagin 密度の反対称な組み合わせへの寄与がゼロとなる。
-
-**MX モード**: $V \neq 0, \eta \neq 0$ のとき、等方点での Pontryagin 密度は
+式(D-01)。
 
 $$
-P_0 = \frac{2V\eta(V^2 r^2 + 9\eta^2 - 36)}{9r^3}
+\begin{aligned}
+W_{\mathrm{EC}}&=W_{\mathrm{LC}},\\
+I_2&=6\left(\dot h+\frac23 hV\right)^2,\qquad
+I_3=6\left(\dot h-\frac23 hV\right)^2,\\
+I_{\mathrm{tf}}&=I_{\mathrm{LC}}+12\dot h^2+\frac{16}{3}h^2V^2,\\
+R_{\mathrm{EC}}&=R_{\mathrm{LC}}-6h^2-\frac23V^2+2\dot V.
+\end{aligned}
 $$
 
-として非零になり得る（paper03 §3.2 から継承）。
+これらは任意の定数 $`n_i`$ と二つの円方向profileの任意の一次jetに対して成り立つ恒等式である。一定の空間shapeを変えると $`R_{\mathrm{LC}}`$ と $`I_{\mathrm{LC}}`$ が変わり、表示したtorsion項は保たれる。付録Bに接続と射影後のテンソル成分を示す。ベクトルトレースの微分 $`\dot V`$ はスカラーに全微分として入り、Ricciトレース除去後の二乗不変量は $`\dot h`$ に依存する。
 
-**EC の効果**: Weyl coupling $\alpha$ は作用の coupling 定数であり、Pontryagin 密度 $P$ 自体の定義には入らない。したがって AX / VT / MX の Pontryagin 分類は paper03 と同一であり、EC 拡張で新たに変わるのは有効ポテンシャル $V_{\rm eff}$ 側である。
+| torsion族 | LC比較値に対する追加成分 |
+|---|---|
+| AX： $`V=0`$ | $`I_2=I_3=6\dot h^2`$ 。非一定の軸性profileではRicciトレース除去モデルに微分二乗項がある。 |
+| VT： $`h=0`$ | この固定幾何では $`V`$ が変化しても $`I_2=I_3=0`$ になる。 |
+| MX | 局所的には $`I_2`$ と $`I_3`$ が異なり、等しい係数の和では混合微分項が打ち消し合う。 |
 
-### 3.4 EC-Weyl 下での変化
+零微分極限では $`I_2=I_3=8h^2V^2/3`$ となり、Paper02へ戻る。純AXの円方向対照に現れる $`12\dot\eta^2/r^2`$ は、追加二成分がそれぞれ6ずつ担い、既約Weylからの寄与は零である。純AXの局所一次jetでは、補助対照として $`I_{\mathrm{tf}}-I_{\mathrm{LC}}=4\sum_{i=0}^2(D_i h)^2+12(D_3h)^2`$ も得られる。これは一点での方向別係数の比較であり、以下の作用ではtorsionを円方向にのみ変化させる。
 
-**AX/VT 安定性の保持**: EC 補正 $\alpha < 0$ のもとで AX/VT 安定真空の構造は LC と変わらない。定理 1 の AX/VT dropout により $C^2_{\rm EC} = C^2_{\rm LC}$ であるため、Weyl coupling は有効ポテンシャルを変形しない。
+![curvature_components](LaTeX/figures/curvature_components.png)
 
-**EFT レベルの EC 固有修正（α-cubic）**: LC からの新たな非線形結合として
+round球面 $`r=2`$ 、 $`L=1`$ における滑らかな周期profileの例。 $`h=0.30+0.15\sin(2\pi y)`$ 、 $`V=0.40+0.20\cos(2\pi y)`$ を指定した。追加二成分は局所的に異なり、その和がRicciトレース除去モデルの補正となる。この例の $`I_{\mathrm W}=I_{\mathrm{LC}}`$ は零である。 $`h`$ と $`V`$ は指定したprofile（off-shell）である。
+
+## 3.2 制限作用とEuler式
+
+Ricciトレース除去モデルで $`\chi_X=1`$ 、LC-Weylと既約EC-Weylで $`\chi_X=0`$ とする。周期的な全微分を積分した後の厳密な円方向作用は次となる。
+
+式(D-02)。
 
 $$
-\frac{\partial^3 V_{\rm EC}}{\partial\alpha\,\partial\eta\,\partial V} = -\frac{128\pi^2 V\eta r}{3} \neq 0
+\begin{aligned}
+S_X=c_M Lr^3\int_0^1\mathrm{d}y\thinspace \bigg[
+&-\frac{R_{\mathrm{LC}}}{2\kappa^2}-\alpha I_{\mathrm{LC}}
++\frac{3h^2}{\kappa^2}+\frac{V^2}{3\kappa^2}\\
+&-\chi_X\alpha\left(12\dot h^2+\frac{16}{3}h^2V^2\right)\bigg].
+\end{aligned}
 $$
 
-が出現する（ $S^3$ ）。これは $\alpha$ に関する homogeneous EFT の cubic coefficient を与える EC 固有の cubic チャンネルであり、LC では存在しない（[スクリプト: `paper03ec/ec_cubic_vertex.py`]）。この項は Table 1 の二次モード辞書には現れず、均質 EFT の cubic order にのみ現れる。ここで係数は Appendix A の $S^3\times S^1$ 体積規約 $\mathrm{Vol}(S^3\times S^1)=2\pi^2 Lr^3$ に対応している。一方、NY-cubic チャンネル $\partial^3 V/\partial\theta\partial\eta\partial V = 4\pi^2 r^2$ は EC で不変（Palatini 保護の帰結）。
+この族のLC比較作用と既約Weyl作用では、torsionのEuler式は代数的な $`h=V=0`$ となる。Ricciトレース除去モデルでは次の式になる。
 
-これに対して auxiliary な formal MIXING sector では
+式(D-03)。
 
 $$
-C_\delta(S^3) \;=\;
-\left.
-\frac{\partial^3 V_{\rm eff}}{\partial\delta_0\,\partial\delta_1\,\partial\delta_2}
-\right|_{\delta=0}
-= 0,
-\qquad
-\frac{\partial C_\delta(S^3)}{\partial\alpha} = 0
+\begin{aligned}
+24\alpha\ddot h+\left(\frac{6}{\kappa^2}-\frac{32\alpha}{3}V^2\right)h&=0,\\
+\left(\frac{2}{3\kappa^2}-\frac{32\alpha}{3}h^2\right)V&=0.
+\end{aligned}
 $$
 
-が成立する（定理 3, App. D）。したがって EC 拡張で新たに活性化する homogeneous cubic 構造は physical な $\eta$ - $V$ channel に限られ、 $\delta$ -sector は null のまま保たれる。
+bulk密度の速度Hessianは $`h`$ 方向で $`-24\alpha`$ 、 $`V`$ 方向で零となる。 $`\alpha\ne0`$ では、非零背景でも $`h`$ の最高微分項が存在する。 $`V`$ の代数係数が零になる場合があり、それで割ると枝を失う。
+
+この制限範囲では二つの帰結がある。 $`\alpha\le0`$ の場合、第一Euler式に $`h`$ を掛け、円上で部分積分すると非負項の和を得る。
+
+式(D-04)。
+
+$$
+\int_0^1\mathrm{d}y\left[
+\frac{6h^2}{\kappa^2}-\frac{32\alpha}{3}h^2V^2-24\alpha\dot h^2\right]=0.
+$$
+
+したがって $`\alpha\le0`$ では、固定幾何上の滑らかな周期的torsion停留profileは $`h=V=0`$ に限られる。一方 $`\alpha>0`$ では、一定の非零振幅 $`a`$ を使った $`h=a\cos(2\pi n y)`$ 、 $`V=0`$ の族について次を得る。
+
+式(D-05)。
+
+$$
+\frac{S_{\mathrm{tf}}[h,0]-S_{\mathrm{tf}}[0,0]}{c_M Lr^3 a^2}
+=\frac{3}{2\kappa^2}-\frac{24\pi^2\alpha n^2}{L^2}.
+$$
+
+整数周波数を増やすと負の無限大へ向かい、幾何を固定したまま微分による非有界方向が存在する。これはPaper02の静的有界性判定とは別の機構である。他二作用のこの制限されたtorsion部分には同じ方向はない。
+
+## 3.3 局所密度と周期積分
+
+式(D-06)。
+
+$$
+\begin{aligned}
+\frac{T^a\wedge T_a}{\mathrm{vol}}&=-4Vh,\qquad
+\frac{e^a\wedge e^b\wedge R_{ab}}{\mathrm{vol}}=-4Vh+6\dot h,\\
+\mathcal N&=-6\dot h,\\
+\mathcal P&=\frac{\sum_{a,b}R_{ab}\wedge R_{ab}}{\mathrm{vol}}
+=D_3\left(2R_{\mathrm{LC}}h-4h^3-\frac43hV^2\right).
+\end{aligned}
+$$
+
+曲率–coframe縮約の成分表示は $`\tfrac12\varepsilon^{abcd}R_{abcd}`$ である。局所的なNY・Pontryagin密度は非零になり得るが、一定幾何上のこの滑らかな周期profileでは両積分とも零になる。ここで $`\mathcal P`$ は曲率2形式の外積の形式添字を用いて定義しており、内部双対縮約 $`\varepsilon^{abcd}R_{abmn}R_{cd}{}^{mn}`$ とは異なるスカラーである。式(D-06)は境界流を明示し、局所的な曲率寄与と特性密度の積分を区別する。
+
+## 3.4 周期停留枝と第二変分
+
+**命題（正の結合）。** 物理円周長Lの連結な円上で、幾何を固定したRicciトレース除去作用の滑らかな実周期停留torsionは、正のαについて次の枝に限られる。ここで $`z=Ly`$ 、二つの符号は独立とし、調和波枝では $`a^2+b^2>0`$ とする。
+
+式(D-07)。
+
+$$
+\begin{aligned}
+H&=\frac1{4\kappa\sqrt\alpha},\qquad
+\alpha_n=\frac{L^2}{16\pi^2\kappa^2 n^2},\quad n\ge1,\\
+(h,V)&=(0,0)\quad\text{or}\quad(\pm H,\pm3H),\\
+V&=0,\quad h=a\cos(2\pi nz/L)+b\sin(2\pi nz/L),
+\quad\alpha=\alpha_n.
+\end{aligned}
+$$
+
+**証明。** $`V\ne0`$ の開集合では式(D-03)の代数方程式から $`h^2=H^2`$ が従う。滑らかさにより各連結成分でhは一定となり、残るEuler式が $`\lvert V\rvert=3H`$ を強制する。連続性から境界点でVが零になることはできず、この開集合は閉でもある。円の連結性により全円または空集合となる。後者では $`V\equiv0`$ で、 $`\ddot h+h/(4\alpha\kappa^2)=0`$ の周期条件が式(D-07)の共鳴条件を与える。Vの係数で割ることなく、滑らかな枝の貼り合わせも除外できる。
+
+停留profile $`(\bar h,\bar V)`$ の周りの摂動を $`(\phi,v)`$ とすると、bulk第二変分は次となる。
+
+式(D-08)。
+
+$$
+\begin{aligned}
+\delta^2\ell={}&\left(\frac6{\kappa^2}-\frac{32\alpha}{3}\bar V^2\right)\phi^2
++\left(\frac2{3\kappa^2}-\frac{32\alpha}{3}\bar h^2\right)v^2\\
+&-\frac{128\alpha}{3}\bar h\bar V\phi v-24\alpha\dot\phi^2.
+\end{aligned}
+$$
+
+零枝と調和波枝では、 $`v=0`$ に制限しても、一定の軸性摂動が正方向、十分高いFourier周波数の軸性摂動が負方向となる。共鳴時のsine・cosine軸性方向は零方向でもある。定数混合枝の各Fourier blockは次である。
+
+式(D-09)。
+
+$$
+H_m=\begin{pmatrix}-24\alpha\xi_m^2&\pm4/\kappa^2\\
+\pm4/\kappa^2&0\end{pmatrix},\qquad
+\xi_m=\frac{2\pi m}{L},\qquad\det H_m=-\frac{16}{\kappa^4}.
+$$
+
+したがって正の結合での全停留枝は、この制限Euclidean汎関数のsaddleである。零torsionからの作用差は調和波枝で零、定数混合枝では4体積あたり $`3/(16\alpha\kappa^4)>0`$ となる。非正のαでは式(D-02)のtorsion項が非負の和となり、零torsionが唯一の最小点である。LC-Weylと既約EC-Weyl作用では、この固定metric族のtorsion最小点は全αで零に限られる。定数混合解そのものはPaper02の静的項の代数的帰結であり、本稿の拡張は周期解の完全性と第二変分の整理にある。

@@ -1,166 +1,149 @@
-%==============================================================================
-% Section 3: Mode Dictionary: S^3 x S^1 under EC-Weyl
-%==============================================================================
-\section{Mode Dictionary: $\Sthree\times\Sone$ under EC--Weyl}
-\label{sec:s3}
+\section{Circle-dependent torsion and its curvature components}
 
-This section determines the effect of the EC--Weyl coupling on the homogeneous
-geometric degrees of freedom of $\Sthree\times\Sone$.  Since the non-propagation
-of torsion in the spin-0 sector is already established by Theorem~\ref{thm:palatini},
-we focus here on the specific consequences for $\Sthree$: Theorem~4 (Palatini
-universality) and its reflection in the mode dictionary.
+\subsection{Exact derivative-level separation}
 
-\subsection{Theorem~4: Palatini Universality}
-\label{sec:s3:thm4}
+For constant $M$, the spatial structure can be diagonalized by a constant spatial orthogonal rotation. Write $\mathrm{d}e^i=n_i e^j\wedge e^k$ cyclically, with constant $n_i$. Round $S^3$, flat $T^3$, and the undeformed Nil coframe correspond to $(4/r,4/r,4/r)$, $(0,0,0)$, and $(0,0,-1/r)$. Let $\dot f=D_3f=L^{-1}\mathrm{d}f/\mathrm{d}y$. Direct use of $\mathrm{d}\omega+\omega\wedge\omega$, including $\mathrm{d}K$, gives
 
-\begin{theorem}[Palatini universality]\label{thm:paluniv}
-  In $\Sthree\times\Sone$, the spin-2 and spin-1 masses in the AX and VT
-  backgrounds are identical (SymPy exact)\textup{:}
+\begin{equation}\tag{D-01}\label{eq:D-01}
+\begin{aligned}
+W_{\mathrm{EC}}&=W_{\mathrm{LC}},\\
+I_2&=6\left(\dot h+\frac23 hV\right)^2,\qquad
+I_3=6\left(\dot h-\frac23 hV\right)^2,\\
+I_{\mathrm{tf}}&=I_{\mathrm{LC}}+12\dot h^2+\frac{16}{3}h^2V^2,\\
+R_{\mathrm{EC}}&=R_{\mathrm{LC}}-6h^2-\frac23V^2+2\dot V.
+\end{aligned}
+\end{equation}
 
-  \textbf{Spin-2 mass (five-fold degenerate)\textup{:}}
-  \begin{equation}
-    \mu^2_{\mathrm{spin2}}(\Sthree)
-    = \frac{128\pi^2 Lr}{3\kappa^2} - \frac{16384\pi^2 L\alpha}{3r}.
-  \end{equation}
+These identities hold for arbitrary constant $n_i$ and arbitrary first jets of the two circle profiles. A constant spatial shape changes $R_{\rm LC}$ and $I_{\rm LC}$ while leaving the displayed torsion terms unchanged. Appendix B gives the connection and projected tensor entries. The vector-trace derivative $\dot V$ enters the scalar as a total derivative; the Ricci-tracefree quadratic invariant depends on $\dot h$.
 
-  \textbf{Spin-1 mass (three-fold degenerate)\textup{:}}
-  \begin{equation}
-    m^2_{\omega_k}(\Sthree) = \frac{16\pi^2 L^3}{\kappa^2 r},
-    \qquad k=0,1,2.
-  \end{equation}
-
-  Both expressions are independent of $\eta$ and $V$: the mode spectrum does
-  not depend on the type of torsion background.
-\end{theorem}
-
-The VT$-$AX difference for spin-2 mass is exactly zero (SymPy exact).  The LC
-contribution ($\alpha=0$) to the spin-2 mass is $128\pi^2 Lr/(3\kappa^2)$ and
-the EC correction is $-16384\pi^2 L\alpha/(3r)$, the latter depending only on
-the topology ($\Sthree$ geometry) and not on $\eta$ or $V$.
-
-\begin{remark}
-  The numerical evaluation at $r=3$, $L=\kappa=1$, $\alpha=0$ gives
-  $\mu^2_{\mathrm{spin2}} = 128\pi^2 \approx 1263.3$ and
-  $m^2_{\omega_k} = 16\pi^2/3 \approx 52.6$.  The LC paper~III uses $r=1$-based
-  notation, giving $128\pi^2/3\approx 421.2$ for the spin-2 mass.  The
-  discrepancy with the value $48\pi^2$ quoted there arises from the choice of
-  radius combined with conventions for the spin-2 basis/Hessian.
-\end{remark}
-
-\paragraph{Relation to the physical spin-1 mode.}
-Here $m^2_{\omega_k}=16\pi^2 L^3/(\kappa^2 r)$ is the effective-potential Hessian
-along the twist direction $\omega_k$ ($\partial^2 V_{\rm eff}/\partial\omega_k^2|_0$),
-a kinematic quantity used as the indicator for Palatini universality (AX$=$VT)
-and for the three-topology comparison.  It is \emph{not} the full physical
-spin-1 eigenvalue: in the full spin-1 system, where the twist $\omega$ and the
-mixing $\delta$ couple and the field-space metric is rank-deficient, the
-physical mode obtained after Schur-eliminating the auxiliary has a
-\emph{negative} effective mass squared (tachyonic, non-ghost; Paper~III~\S5).
-This does not affect Theorem~\ref{thm:palatini} or the topology comparison,
-which use only the kinematic twist Hessian.
-
-\paragraph{Physical interpretation.}
-Palatini universality means that the difference between the AX background
-($\eta\neq 0$) and the VT background ($V\neq 0$) has no effect on the
-spin-2/spin-1 mass spectrum.  The kinematic part coming from the $\Sthree$
-geometry ($C^i_{jk}=4\varepsilon_{ijk}/r$) determines the masses, while
-torsion deforms only the shape of the potential (a consequence of Palatini
-protection, Theorem~\ref{thm:palatini}).
-Script: \texttt{paper03ec/s3\_vt\_spin\_masses.py}.
-
-\subsection{Mode Dictionary Table ($\Sthree\times\Sone$)}
-\label{sec:s3:table}
-
-Table~\ref{tab:s3} summarises the mode dictionary of $\Sthree\times\Sone$
-under EC--Weyl.
-
-\begin{table}[H]
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lccc}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.66\textwidth}@{}}
 \toprule
-Quantity & AX ($V=0,\,\eta\neq 0$) & VT ($\eta=0,\,V\neq 0$) & MX ($V\neq 0,\,\eta\neq 0$) \\
-\midrule
-$C^2_\EC$ & $=C^2_\LC=0$ & $=C^2_\LC=0$ & $16V^2\eta^2/(3r^2)$ \\
-AX/VT dropout & \checkmark & \checkmark & $\times$ \\
-spin-0: $r$ & propagating & propagating & propagating \\
-spin-0: $\eta,V$ & $\eta$ non-prop., $V=0$ (Thm.~2) & $\eta=0$, $V$ non-prop.\ (Thm.~2) & both non-prop.\ (Thm.~2) \\
-spin-2 mass $\mu^2$ & $128\pi^2 Lr/(3\kappa^2)-16384\pi^2 L\alpha/(3r)$ & same as AX (Thm.~4) & --- \\
-spin-1 mass $m^2_\omega$ & $16\pi^2 L^3/(\kappa^2 r)$ (3-fold) & same as AX (Thm.~4) & --- \\
-\bottomrule
-\end{tabular}%
-}
-\caption{$\Sthree\times\Sone$ mode dictionary under EC--Weyl.}
-\label{tab:s3}
-\end{table}
+\textbf{Torsion restriction} & \textbf{Extra sectors beyond $I_{\rm LC}$} \\ \midrule
+\endhead
 
-Regarding the MX sector of $\Sthree\times\Sone$: the supplementary script \\
-\texttt{paper03ec/s3\_mx\_vacuum\_search.py} checked the stationarity conditions
-and Hessian within the range $|\eta|\le 3$.  No stable full stationary vacuum
-satisfying both $\nabla_{(r,\eta,V)}\Veff=0$ and positive-definite Hessian was
-found.  Real stationary points may appear on the $\alpha>0$ side, but all of
-them have at least one negative eigenvalue and are saddle points.  The finite-radius
-well appearing in a fixed-$V$ slice is a one-dimensional minimum in the $r$
-direction and does not constitute a full stationary vacuum.
+AX: $V=0$ & $I_2=I_3=6\dot h^2$; a nonconstant axial profile has a quadratic-gradient term in the trace-free model. \\[4pt]
 
-\subsection{Pontryagin Structure: AX = Pl\"{u}cker, VT = Pfaffian, MX $\neq 0$}
-\label{sec:s3:pontryagin}
+VT: $h=0$ & $I_2=I_3=0$, including a varying $V$ on this fixed geometry. \\[4pt]
 
-The Pontryagin protection structure is inherited from paper~III.
+MX & $I_2$ and $I_3$ differ locally; their mixed derivative terms cancel in their equally weighted sum. \\[4pt]
 
-\textbf{AX mode (Pl\"ucker protection):} When $V=0$, the Pontryagin density
-$P=\innerprod{R}{\star R}$ vanishes identically by a Pl\"ucker relation.
-AX torsion contributes no antisymmetric part to the Riemann tensor that could
-activate $P$.
+\bottomrule\end{longtable}
 
-\textbf{VT mode (Pfaffian protection):} When $\eta=0$, $P$ vanishes via a
-Pfaffian-type identity.  VT torsion modifies only the symmetric part of the
-Riemann tensor, leaving the antisymmetric combination that enters $P$ zero.
+At zero derivative, $I_2=I_3=8h^2V^2/3$, recovering Paper II. In the pure AX circle control, the sum is $12\dot\eta^2/r^2$, with six units from each extra sector and none from irreducible Weyl. The related local first-jet check for a pure axial field gives $I_{\rm tf}-I_{\rm LC}=4\sum_{i=0}^2(D_i h)^2+12(D_3h)^2$. This compares directional coefficients at a point; the actions below vary the torsion only along the circle.
 
-\textbf{MX mode:} When $V\neq 0,\eta\neq 0$, the Pontryagin density at the
-isotropic point is (from paper~III):
-\begin{equation}
-  P_0 = \frac{2V\eta(V^2r^2 + 9\eta^2 - 36)}{9r^3}.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\textwidth]{figures/curvature_components.png}
+\caption{A smooth periodic example on round $S^3$ with $r=2$, $L=1$. The prescribed functions are $h=0.30+0.15\sin(2\pi y)$ and $V=0.40+0.20\cos(2\pi y)$. The two extra curvature norms differ locally; their sum is the Ricci-tracefree correction. $I_{\rm W}=I_{\rm LC}=0$ on this example. The profiles are prescribed (off shell).}
+\label{fig:curvature_components}
+\end{figure}
+
+\subsection{Restricted action and Euler equations}
+
+Let $\chi_X=1$ for the Ricci-tracefree model and $\chi_X=0$ for LC-Weyl and irreducible EC-Weyl. After integrating the periodic total derivatives, the exact circle action is
+
+\begin{equation}\tag{D-02}\label{eq:D-02}
+\begin{aligned}
+S_X=c_M Lr^3\int_0^1\!\mathrm{d}y\,\bigg[
+&-\frac{R_{\mathrm{LC}}}{2\kappa^2}-\alpha I_{\mathrm{LC}}
++\frac{3h^2}{\kappa^2}+\frac{V^2}{3\kappa^2}\\
+&-\chi_X\alpha\left(12\dot h^2+\frac{16}{3}h^2V^2\right)\bigg].
+\end{aligned}
 \end{equation}
 
-\paragraph{Effect of EC.}
-The Weyl coupling $\alpha$ enters only the action, not the definition of the
-Pontryagin density $P$ itself.  Therefore the AX/VT/MX Pontryagin classification
-is unchanged from paper~III, and what changes in the EC extension is the
-effective potential $\Veff$ side.
+Thus the LC and irreducible-Weyl comparisons have algebraic torsion equations $h=V=0$ in this family. For the Ricci-tracefree model they become
 
-\subsection{EC-Specific Modification under EC--Weyl}
-\label{sec:s3:ec}
-
-\textbf{Preservation of AX/VT stability.}
-Under EC correction $\alpha<0$, the structure of the AX/VT stable vacua is
-unchanged from LC.  By the AX/VT dropout (Theorem~\ref{thm:dropout}),
-$C^2_\EC = C^2_\LC$, so the Weyl coupling does not modify the effective
-potential.
-
-\textbf{EC-specific cubic coupling ($\alpha$-cubic).}
-As a new nonlinear coupling absent in LC, the following appears:
-\begin{equation}
-  \frac{\partial^3 V_\EC}{\partial\alpha\,\partial\eta\,\partial V}
-  = -\frac{128\pi^2 V\eta r}{3} \neq 0
-  \qquad (\Sthree).
+\begin{equation}\tag{D-03}\label{eq:D-03}
+\begin{aligned}
+24\alpha\ddot h+\left(\frac{6}{\kappa^2}-\frac{32\alpha}{3}V^2\right)h&=0,\\
+\left(\frac{2}{3\kappa^2}-\frac{32\alpha}{3}h^2\right)V&=0.
+\end{aligned}
 \end{equation}
-This gives the EC-specific cubic coefficient in the homogeneous EFT with respect
-to $\alpha$, a cubic channel absent in LC (script:
-\texttt{paper03ec/ec\_cubic\_vertex.py}).  This term does not appear in the
-second-order mode dictionary of Table~\ref{tab:s3} and enters only at cubic
-order in the homogeneous EFT.  The coefficient corresponds to the
-$\Sthree\times\Sone$ volume convention $\Vol(\Sthree\times\Sone)=2\pi^2 Lr^3$
-of Appendix~\ref{app:A}.  For comparison, the NY-cubic channel
-$\partial^3 V/\partial\theta\partial\eta\partial V = 4\pi^2 r^2$ is invariant
-under EC (a consequence of Palatini protection).
 
-In the auxiliary formal MIXING sector, on the other hand,
-\begin{equation}
-  C_\delta(\Sthree) = 0,
-  \qquad
-  \frac{\partial C_\delta(\Sthree)}{\partial\alpha} = 0
+The velocity Hessian of the bulk density is $-24\alpha$ in the $h$ direction and zero in the $V$ direction. The highest derivative of $h$ is present for $\alpha\ne0$ even about a nonzero background. The algebraic coefficient of $V$ can vanish; dividing by it would discard branches.
+
+There are two useful consequences within the stated restriction. For $\alpha\le0$, multiplying the first Euler equation by $h$, integrating over the circle, and integrating by parts gives a sum of nonnegative terms:
+
+\begin{equation}\tag{D-04}\label{eq:D-04}
+\int_0^1\!\mathrm{d}y\left[
+\frac{6h^2}{\kappa^2}-\frac{32\alpha}{3}h^2V^2-24\alpha\dot h^2\right]=0.
 \end{equation}
-(Theorem~\ref{thm:delta}, Appendix~\ref{app:D}).  Therefore the new homogeneous
-cubic structure activated by EC extension is confined to the physical $\eta$-$V$
-channel, and the $\delta$-sector remains null.
+
+Hence every smooth periodic stationary torsion profile at fixed geometry is $h=V=0$ for $\alpha\le0$. For $\alpha>0$, the family $h=a\cos(2\pi n y)$, $V=0$, with nonzero fixed $a$, yields
+
+\begin{equation}\tag{D-05}\label{eq:D-05}
+\frac{S_{\mathrm{tf}}[h,0]-S_{\mathrm{tf}}[0,0]}{c_M Lr^3 a^2}
+=\frac{3}{2\kappa^2}-\frac{24\pi^2\alpha n^2}{L^2}.
+\end{equation}
+
+It tends to minus infinity as the integer frequency increases. This supplies a derivative-driven unbounded direction already at fixed geometry. Its mechanism is additional to the static bounds of Paper II; it is absent from the torsion part of the other two restricted actions.
+
+\subsection{Local densities and periodic integrals}
+
+\begin{equation}\tag{D-06}\label{eq:D-06}
+\begin{aligned}
+\frac{T^a\wedge T_a}{\mathrm{vol}}&=-4Vh,\qquad
+\frac{e^a\wedge e^b\wedge R_{ab}}{\mathrm{vol}}=-4Vh+6\dot h,\\
+\mathcal N&=-6\dot h,\\
+\mathcal P&=\frac{\sum_{a,b}R_{ab}\wedge R_{ab}}{\mathrm{vol}}
+=D_3\left(2R_{\mathrm{LC}}h-4h^3-\frac43hV^2\right).
+\end{aligned}
+\end{equation}
+
+The curvature--coframe contraction has component expression $\tfrac12\varepsilon^{abcd}R_{abcd}$. The local Nieh--Yan and Pontryagin densities can be nonzero, while both integrals vanish for these smooth periodic profiles with constant geometry. Here $\mathcal P$ uses the exterior-form indices of the curvature two-forms. The internal-dual contraction $\varepsilon^{abcd}R_{abmn}R_{cd}{}^{mn}$ is a distinct scalar. Equation (D-06) identifies the boundary currents explicitly and separates the local curvature contributions from their integrated characteristic densities.
+
+\subsection{Periodic stationary branches and their second variation}
+
+\textbf{Proposition (positive coupling).} On a connected circle of physical
+length $L$, all smooth real periodic stationary torsion profiles of the
+Ricci-tracefree action at fixed geometry and $\alpha>0$ are the branches below.
+Here $z=Ly$, the two signs are independent, and $a^2+b^2>0$ on the harmonic branch.
+
+\begin{equation}\tag{D-07}\label{eq:D-07}
+\begin{aligned}
+H&=\frac1{4\kappa\sqrt\alpha},\qquad
+\alpha_n=\frac{L^2}{16\pi^2\kappa^2 n^2},\quad n\ge1,\\
+(h,V)&=(0,0)\quad\text{or}\quad(\pm H,\pm3H),\\
+V&=0,\quad h=a\cos(2\pi nz/L)+b\sin(2\pi nz/L),
+\quad\alpha=\alpha_n.
+\end{aligned}
+\end{equation}
+
+\emph{Proof.} On the open set where $V\ne0$, the algebraic equation (D-03)
+fixes $h^2=H^2$. Smoothness makes $h$ constant on each connected component,
+and the other Euler equation then fixes $|V|=3H$. By continuity this open set
+is also closed: a boundary point cannot have $V=0$. Connectedness therefore
+makes it the whole circle or the empty set. In the latter case $V\equiv0$
+and $\ddot h+h/(4\alpha\kappa^2)=0$ gives the resonance condition in (D-07).
+This argument excludes smooth splicing of the algebraic branches without
+dividing by the coefficient of $V$.
+
+For perturbations $(\phi,v)$ about $(\bar h,\bar V)$, the bulk second variation is
+
+\begin{equation}\tag{D-08}\label{eq:D-08}
+\begin{aligned}
+\delta^2\ell={}&\left(\frac6{\kappa^2}-\frac{32\alpha}{3}\bar V^2\right)\phi^2
++\left(\frac2{3\kappa^2}-\frac{32\alpha}{3}\bar h^2\right)v^2\\
+&-\frac{128\alpha}{3}\bar h\bar V\phi v-24\alpha\dot\phi^2.
+\end{aligned}
+\end{equation}
+
+The zero and harmonic branches have a positive constant axial direction and
+negative sufficiently high axial Fourier directions, already at $v=0$.
+At resonance the sine and cosine axial directions are also zero directions.
+For a mixed constant branch every Fourier block has
+
+\begin{equation}\tag{D-09}\label{eq:D-09}
+H_m=\begin{pmatrix}-24\alpha\xi_m^2&\pm4/\kappa^2\\
+\pm4/\kappa^2&0\end{pmatrix},\qquad
+\xi_m=\frac{2\pi m}{L},\qquad\det H_m=-\frac{16}{\kappa^4}.
+\end{equation}
+
+Thus all positive-coupling stationary branches are saddles of this restricted
+Euclidean functional. The harmonic branch has zero action difference from
+zero torsion; the mixed branch has difference per four-volume
+$3/(16\alpha\kappa^4)>0$. For $\alpha\le0$, (D-02) is a sum of nonnegative
+torsion terms and zero torsion is its unique minimum. On this fixed-metric
+family the LC-Weyl and irreducible EC-Weyl actions have that unique torsion
+minimum for every $\alpha$. The mixed constant solutions are algebraic
+consequences of Paper II's static term; the periodic completeness and
+second-variation statements provide the extension here.
