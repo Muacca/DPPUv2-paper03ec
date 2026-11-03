@@ -12,7 +12,7 @@ e^0&=rf\sigma^0,\quad e^1=rf^{-1}\sigma^1,\quad e^2=r\sigma^2,
 \quad e^3=L(\mathrm{d}y+w\sigma^0),\quad f=e^s,\\
 w_n(y)&=A\cos(2\pi ny),\qquad
 f_n^2=1-\frac{L^2w_n^2}{2r^2},\qquad
-0<A<\frac{\sqrt2r}{L},\quad n\ge1.
+0\lt A\lt\frac{\sqrt2r}{L},\quad n\ge1.
 \end{aligned}
 $$
 
